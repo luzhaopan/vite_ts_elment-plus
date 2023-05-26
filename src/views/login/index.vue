@@ -40,6 +40,7 @@
   import { useCache } from '@/hooks/web/useCache'
   import { useAppStore } from '@/store/modules/app'
   import { loginApi } from '@/api/login'
+  import router from '@/router'
 
   const appStore = useAppStore()
   const { wsCache } = useCache()
@@ -78,15 +79,16 @@
       if (valid) {
         loading.value = true
         try {
-          const res = await loginApi(ruleForm)
+          const res: any = await loginApi(ruleForm)
           console.log(res)
-          if (res) {
+          if (res.code == 200) {
             wsCache.set(appStore.getUserInfo, {
               username: 'admin',
               password: 'admin'
             })
             setToken('admin')
-            window.location.href = '/'
+            // window.location.href = '/'
+            router.push('/')
           }
         } finally {
           loading.value = false
