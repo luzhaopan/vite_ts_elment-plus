@@ -52,6 +52,12 @@ const routes = [
         name: 'Zip',
         component: () => import('@/views/excel/zip/index.vue'),
         meta: { title: 'Zip' }
+      },
+      {
+        path: '/excel/onlineEdit',
+        name: 'OnlineEdit',
+        component: () => import('@/views/excel/onlineEdit/index.vue'),
+        meta: { title: 'OnlineEdit' }
       }
     ]
   },

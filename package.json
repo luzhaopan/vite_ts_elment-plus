@@ -20,6 +20,7 @@
     "file-saver": "^2.0.5",
     "js-cookie": "^3.0.1",
     "jszip": "^3.10.1",
+    "luckyexcel": "^1.0.1",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.27",
@@ -31,6 +32,7 @@
     "web-storage-cache": "^1.1.1"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.5",
     "@types/node": "^18.11.12",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
