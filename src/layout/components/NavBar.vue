@@ -15,7 +15,10 @@
       </el-tooltip>
       <Breadcrumb class="breadcrumb-container" />
     </div>
-    <UserInfo />
+    <div class="right">
+      <Screenfull />
+      <UserInfo />
+    </div>
   </div>
 </template>
 
@@ -23,6 +26,7 @@
   import { defineComponent, computed } from 'vue'
   import { useAppStore } from '@/store/modules/app'
   import Breadcrumb from '@/components/Breadcrumb/index.vue'
+  import Screenfull from '@/components/Screenfull/index.vue'
   import UserInfo from '@/components/UserInfo/index.vue'
 
   export default defineComponent({
@@ -52,12 +56,20 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
     .left-panel {
       display: flex;
       align-items: center;
       justify-items: center;
       margin-left: 10px;
+    }
+    .right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      div {
+        margin-left: 10px;
+      }
     }
   }
 </style>
