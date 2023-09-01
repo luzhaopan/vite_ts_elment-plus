@@ -18,6 +18,18 @@ const routes = [
     ]
   },
   {
+    path: '/guide',
+    component: Layout,
+    children: [
+      {
+        path: '/guide/index',
+        name: 'Guide',
+        component: () => import('@/views/guide/index.vue'),
+        meta: { title: 'Guide', icon: 'Promotion' }
+      }
+    ]
+  },
+  {
     path: '/excel',
     name: 'Excel',
     component: Layout,

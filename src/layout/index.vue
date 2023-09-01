@@ -12,9 +12,10 @@
         class="mask"
         @click="handleFoldSideBar"
       ></div>
-      <SideBar class="sidebar-container" />
+      <SideBar id="menu" class="sidebar-container" />
       <div class="main-container" :class="collapse ? 'is-collapse-main' : ''">
         <div
+          id="navbar"
           class="layout-navbar"
           :class="{
             'fixed-header': header === 'fixed',
