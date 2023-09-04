@@ -82,8 +82,19 @@ const routes = [
         name: 'OnlineEdit',
         component: () => import('@/views/excel/onlineEdit/index.vue'),
         meta: { title: 'OnlineEdit' }
+      },
+      {
+        path: '/excel/pdf',
+        name: 'Pdf',
+        component: () => import('@/views/excel/pdf/index.vue'),
+        meta: { title: 'Pdf' }
       }
     ]
+  },
+  {
+    path: '/pdf/download',
+    component: () => import('@/views/excel/pdf/download.vue'),
+    hidden: true
   },
   {
     path: '/echarts',

@@ -38,4 +38,7 @@ declare module '@vue/runtime-core' {
     Screenfull: typeof import('./src/components/Screenfull/index.vue')['default']
     UserInfo: typeof import('./src/components/UserInfo/index.vue')['default']
   }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
+  }
 }
