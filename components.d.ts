@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     Breadcrumb: typeof import('./src/components/Breadcrumb/index.vue')['default']
     ECharts: typeof import('./src/components/ECharts/index.vue')['default']
     Editor: typeof import('./src/components/Editor/index.vue')['default']
+    ElAlert: typeof import('element-plus/es')['ElAlert']
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
