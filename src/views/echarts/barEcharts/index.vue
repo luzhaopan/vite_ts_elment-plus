@@ -20,7 +20,7 @@
     lineData.push(d + b)
   }
 
-  const options = {
+  const options: any = {
     backgroundColor: '#0f375f',
     tooltip: {
       trigger: 'axis',

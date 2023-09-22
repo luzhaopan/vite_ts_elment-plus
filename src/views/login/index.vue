@@ -1,12 +1,12 @@
 <template>
   <div class="login-box">
     <el-form
-      ref="ruleFormRef"
       :model="ruleForm"
       :rules="rules"
+      size="default"
+      ref="ruleFormRef"
       label-width="120px"
       class="login-form"
-      :size="formSize"
       label-position="top"
       status-icon
     >
@@ -34,7 +34,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive, ref } from 'vue'
   import type { FormInstance, FormRules } from 'element-plus'
   import { setToken } from '@/utils/auth'
   import { useCache } from '@/hooks/web/useCache'
@@ -46,8 +45,6 @@
   const { wsCache } = useCache()
 
   const loading = ref(false)
-
-  const formSize = ref('default')
 
   const ruleFormRef = ref<FormInstance>()
   const ruleForm = reactive({
