@@ -25,7 +25,12 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="submitForm(ruleFormRef)">
+        <el-button
+          :loading="loading"
+          style="width: 100%"
+          type="primary"
+          @click="submitForm(ruleFormRef)"
+        >
           login
         </el-button>
       </el-form-item>
