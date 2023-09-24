@@ -25,8 +25,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive } from 'vue'
-  import * as dayjs from 'dayjs'
   import { downloadFiles2Zip } from '@/utils/downloadzip'
   const data = []
   for (let i = 0; i < 10; i++) {

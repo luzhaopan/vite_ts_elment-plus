@@ -29,7 +29,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, onMounted } from 'vue'
   import LuckyExcel from 'luckyexcel'
   import { exportExcel } from './export'
 

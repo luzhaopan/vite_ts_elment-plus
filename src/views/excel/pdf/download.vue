@@ -22,8 +22,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive, onMounted, nextTick } from 'vue'
-
   const article = reactive<any>({
     title: '',
     content: ''

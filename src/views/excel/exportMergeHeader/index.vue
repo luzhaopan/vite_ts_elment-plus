@@ -14,13 +14,26 @@
       <el-table :data="list" style="width: 100%" border>
         <template v-for="(item, index) in column" :key="index">
           <template v-if="item.children">
-            <el-table-column :prop="item.name" :label="item.label" :width="item.width">
+            <el-table-column
+              :prop="item.name"
+              :label="item.label"
+              :width="item.width"
+            >
               <template v-for="(ite, i) in item.children" :key="i">
-                <el-table-column :prop="ite.name" :label="ite.label" :width="ite.width" />
+                <el-table-column
+                  :prop="ite.name"
+                  :label="ite.label"
+                  :width="ite.width"
+                />
               </template>
             </el-table-column>
           </template>
-          <el-table-column :prop="item.name" :label="item.label" :width="item.width" v-else />
+          <el-table-column
+            :prop="item.name"
+            :label="item.label"
+            :width="item.width"
+            v-else
+          />
         </template>
       </el-table>
     </div>
@@ -28,7 +41,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive } from 'vue'
   import * as dayjs from 'dayjs'
   import { exportMultiHeaderExcel } from '@/utils/exprotExcel'
   const data = []
@@ -45,7 +57,7 @@
       age: 0,
       city: '普陀区',
       address: '上海市普上海',
-      zip: 200333,
+      zip: 200333
     })
   }
   const column = [
@@ -57,9 +69,9 @@
       children: [
         { name: 'province', label: '省份', width: 130 },
         { name: 'city', label: '城市' },
-        { name: 'zip', label: '邮编' },
-      ],
-    },
+        { name: 'zip', label: '邮编' }
+      ]
+    }
   ]
   const input = ref('')
 
@@ -69,28 +81,28 @@
       column,
       data,
       filename: input.value || '导出 excel',
-      autoWidth: true,
+      autoWidth: true
     })
   }
 </script>
 
 <style lang="scss" scoped>
-.header{
-  display: flex;
-  padding: 16px 16px 16px 16px;
-  margin-bottom: 12px;
-  border-radius: 4px;
-  background: white;
-  box-shadow: 0 0 12px rgb(0 0 0 / 5%);
-}
-.footer{
-  flex: 1;
-  display: flex;
-  padding: 16px;
-  flex-direction: column;
-  border-radius: 4px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 12px rgb(0 0 0 / 5%);
-}
+  .header {
+    display: flex;
+    padding: 16px 16px 16px 16px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 0 0 12px rgb(0 0 0 / 5%);
+  }
+  .footer {
+    flex: 1;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    border-radius: 4px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 12px rgb(0 0 0 / 5%);
+  }
 </style>

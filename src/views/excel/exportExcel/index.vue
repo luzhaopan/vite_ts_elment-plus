@@ -40,7 +40,6 @@
 
 <script lang="ts" setup>
   import { tableList } from '@/mock/table'
-  import { ref } from 'vue'
   import { exportExcel } from '@/utils/exprotExcel'
   const column = [
     { name: 'id', label: 'id' },

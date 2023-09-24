@@ -32,8 +32,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
-
   import ExcelJS from 'exceljs'
   import { UploadFilled } from '@element-plus/icons-vue'
   import { ElMessage } from 'element-plus'
