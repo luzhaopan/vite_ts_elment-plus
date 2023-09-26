@@ -42,6 +42,18 @@ const routes = [
     ]
   },
   {
+    path: '/print',
+    component: Layout,
+    children: [
+      {
+        path: '/print/index',
+        name: 'Print',
+        component: () => import('@/views/print/index.vue'),
+        meta: { title: 'Print', icon: 'Printer' }
+      }
+    ]
+  },
+  {
     path: '/excel',
     name: 'Excel',
     component: Layout,
