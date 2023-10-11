@@ -26,7 +26,7 @@
           <NavBar />
         </div>
         <AppMain />
-        <Footer />
+        <!-- <Footer /> -->
       </div>
     </div>
     <el-backtop />

@@ -1,7 +1,7 @@
 <template>
   <div class="headbar-container">
     <div class="left-panel">
-      <el-tooltip
+      <!-- <el-tooltip
         content="折叠/展开菜单"
         placement="bottom"
         transition=""
@@ -12,12 +12,13 @@
           <Expand v-if="collapse" />
           <Fold v-else />
         </el-icon>
-      </el-tooltip>
-      <Breadcrumb class="breadcrumb-container" />
+      </el-tooltip> -->
+      <!-- <Breadcrumb class="breadcrumb-container" /> -->
+      <div class="title">短期负荷预测系统</div>
     </div>
     <div class="right">
-      <Screenfull />
-      <UserInfo />
+      <!-- <Screenfull />
+      <UserInfo /> -->
     </div>
   </div>
 </template>
@@ -25,7 +26,7 @@
 <script lang="ts">
   import { defineComponent, computed } from 'vue'
   import { useAppStore } from '@/store/modules/app'
-  import Breadcrumb from '@/components/Breadcrumb/index.vue'
+  // import Breadcrumb from '@/components/Breadcrumb/index.vue'
   import Screenfull from '@/components/Screenfull/index.vue'
   import UserInfo from '@/components/UserInfo/index.vue'
 
@@ -49,9 +50,9 @@
 <style lang="scss" scoped>
   .headbar-container {
     z-index: 10;
-    background-color: var(--gl-headbar-background-color);
+    background: linear-gradient(45deg, #376c91, #74b7ec);
     box-shadow: var(--el-box-shadow-light);
-    height: $base-nav-bar-height;
+    height: 60px;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -70,6 +71,15 @@
       div {
         margin-left: 10px;
       }
+      background-image: url('../../assets/2.jpg');
+      background-size: 100% 100%;
+      width: 150px;
+      height: 100%;
+    }
+    .title {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
     }
   }
 </style>

@@ -19,12 +19,12 @@
 
 <style lang="scss" scoped>
   .app-main-container {
-    min-height: $base-app-main-height;
+    min-height: 100vh;
     margin-top: $base-nav-bar-height;
     position: relative;
     width: 100%;
     overflow: auto;
     box-sizing: border-box;
-    padding: 20px;
+    // padding: 20px;
   }
 </style>
