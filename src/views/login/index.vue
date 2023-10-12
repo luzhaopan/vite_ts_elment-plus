@@ -1,5 +1,6 @@
 <template>
   <div class="login-box">
+    <div class="title">短期负荷预测系统</div>
     <el-form
       :model="ruleForm"
       :rules="rules"
@@ -20,19 +21,28 @@
           autocomplete="off"
         ></el-input>
       </el-form-item>
-      <el-form-item label="" prop="remember">
+      <!-- <el-form-item label="" prop="remember">
         <el-switch v-model="ruleForm.remember" />
-      </el-form-item>
+      </el-form-item> -->
 
       <el-form-item>
-        <el-button
-          :loading="loading"
-          style="width: 100%"
-          type="primary"
-          @click="submitForm(ruleFormRef)"
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+          "
         >
-          login
-        </el-button>
+          <el-button style="width: 100%; color: #333"> 注册 </el-button>
+          <el-button
+            :loading="loading"
+            style="width: 100%; background-color: #0d8369; color: #fff"
+            @click="submitForm(ruleFormRef)"
+          >
+            登录
+          </el-button>
+        </div>
       </el-form-item>
     </el-form>
   </div>
@@ -107,8 +117,18 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image: url('@/assets/login/login-bg.jpg');
+    background-image: url('@/assets/login/bg.jpg');
     background-size: 100% 100%;
+
+    .title {
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 30px;
+      font-weight: 700;
+    }
 
     .login-form {
       max-width: 480px;
@@ -119,9 +139,9 @@
       box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
       box-sizing: border-box;
       position: absolute;
-      left: 60%;
+      left: 50%;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translate(-50%, -50%);
     }
     ::v-deep(.el-form-item__label) {
       color: #ff940a;

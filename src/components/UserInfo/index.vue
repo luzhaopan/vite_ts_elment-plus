@@ -1,17 +1,18 @@
 <template>
   <el-dropdown class="avatar-container">
     <div class="avatar-wrapper">
-      <img src="@/assets/avatar.webp" class="user-avatar" />
-      <div class="user-name">
+      <!-- <img src="@/assets/avatar.webp" class="user-avatar" /> -->
+      <!-- <div class="user-name">
         {{ username }}
-      </div>
-      <el-icon class="el-icon--right">
+      </div> -->
+      <el-icon color="#222" size="24"><SwitchButton /></el-icon>
+      <!-- <el-icon class="el-icon--right">
         <arrow-down />
-      </el-icon>
+      </el-icon> -->
     </div>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item divided @click="logOut">Log Out</el-dropdown-item>
+        <el-dropdown-item divided @click="logOut">退出</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -49,7 +50,7 @@
 
 <style lang="scss" scoped>
   .avatar-container {
-    margin-right: 20px;
+    margin-right: 100px;
 
     .avatar-wrapper {
       display: flex;

@@ -17,8 +17,8 @@
       <div class="title">短期负荷预测系统</div>
     </div>
     <div class="right">
-      <!-- <Screenfull />
-      <UserInfo /> -->
+      <!-- <Screenfull />-->
+      <UserInfo />
     </div>
   </div>
 </template>
@@ -69,7 +69,7 @@
       justify-content: space-between;
       align-items: center;
       div {
-        margin-left: 10px;
+        margin-left: 100px;
       }
       background-image: url('../../assets/2.jpg');
       background-size: 100% 100%;
