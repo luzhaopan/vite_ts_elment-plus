@@ -129,6 +129,18 @@ const routes = [
     ]
   },
   {
+    path: '/flowChart',
+    component: Layout,
+    children: [
+      {
+        path: '/flowChart/index',
+        name: 'FlowChart',
+        component: () => import('@/views/flowChart/index.vue'),
+        meta: { title: 'FlowChart', icon: 'Dish' }
+      }
+    ]
+  },
+  {
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
