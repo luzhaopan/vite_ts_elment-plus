@@ -1,0 +1,60 @@
+<template>
+  <el-dialog title="快捷键大全" width="600px" v-mode="shortcutVisible" @close="close">
+    <!-- <el-table
+      size="small"
+      rowKey="code"
+      :columns="columns"
+      :dataSource="dataSource"
+      :pagination="false"
+    /> -->
+  </el-dialog>
+</template>
+
+<script lang="ts" setup>
+  import { ref, watch } from 'vue';
+  import { shortcutKeys } from '../config/shortcutKeys';
+  import { IShortcutKey } from '../type/flow';
+
+  const props = defineProps({
+    shortcutVisible: {
+      type: Boolean,
+      default: false,
+    },
+  });
+
+  const emits = defineEmits(['update:shortcutVisible']);
+
+  const columns = ref([
+    {
+      title: '功能',
+      align: 'center',
+      key: 'shortcutName',
+      dataIndex: 'shortcutName',
+      width: '50%',
+    },
+    {
+      title: '快捷键',
+      align: 'center',
+      key: 'codeName',
+      dataIndex: 'codeName',
+      width: '50%',
+    },
+  ]);
+
+  const dataSource = ref<IShortcutKey[]>([]);
+
+  function close() {
+    emits('update:shortcutVisible', false);
+  }
+
+  watch(
+    () => props.shortcutVisible,
+    (visible) => {
+      if (visible) {
+        dataSource.value = Object.values(shortcutKeys);
+      } else {
+        dataSource.value = [];
+      }
+    },
+  );
+</script>
