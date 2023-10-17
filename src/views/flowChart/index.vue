@@ -28,13 +28,13 @@
       <div class="flow-content">
         <FlowArea
           ref="flowAreaRef"
-          :dragInfo="dragInfo"
-          :config="flowConfig"
           v-model:data="flowData"
           v-model:select="currentSelect"
           v-model:selectGroup="currentSelectGroup"
           :plumb="plumb"
           :currentTool="currentTool"
+          :dragInfo="dragInfo"
+          :config="flowConfig"
           @selectTool="selectTool"
           @onShortcutKey="onShortcutKey"
           @saveFlow="saveFlow"
@@ -108,6 +108,8 @@
   import { useShortcutKey } from './hooks/useShortcutKey'
   import { flowConfig as defaultFlowConfig, settingConfig } from './config/flow'
   import { useCache } from './hooks/useCache'
+
+  import { flowData1 } from './config/nodes'
 
   const { wsCache } = useCache()
 
@@ -185,7 +187,8 @@
   async function loadFlow(str = '') {
     clear()
     await nextTick()
-    const loadData = JSON.parse(str)
+    // const loadData = JSON.parse(str)
+    const loadData = flowData1
     flowData.attr = loadData.attr
     flowData.config = loadData.config
     flowData.status = FlowStatusEnum.LOADING
@@ -212,7 +215,7 @@
             strokeWidth: link.cls.linkThickness
           }
         })
-        let link_id = conn.canvas.id
+        let link_id = conn?.canvas.id
         let link_dom = document.querySelector('.' + link_id)
         let labelHandle = (e: Event) => {
           e.stopPropagation()
@@ -266,7 +269,7 @@
     })
 
     unref(plumb).bind('connection', (conn: Recordable) => {
-      let connObj = conn.connection.canvas
+      let connObj = conn.connection?.canvas
       let o: Recordable = {}
       let id = ''
       let label = ''

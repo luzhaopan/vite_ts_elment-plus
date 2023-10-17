@@ -1,5 +1,6 @@
 import { ElMessage } from 'element-plus'
 import { utils } from '../utils/common'
+import { INode } from '../type/flow'
 
 export function useAlign() {
   // 节点排列前校验节点数量

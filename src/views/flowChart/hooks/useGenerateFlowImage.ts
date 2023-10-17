@@ -1,7 +1,7 @@
-import { reactive } from 'vue'
-import * as canvg from 'canvg'
+import canvg from 'canvg'
 import html2canvas from 'html2canvas'
 import { utils } from '../utils/common'
+import { INode } from '../type/flow'
 
 export function useGenerateFlowImage() {
   // 生成流程图片
@@ -55,7 +55,7 @@ export function useGenerateFlowImage() {
   function generateFlowImage(nodeList, photoBlankDistance, checkFlow) {
     if (!checkFlow()) return
 
-    const $Container = document.querySelector('#flowContainer')
+    const $Container: Element = document.querySelector('#flowContainer')
     const svgElems = $Container.querySelectorAll('svg[id^="link-"]')
     const removeArr: string[] = []
 
@@ -66,18 +66,24 @@ export function useGenerateFlowImage() {
       removeArr.push(canvasId)
 
       const svgContent = svgElem.outerHTML.trim()
+
+      // console.log('linkCanvas', linkCanvas)
+      // console.log('svgContent', svgContent)
+
       // svg生成canvas
       canvg(linkCanvas, svgContent)
+
       if (svgElem.style.position) {
         linkCanvas.style.position += svgElem.style.position
         linkCanvas.style.left += svgElem.style.left
         linkCanvas.style.top += svgElem.style.top
       }
       $Container.appendChild(linkCanvas)
+      console.log($Container)
     })
 
     // 先将画布的SVG隐藏，避免生成断截的线条
-    $Container?.querySelectorAll('svg[id^="link-"]').forEach((item) => {
+    $Container?.querySelectorAll('svg[id^="link-"]').forEach((item: any) => {
       item.style.display = 'none'
     })
 
@@ -85,7 +91,7 @@ export function useGenerateFlowImage() {
 
     const offsetPbd = utils.div(photoBlankDistance, 2)
 
-    html2canvas($Container, {
+    html2canvas($Container as HTMLDivElement, {
       width: canvasSize.maxX + offsetPbd,
       height: canvasSize.maxY + offsetPbd,
       scrollX: 0,
@@ -99,9 +105,11 @@ export function useGenerateFlowImage() {
         })
 
         // 显示隐藏的sv
-        $Container?.querySelectorAll('svg[id^="link-"]').forEach((item) => {
-          item.style.display = 'inline-block'
-        })
+        $Container
+          ?.querySelectorAll('svg[id^="link-"]')
+          .forEach((item: any) => {
+            item.style.display = 'inline-block'
+          })
       }
     }).then((canvas) => {
       const dataURL = canvas.toDataURL('image/png')
