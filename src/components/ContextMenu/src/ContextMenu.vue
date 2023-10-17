@@ -107,13 +107,13 @@
           if (!children || children.length === 0) {
             return (
               <>
-                <el-menu-tem
+                <el-menu-item
                   disabled={disabled}
                   class={`${prefixCls}__item`}
-                  key={label}
+                  index={label}
                 >
                   <ItemContent {...contentProps} />
-                </el-menu-tem>
+                </el-menu-item>
                 {divider ? <el-divider key={`d-${label}`} /> : null}
               </>
             )
@@ -122,9 +122,9 @@
 
           return (
             <el-sub-menu
-              key={label}
+              index={label}
               disabled={disabled}
-              popupClassName={`${prefixCls}__popup`}
+              popper-class={`${prefixCls}__popup`}
             >
               {{
                 title: () => <ItemContent {...contentProps} />,
@@ -141,12 +141,7 @@
         const { items } = props
         return (
           <div class={prefixCls}>
-            <el-menu
-              inlineIndent={12}
-              mode="vertical"
-              ref={wrapRef}
-              style={unref(getStyle)}
-            >
+            <el-menu ref={wrapRef} style={unref(getStyle)}>
               {renderMenuItem(items)}
             </el-menu>
           </div>

@@ -71,14 +71,20 @@
   </el-dialog>
 
   <!-- 设置 -->
-  <!-- <SettingModal
+  <SettingModal
     v-model:settingVisible="settingVisible"
     v-model:config="flowConfig"
-  /> -->
+  />
 
   <!-- 快捷键大全 -->
+  <ShortcutKeyModal v-model:shortcutVisible="shortcutVisible" />
 
   <!-- 测试 -->
+  <TestModal
+    v-model:testVisible="testVisible"
+    :flowData="flowData"
+    @loadFlow="loadFlow"
+  />
 </template>
 
 <script lang="ts" setup>
@@ -88,7 +94,9 @@
   import { cloneDeep } from 'lodash-es'
   import FlowArea from './components/FlowArea.vue'
   import FlowAttr from './components/FlowAttr.vue'
-  // import SettingModal from './components/SettingModal.vue'
+  import SettingModal from './components/SettingModal.vue'
+  import ShortcutKeyModal from './components/ShortcutKeyModal.vue'
+  import TestModal from './components/TestModal.vue'
   import FlowElement from './components/FlowElement.vue'
   import Toolbar from './components/Toolbar.vue'
   import { tools } from './config/tools'
@@ -553,16 +561,16 @@
     }
     .center {
       flex: 1;
+      overflow: hidden;
     }
     .right {
       flex: 0 0 300px;
       padding: 0 10px;
     }
-  }
-
-  .flow-content {
-    background: #fafafa;
-    height: calc(100% - 36px);
-    border: 1px dashed rgb(170 170 170 / 70%);
+    .flow-content {
+      background: #fafafa;
+      height: calc(100% - 36px);
+      border: 1px dashed rgb(170 170 170 / 70%);
+    }
   }
 </style>

@@ -837,8 +837,8 @@
     }
 
     &__container {
-      width: 100%;
-      height: 100%;
+      width: 3000px;
+      height: 3000px;
       position: relative;
       transition: transform 0.5s ease 0s, transform-origin 0.5s ease 0s;
 

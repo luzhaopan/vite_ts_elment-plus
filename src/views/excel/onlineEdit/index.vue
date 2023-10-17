@@ -165,8 +165,6 @@
 
   onMounted(() => {
     init()
-    console.log(luckysheet)
-    console.log(new LuckyExcel())
   })
 </script>
 <style scoped lang="scss"></style>

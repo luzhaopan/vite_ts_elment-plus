@@ -4,7 +4,7 @@
     :zIndex="1001"
     placement="right"
     :size="500"
-    v-model="settingVisible"
+    :model-value="settingVisible"
     @close="close"
   >
     <template #footer>
@@ -136,7 +136,7 @@
   import { ColorPicker } from 'vue3-colorpicker'
   import 'vue3-colorpicker/style.css'
   import { cloneDeep } from 'lodash-es'
-  import { ISettingConfig } from '../type/flow.d.ts'
+  import { ISettingConfig } from '../type/flow'
   import { settingConfig as defaultSettingConfig } from '../config/flow'
   import { setFlowConfig } from '../utils/common'
   import { useCache } from '../hooks/useCache'
@@ -157,7 +157,7 @@
   const emits = defineEmits(['update:config', 'update:settingVisible'])
 
   const settingConfig = ref<ISettingConfig>(cloneDeep(defaultSettingConfig))
-  console.log('settingConfig', settingConfig)
+  // console.log('settingConfig', settingConfig)
 
   const flowConfig = ref(props.config)
 

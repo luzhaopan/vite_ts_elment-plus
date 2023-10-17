@@ -30,19 +30,20 @@
       </el-tooltip>
 
       <el-popconfirm
+        width="200"
         title="确认要重新绘制吗？"
         placement="bottom"
         okText="确认"
         cancelText="取消"
         @confirm="emits('clear')"
       >
-        <el-tooltip content="重新绘制" placement="bottom">
+        <template #reference>
           <el-button class="header-option__button" size="small">
             <template #icon>
               <component :is="'Delete'" />
             </template>
           </el-button>
-        </el-tooltip>
+        </template>
       </el-popconfirm>
 
       <el-tooltip :content="flowData.config.showGridText" placement="bottom">
@@ -52,9 +53,8 @@
           size="small"
         >
           <template #icon>
-            <component :is="'Cpu'" />
+            <component :is="'View'" />
           </template>
-          <!-- <component :is="'ReadingLamp'" /> -->
         </el-button>
       </el-tooltip>
 
@@ -77,7 +77,7 @@
           size="small"
         >
           <template #icon>
-            <component :is="'Cpu'" />
+            <component :is="'EditPen'" />
           </template>
         </el-button>
       </el-tooltip>
@@ -101,7 +101,7 @@
           size="small"
         >
           <template #icon>
-            <component :is="'Calendar'" />
+            <component :is="'Download'" />
           </template>
         </el-button>
       </el-tooltip>

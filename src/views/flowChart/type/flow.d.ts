@@ -3,58 +3,58 @@ import {
   NodeTypeEnum,
   CommonNodeTypeEnum,
   HighNodeTypeEnum,
-  LaneNodeTypeEnum,
-} from './enums';
+  LaneNodeTypeEnum
+} from './enums'
 
-// import { settingConfig } from '../config/flow';
+import { settingConfig } from '../config/flow'
 
-export type NodesType = CommonNodeTypeEnum | HighNodeTypeEnum | LaneNodeTypeEnum;
+export type NodesType = CommonNodeTypeEnum | HighNodeTypeEnum | LaneNodeTypeEnum
 
 export interface IDragInfo {
-  type: Nullable<NodesType>;
-  belongTo: Nullable<NodeTypeEnum>;
+  type: Nullable<NodesType>
+  belongTo: Nullable<NodeTypeEnum>
 }
 
 export interface ITool {
-  type: ToolsTypeEnum;
-  nodeName: string;
-  icon: string;
+  type: ToolsTypeEnum
+  nodeName: string
+  icon: string
 }
 
 export interface IElement {
-  type: NodesType;
-  nodeName: string;
-  icon: string;
+  type: NodesType
+  nodeName: string
+  icon: string
 }
 
 export interface INode {
-  height: number;
-  icon?: string;
-  id: string;
-  nodeName: string;
-  type: string;
-  width: number;
-  x: number;
-  y: number;
+  height: number
+  icon?: string
+  id: string
+  nodeName: string
+  type: string
+  width: number
+  x: number
+  y: number
 }
 
 export interface ILink {
-  type: string;
-  id: string;
-  sourceId?: string;
-  targetId?: string;
-  label: string;
+  type: string
+  id: string
+  sourceId?: string
+  targetId?: string
+  label: string
   cls: {
-    linkType: string;
-    linkColor: string;
-    linkThickness: number;
-  };
+    linkType: string
+    linkColor: string
+    linkThickness: number
+  }
 }
 
 export interface IShortcutKey {
-  code: string;
-  codeName: string;
-  shortcutName: string;
+  code: string
+  codeName: string
+  shortcutName: string
 }
 
-// export type ISettingConfig = typeof settingConfig;
+export type ISettingConfig = typeof settingConfig

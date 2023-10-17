@@ -1,60 +1,45 @@
 <template>
-  <el-dialog title="快捷键大全" width="600px" v-mode="shortcutVisible" @close="close">
-    <!-- <el-table
-      size="small"
-      rowKey="code"
-      :columns="columns"
-      :dataSource="dataSource"
-      :pagination="false"
-    /> -->
+  <el-dialog
+    title="快捷键大全"
+    width="600px"
+    :model-value="shortcutVisible"
+    @close="close"
+  >
+    <el-table size="small" row-key="code" :data="dataSource">
+      <el-table-column prop="shortcutName" label="功能" />
+      <el-table-column prop="codeName" label="快捷键" />
+    </el-table>
   </el-dialog>
 </template>
 
 <script lang="ts" setup>
-  import { ref, watch } from 'vue';
-  import { shortcutKeys } from '../config/shortcutKeys';
-  import { IShortcutKey } from '../type/flow';
+  import { ref, watch } from 'vue'
+  import { shortcutKeys } from '../config/shortcutKeys'
+  import { IShortcutKey } from '../type/flow'
 
   const props = defineProps({
     shortcutVisible: {
       type: Boolean,
-      default: false,
-    },
-  });
+      default: false
+    }
+  })
 
-  const emits = defineEmits(['update:shortcutVisible']);
+  const emits = defineEmits(['update:shortcutVisible'])
 
-  const columns = ref([
-    {
-      title: '功能',
-      align: 'center',
-      key: 'shortcutName',
-      dataIndex: 'shortcutName',
-      width: '50%',
-    },
-    {
-      title: '快捷键',
-      align: 'center',
-      key: 'codeName',
-      dataIndex: 'codeName',
-      width: '50%',
-    },
-  ]);
-
-  const dataSource = ref<IShortcutKey[]>([]);
+  const dataSource = ref<IShortcutKey[]>([])
 
   function close() {
-    emits('update:shortcutVisible', false);
+    emits('update:shortcutVisible', false)
   }
 
   watch(
     () => props.shortcutVisible,
     (visible) => {
       if (visible) {
-        dataSource.value = Object.values(shortcutKeys);
+        dataSource.value = Object.values(shortcutKeys)
       } else {
-        dataSource.value = [];
+        dataSource.value = []
       }
-    },
-  );
+    }
+  )
 </script>
