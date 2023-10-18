@@ -554,8 +554,7 @@
 
 <style lang="scss" scoped>
   .flow-wrapper {
-    height: 100%;
-    min-height: inherit;
+    height: calc(100vh - 150px);
     user-select: none;
     display: flex;
 

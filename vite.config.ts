@@ -6,6 +6,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { viteMockServe } from 'vite-plugin-mock'
 import { resolve } from 'path'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 const root = process.cwd()
@@ -54,6 +55,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
     plugins: [
       vue(),
+      vueJsx(),
       AutoImport({
         imports: ['vue'], // 自动导入内置的所有api，我们可以在项目中直接使用
         include: [/\.[tj]sx?$/, /\.vue$/], // 匹配的文件，也就是哪些后缀的文件需要自动引入

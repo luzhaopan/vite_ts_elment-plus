@@ -1,15 +1,6 @@
 <script lang="tsx">
   import type { ContextMenuItem, ItemContentProps, Axis } from './typing'
   import type { FunctionalComponent, CSSProperties, PropType } from 'vue'
-  import {
-    defineComponent,
-    nextTick,
-    onMounted,
-    computed,
-    ref,
-    unref,
-    onUnmounted
-  } from 'vue'
 
   const prefixCls = 'context-menu'
 
@@ -96,7 +87,7 @@
 
       function renderMenuItem(items: ContextMenuItem[]) {
         const visibleItems = items.filter((item) => !item.hidden)
-        return visibleItems.map((item) => {
+        return visibleItems.map((item, index) => {
           const { disabled, label, children, divider = false } = item
 
           const contentProps = {
@@ -110,7 +101,7 @@
                 <el-menu-item
                   disabled={disabled}
                   class={`${prefixCls}__item`}
-                  index={label}
+                  index={index + ''}
                 >
                   <ItemContent {...contentProps} />
                 </el-menu-item>
@@ -121,11 +112,7 @@
           if (!unref(showRef)) return null
 
           return (
-            <el-sub-menu
-              index={label}
-              disabled={disabled}
-              popper-class={`${prefixCls}__popup`}
-            >
+            <el-sub-menu index={label} popper-class={`${prefixCls}__popup`}>
               {{
                 title: () => <ItemContent {...contentProps} />,
                 default: () => renderMenuItem(children)
@@ -141,7 +128,12 @@
         const { items } = props
         return (
           <div class={prefixCls}>
-            <el-menu ref={wrapRef} style={unref(getStyle)}>
+            <el-menu
+              mode="vertical"
+              ref={wrapRef}
+              style={unref(getStyle)}
+              default-active="0"
+            >
               {renderMenuItem(items)}
             </el-menu>
           </div>
