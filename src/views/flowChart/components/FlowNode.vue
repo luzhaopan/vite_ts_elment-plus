@@ -237,10 +237,11 @@
         {
           handles: ['e', 'w', 'n', 's', 'nw', 'ne', 'sw', 'se'],
           initSize: {
+            // 泳道可以缩放的范围
             maxWidth: 1000,
             maxHeight: 1000,
-            minWidth: 200,
-            minHeight: 200
+            minWidth: 100,
+            minHeight: 50
           }
         },
         () => {

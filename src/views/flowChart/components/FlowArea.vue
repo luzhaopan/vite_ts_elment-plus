@@ -168,7 +168,7 @@
     dragFlag: false,
     draging: false,
     scale: flowConfig.defaultStyle.containerScale.init,
-    scaleFlag: false,
+    scaleFlag: true, // 是否鼠标滚轮滚动缩放
     scaleOrigin: {
       x: 0,
       y: 0
@@ -376,6 +376,7 @@
   // 画布鼠标按下
   function mousedownHandler(e: MouseEvent) {
     if (e.button === 0) {
+      // 按键盘空格 container.dragFlag = true, 实现画布鼠标拖动，也可以直接去掉这个判断条件直接点击鼠标左键拖动
       if (container.dragFlag) {
         mouse.tempPos = mouse.position
         container.draging = true
@@ -837,14 +838,46 @@
     }
 
     &__container {
-      width: 3000px;
-      height: 3000px;
-      position: relative;
+      // width: 3000px;
+      // height: 3000px;
+      // position: relative;
+      position: absolute;
+      right: -3000px;
+      bottom: -3000px;
       transition: transform 0.5s ease 0s, transform-origin 0.5s ease 0s;
 
       &.grid {
-        background: url('@/assets/flow-images/grid-bg.jpg') repeat left top;
-        background-size: 60px 60px;
+        // background: url('@/assets/flow-images/grid-bg.jpg') repeat left top;
+        // background-size: 60px 60px;
+        background-image: -webkit-linear-gradient(
+          90deg,
+          rgba(235, 235, 235, 1) 5%,
+          rgba(0, 0, 0, 0) 5%
+        );
+        background-image: -moz-linear-gradient(
+          90deg,
+          rgba(235, 235, 235, 1) 5%,
+          rgba(0, 0, 0, 0) 5%
+        );
+        background-image: -o-linear-gradient(
+          90deg,
+          rgba(235, 235, 235, 1) 5%,
+          rgba(0, 0, 0, 0) 5%
+        );
+        background-image: -webkit-gradient(
+          linear,
+          0 100%,
+          0 0,
+          color-stop(0.05, rgba(235, 235, 235, 1)),
+          color-stop(0.05, rgba(0, 0, 0, 0))
+        );
+        background-image: linear-gradient(
+            90deg,
+            rgba(235, 235, 235, 1) 5%,
+            rgba(0, 0, 0, 0) 5%
+          ),
+          linear-gradient(rgba(235, 235, 235, 1) 5%, rgba(0, 0, 0, 0) 5%);
+        background-size: 1rem 1rem;
       }
 
       &.canDrag {
