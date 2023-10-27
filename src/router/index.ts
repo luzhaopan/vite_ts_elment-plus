@@ -141,6 +141,20 @@ const routes = [
     ]
   },
   {
+    path: '/verify',
+    name: 'Verify',
+    component: Layout,
+    meta: { title: 'Verify', icon: 'Unlock' },
+    children: [
+      {
+        path: '/verify/sliderVerify',
+        name: 'SliderVerify',
+        component: () => import('@/views/verify/sliderVerify.vue'),
+        meta: { title: 'SliderVerify' }
+      }
+    ]
+  },
+  {
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
