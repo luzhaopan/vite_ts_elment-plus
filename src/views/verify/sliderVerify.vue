@@ -6,7 +6,7 @@
       :style="{ left: left + 'px' }"
       @mousedown="onMouseDown"
     ></div>
-    <p class="text">{{ text }}</p>
+    <p class="text" :style="{ color: flag ? '#fff' : '#000' }">{{ text }}</p>
     <div class="chute" :style="{ width: left + 'px' }"></div>
   </div>
 </template>
@@ -80,6 +80,7 @@
     width: 100%;
     margin: 0;
     text-align: center;
+    line-height: 30px;
   }
   .chute {
     position: absolute;
