@@ -5,8 +5,8 @@
       node.type === CommonNodeTypeEnum.END ||
       node.type === CommonNodeTypeEnum.EVENT
     "
-    :id="node.id"
     class="common-circle-node"
+    :id="node.id"
     :class="{
       active: isActive(),
       isStart: node.type === CommonNodeTypeEnum.START,
@@ -26,11 +26,27 @@
   <div
     v-else-if="
       node.type === CommonNodeTypeEnum.COMMON ||
-      node.type === CommonNodeTypeEnum.FREEDOM ||
-      node.type === HighNodeTypeEnum.CHILD_FLOW
+      node.type === CommonNodeTypeEnum.FREEDOM
     "
-    :id="node.id"
     class="common-rectangle-node"
+    :id="node.id"
+    :class="{ active: isActive() }"
+    :style="{
+      top: node.y + 'px',
+      left: node.x + 'px',
+      cursor: setCursor(currentTool.type)
+    }"
+    @click.stop="selectNode"
+    @contextmenu.stop="showNodeContextMenu"
+  >
+    <component :is="setIcon(node.type)" class="node-icon" />
+    {{ node.nodeName }}
+  </div>
+
+  <div
+    v-else-if="node.type === HighNodeTypeEnum.CHILD_FLOW"
+    class="common-rectangle-node child-node"
+    :id="node.id"
     :class="{ active: isActive() }"
     :style="{
       top: node.y + 'px',
@@ -46,8 +62,8 @@
 
   <div
     v-else-if="node.type === CommonNodeTypeEnum.GATEWAY"
-    :id="node.id"
     class="common-diamond-node"
+    :id="node.id"
     :class="{ active: isActive() }"
     :style="{
       top: node.y + 'px',
@@ -60,8 +76,8 @@
 
   <div
     v-else-if="node.type === LaneNodeTypeEnum.X_LANE"
-    :id="node.id"
     class="common-x_lane-node"
+    :id="node.id"
     :class="{ active: isActive() }"
     :style="{
       top: node.y + 'px',
@@ -82,8 +98,8 @@
 
   <div
     v-else-if="node.type === LaneNodeTypeEnum.Y_LANE"
-    :id="node.id"
     class="common-y_lane-node"
+    :id="node.id"
     :class="{ active: isActive() }"
     :style="{
       top: node.y + 'px',
@@ -359,9 +375,9 @@
 
   .common-rectangle-node {
     position: absolute;
-    height: 50px;
+    height: 40px;
     width: 120px;
-    line-height: 50px;
+    line-height: 40px;
     text-align: center;
     border: 1px solid #777;
     border-radius: 5px;
@@ -378,6 +394,12 @@
       outline: 2px dashed #409eff;
       outline-offset: 0;
     }
+  }
+
+  .child-node {
+    border: 1px solid #909b6f;
+    border-radius: 5px;
+    background-color: #d4ef84;
   }
 
   .common-diamond-node {
