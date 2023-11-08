@@ -44,8 +44,8 @@
 
 <style lang="scss" scoped>
   .node-item {
-    height: 32px;
-    width: 32px;
+    height: 40px;
+    // width: 32px;
     color: #fff;
     border-radius: 5px;
     line-height: 32px;

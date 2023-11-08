@@ -138,6 +138,10 @@
     currentTool: {
       type: Object as PropType<ITool>,
       default: () => ({})
+    },
+    isEdit: {
+      type: Boolean,
+      default: true
     }
   })
 
@@ -314,7 +318,8 @@
   )
 
   onMounted(() => {
-    registerNode()
+    if (!props.isEdit) return
+    registerNode() // 不执行此方法时流程图不可编辑
   })
 </script>
 

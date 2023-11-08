@@ -23,6 +23,7 @@
       class="flow-area__container"
       :class="{
         grid: flowData.config.showGrid,
+        canScale: container.scaleFlag,
         canDrag: container.dragFlag,
         canMultiple: rectangleMultiple.flag
       }"
@@ -37,12 +38,13 @@
     >
       <FlowNode
         v-for="node in flowData.nodeList"
+        v-model:select="currentSelect"
+        v-model:selectGroup="currentSelectGroup"
         :key="node.id"
+        :isEdit="isEdit"
         :node="node"
         :plumb="plumb"
         :config="config"
-        v-model:select="currentSelect"
-        v-model:selectGroup="currentSelectGroup"
         :currentTool="currentTool"
         @showNodeContextMenu="showNodeContextMenu"
         @isMultiple="isMultiple"
@@ -125,6 +127,10 @@
     dragInfo: {
       type: Object as PropType<IDragInfo>,
       default: () => ({})
+    },
+    isEdit: {
+      type: Boolean,
+      default: true
     }
   })
 
@@ -162,8 +168,8 @@
 
   const container = reactive({
     pos: {
-      top: 0,
-      left: 0
+      top: -3000,
+      left: -3000
     },
     dragFlag: false,
     draging: false,
@@ -377,10 +383,10 @@
   function mousedownHandler(e: MouseEvent) {
     if (e.button === 0) {
       // 按键盘空格 container.dragFlag = true, 实现画布鼠标拖动，也可以直接去掉这个判断条件直接点击鼠标左键拖动
-      if (container.dragFlag) {
-        mouse.tempPos = mouse.position
-        container.draging = true
-      }
+      // if (container.dragFlag) {
+      mouse.tempPos = mouse.position
+      container.draging = true
+      // }
 
       currentSelectGroup.value = []
       if (rectangleMultiple.flag) {
@@ -838,9 +844,6 @@
     }
 
     &__container {
-      // width: 3000px;
-      // height: 3000px;
-      // position: relative;
       position: absolute;
       right: -3000px;
       bottom: -3000px;
@@ -880,12 +883,16 @@
         background-size: 1rem 1rem;
       }
 
+      &.zoomIn {
+        cursor: zoom-in;
+      }
+
       &.canDrag {
         cursor: grab;
       }
 
       &.canMultiple {
-        cursor: url('@/assets/flow-images/multip-pointer.png'), default;
+        cursor: url('~@/assets/flow-images/multip-pointer.png'), default;
       }
     }
 

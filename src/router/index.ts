@@ -130,13 +130,21 @@ const routes = [
   },
   {
     path: '/flowChart',
+    name: 'FlowChart',
     component: Layout,
+    meta: { title: 'FlowChart', icon: 'Dish' },
     children: [
       {
-        path: '/flowChart/index',
-        name: 'FlowChart',
-        component: () => import('@/views/flowChart/index.vue'),
-        meta: { title: 'FlowChart', icon: 'Dish' }
+        path: '/flowChart/flowChart1',
+        name: 'FlowChart1',
+        component: () => import('@/views/flowChart/flowChart1.vue'),
+        meta: { title: 'FlowChart1' }
+      },
+      {
+        path: '/flowChart/flowChart2',
+        name: 'FlowChart2',
+        component: () => import('@/views/flowChart/flowChart2.vue'),
+        meta: { title: 'FlowChart2' }
       }
     ]
   },

@@ -1,12 +1,13 @@
 <template>
   <div class="flow-wrapper">
     <!-- 左侧边组件元素 -->
-    <div class="left">
+    <div class="left" v-if="isEdit">
       <FlowElement @setDragInfo="setDragInfo" />
     </div>
     <div class="center">
       <!-- 工具区 -->
       <Toolbar
+        v-if="isEdit"
         :currentTool="currentTool"
         :flowData="flowData"
         @generateFlowImage="
@@ -31,6 +32,7 @@
           v-model:data="flowData"
           v-model:select="currentSelect"
           v-model:selectGroup="currentSelectGroup"
+          :is-edit="isEdit"
           :plumb="plumb"
           :currentTool="currentTool"
           :dragInfo="dragInfo"
@@ -41,7 +43,12 @@
         />
       </div>
     </div>
-    <div theme="light" class="attr-area right" @mousedown.stop="offShortcutKey">
+    <div
+      v-if="isEdit"
+      theme="light"
+      class="attr-area right"
+      @mousedown.stop="offShortcutKey"
+    >
       <!-- 组件属性区 -->
       <FlowAttr
         :plumb="plumb"
@@ -109,7 +116,18 @@
   import { flowConfig as defaultFlowConfig, settingConfig } from './config/flow'
   import { useCache } from './hooks/useCache'
 
-  import { flowData1 } from './config/nodes'
+  const emit = defineEmits(['hander-change'])
+
+  const props = defineProps({
+    isEdit: {
+      type: Boolean,
+      default: true
+    },
+    templateData: {
+      type: Object,
+      default: () => {}
+    }
+  })
 
   const { wsCache } = useCache()
 
@@ -184,11 +202,10 @@
   }
 
   // 渲染流程
-  async function loadFlow(str = '') {
+  async function loadFlow() {
     clear()
     await nextTick()
-    // const loadData = JSON.parse(str)
-    const loadData = flowData1
+    const loadData = { ...props.templateData }
     flowData.attr = loadData.attr
     flowData.config = loadData.config
     flowData.status = FlowStatusEnum.LOADING
@@ -242,10 +259,11 @@
       flowData.status = FlowStatusEnum.MODIFY
     }, true)
 
-    unref(flowAreaRef).container.pos = {
-      top: 0,
-      left: 0
-    }
+    // 初始化画布的位置为左上角
+    // unref(flowAreaRef).container.pos = {
+    //   top: 0,
+    //   left: 0
+    // }
   }
 
   // 实例化JsPlumb
@@ -532,6 +550,17 @@
     }
   }
 
+  watch(
+    () => props.templateData,
+    (newValue, oldValue) => {
+      loadFlow()
+    },
+    {
+      deep: true,
+      immediate: false
+    }
+  )
+
   onMounted(() => {
     // 实例化JsPlumb
     initJsPlumb()
@@ -559,14 +588,14 @@
     display: flex;
 
     .left {
-      flex: 0 0 150px;
+      flex: 0 0 60px;
     }
     .center {
       flex: 1;
       overflow: hidden;
     }
     .right {
-      flex: 0 0 300px;
+      flex: 0 0 240px;
       padding: 0 10px;
     }
     .flow-content {

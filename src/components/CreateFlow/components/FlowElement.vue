@@ -52,7 +52,7 @@
       background-color: #002752;
       border-top: 1px dashed #0960bd;
       border-bottom: 1px dashed #0960bd;
-      border-left: 2px solid #0960bd;
+      // border-left: 2px solid #0960bd;
       text-align: center;
       margin-bottom: 10px;
       font-size: 12px;

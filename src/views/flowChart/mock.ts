@@ -1,65 +1,4 @@
-import {
-  CommonNodeTypeEnum,
-  HighNodeTypeEnum,
-  LaneNodeTypeEnum
-} from '../type/enums'
-import { IElement } from '../type/flow'
-
-export const commonNodes: IElement[] = [
-  {
-    type: CommonNodeTypeEnum.START,
-    nodeName: '开始',
-    icon: 'VideoPlay'
-  },
-  {
-    type: CommonNodeTypeEnum.COMMON,
-    nodeName: '人工节点',
-    icon: 'User'
-  },
-  {
-    type: CommonNodeTypeEnum.FREEDOM,
-    nodeName: '自动节点',
-    icon: 'RefreshRight'
-  },
-  {
-    type: CommonNodeTypeEnum.GATEWAY,
-    nodeName: '网关',
-    icon: 'FullScreen'
-  },
-  {
-    type: CommonNodeTypeEnum.EVENT,
-    nodeName: '事件',
-    icon: 'Edit'
-  },
-  {
-    type: CommonNodeTypeEnum.END,
-    nodeName: '结束',
-    icon: 'Files'
-  }
-]
-
-export const highNodes: IElement[] = [
-  {
-    type: HighNodeTypeEnum.CHILD_FLOW,
-    nodeName: '子流程',
-    icon: 'Cherry'
-  }
-]
-
-export const laneNodes: IElement[] = [
-  {
-    type: LaneNodeTypeEnum.X_LANE,
-    nodeName: '横向泳道',
-    icon: 'Smoking'
-  },
-  {
-    type: LaneNodeTypeEnum.Y_LANE,
-    nodeName: '纵向泳道',
-    icon: 'IceCreamSquare'
-  }
-]
-
-export const flowData2 = {
+export const data1: any = {
   nodeList: [
     {
       type: 'freedom',
@@ -455,7 +394,7 @@ export const flowData2 = {
       id: 'link-b4dcbf46-0207-97e5-bd07-2f748ee1af36',
       sourceId: 'b4dcbf46-0207-97e5-bd07-2f748ee1af36',
       targetId: 'c0a8f5cf-5817-9ef8-97b3-f74bbdf6670b',
-      label: '',
+      label: 'link1',
       cls: {
         linkType: 'Flowchart',
         linkColor: '#2a2929',
@@ -467,7 +406,7 @@ export const flowData2 = {
       id: 'link-c0a8f5cf-5817-9ef8-97b3-f74bbdf6670b',
       sourceId: 'c0a8f5cf-5817-9ef8-97b3-f74bbdf6670b',
       targetId: '2186cd30-a277-cbe2-9a9d-54d8372155ca',
-      label: '',
+      label: 'link2',
       cls: {
         linkType: 'Flowchart',
         linkColor: '#2a2929',
@@ -479,7 +418,7 @@ export const flowData2 = {
       id: 'link-2186cd30-a277-cbe2-9a9d-54d8372155ca',
       sourceId: '2186cd30-a277-cbe2-9a9d-54d8372155ca',
       targetId: 'a0ffbdbe-8c4b-2343-d291-e54cf5391cbc',
-      label: '',
+      label: 'link3',
       cls: {
         linkType: 'Flowchart',
         linkColor: '#2a2929',
@@ -491,7 +430,7 @@ export const flowData2 = {
       id: 'link-46ca8853-ef7c-3132-3f2d-2fecbd460c01',
       sourceId: '46ca8853-ef7c-3132-3f2d-2fecbd460c01',
       targetId: '72043ce9-bddd-0877-ba0c-1da6ca1d81d7',
-      label: '',
+      label: 'link4',
       cls: {
         linkType: 'Flowchart',
         linkColor: '#2a2929',
@@ -968,104 +907,14 @@ export const flowData2 = {
     }
   ],
   attr: {
-    id: '0ce25c75-998e-41c3-80a4-622c6a83d13e'
+    id: '0ce25c75-998e-41c3-80a4-622c6a83d13e',
+    workName: '流程图',
+    remark: '流程图'
   },
   config: {
     showGrid: true,
     showGridText: '隐藏网格',
     showGridIcon: 'EyeOutlined'
   },
-  status: '1'
-}
-
-export const flowData1 = {
-  nodeList: [
-    {
-      type: 'freedom',
-      nodeName: '自动节点',
-      icon: 'SyncOutlined',
-      id: 'freedom-aa2e99b20db04ec78ad61e02387c6f1d',
-      height: 50,
-      x: 260,
-      width: 120,
-      y: 95
-    },
-    {
-      type: 'gateway',
-      nodeName: '网关',
-      icon: 'GatewayOutlined',
-      id: 'gateway-1224bef156944f0ab57d62e7dabdeaa1',
-      height: 50,
-      x: 650,
-      width: 50,
-      y: 115
-    },
-    {
-      type: 'freedom',
-      nodeName: '自动节点',
-      icon: 'SyncOutlined',
-      id: 'freedom-a2894d7dd0c34820bf7e1a7480b32b7d',
-      height: 50,
-      x: 495,
-      width: 120,
-      y: 255
-    },
-    {
-      type: 'start',
-      nodeName: '开始',
-      icon: 'PlayCircleOutlined',
-      id: 'start-a2a15e49e30441f38d0e7994d49f3447',
-      height: 50,
-      x: 1025,
-      width: 50,
-      y: 130
-    }
-  ],
-  linkList: [
-    {
-      type: 'link',
-      id: 'link-6de12d242b714ceb98093a2c97e1101c',
-      sourceId: 'freedom-aa2e99b20db04ec78ad61e02387c6f1d',
-      targetId: 'gateway-1224bef156944f0ab57d62e7dabdeaa1',
-      label: '',
-      cls: {
-        linkType: 'Flowchart',
-        linkColor: '#2a2929',
-        linkThickness: 2
-      }
-    },
-    {
-      type: 'link',
-      id: 'link-d03022e4822243a282796f269e0bd1a9',
-      sourceId: 'gateway-1224bef156944f0ab57d62e7dabdeaa1',
-      targetId: 'start-a2a15e49e30441f38d0e7994d49f3447',
-      label: '',
-      cls: {
-        linkType: 'Flowchart',
-        linkColor: '#2a2929',
-        linkThickness: 2
-      }
-    },
-    {
-      type: 'link',
-      id: 'link-ea40371f73e6448db5a5ef4ae123cf87',
-      sourceId: 'gateway-1224bef156944f0ab57d62e7dabdeaa1',
-      targetId: 'freedom-a2894d7dd0c34820bf7e1a7480b32b7d',
-      label: '',
-      cls: {
-        linkType: 'Flowchart',
-        linkColor: '#2a2929',
-        linkThickness: 2
-      }
-    }
-  ],
-  attr: {
-    id: 'flow-cf843840f1bf4137b0f0cd0cb3dcb9ae'
-  },
-  config: {
-    showGrid: true,
-    showGridText: '隐藏网格',
-    showGridIcon: 'EyeOutlined'
-  },
-  status: '1'
+  status: '3'
 }
