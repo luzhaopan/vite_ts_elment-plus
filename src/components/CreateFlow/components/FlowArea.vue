@@ -426,6 +426,7 @@
 
   // 画布鼠标滚轴
   function scaleContainer(e: WheelEvent) {
+    e.preventDefault()
     if (container.scaleFlag) {
       if (e.deltaY < 0) {
         enlargeContainer()
@@ -467,6 +468,7 @@
 
   // 画布右健
   function showContainerContextMenu(e: MouseEvent) {
+    if (!props.isEdit) return
     createContextMenu({
       event: e,
       items: [
@@ -571,6 +573,7 @@
 
   // 节点右键
   function showNodeContextMenu(e: MouseEvent) {
+    if (!props.isEdit) return
     createContextMenu({
       event: e,
       items: [

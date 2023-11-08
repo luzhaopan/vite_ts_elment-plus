@@ -8,7 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Breadcrumb: typeof import('./src/components/Breadcrumb/index.vue')['default']
-    ContextMenu: typeof import('./src/components/ContextMenu/src/ContextMenu.vue')['default']
+    ContextMenu: typeof import('./src/components/CreateFlow/components/ContextMenu/src/ContextMenu.vue')['default']
     CreatedFlow: typeof import('./src/components/CreatedFlow/index.vue')['default']
     CreateFlow: typeof import('./src/components/CreateFlow/index.vue')['default']
     ECharts: typeof import('./src/components/ECharts/index.vue')['default']
