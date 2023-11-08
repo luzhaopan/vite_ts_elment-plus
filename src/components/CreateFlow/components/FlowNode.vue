@@ -128,7 +128,7 @@
     LaneNodeTypeEnum,
     ToolsTypeEnum
   } from '../type/enums'
-  import { INode, ILink, ITool, NodesType } from '../type/index'
+  import { INode, ILink, ITool, NodesType } from '../type/flow'
 
   const props = defineProps({
     select: {
@@ -384,6 +384,9 @@
     background-color: #f4f6fc;
     white-space: nowrap;
     box-shadow: 2px 2px 5px #ddd;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     &:hover {
       background-color: #f4f6fcb0;

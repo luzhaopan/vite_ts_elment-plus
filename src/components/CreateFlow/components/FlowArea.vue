@@ -171,7 +171,7 @@
       top: -3000,
       left: -3000
     },
-    dragFlag: false,
+    dragFlag: true,
     draging: false,
     scale: flowConfig.defaultStyle.containerScale.init,
     scaleFlag: true, // 是否鼠标滚轮滚动缩放
