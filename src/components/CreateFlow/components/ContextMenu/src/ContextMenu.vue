@@ -142,6 +142,9 @@
 </script>
 <style lang="scss">
   .context-menu {
+    .el-menu {
+      width: 116px !important;
+    }
     .el-menu-item,
     .el-sub-menu {
       line-height: 30px !important;
@@ -156,6 +159,11 @@
         margin-top: -30px;
         margin-left: -5px;
       }
+    }
+    .el-sub-menu .el-icon {
+      display: inline-block !important;
+      margin-top: -5px !important;
+      margin-right: -18px !important;
     }
     &__item {
       margin: 0px !important;
@@ -172,6 +180,10 @@
       }
     }
     &__popup {
+      .el-menu--popup {
+        min-width: 116px !important;
+        width: 116px !important;
+      }
       .el-sub-menu,
       .context-menu__item {
         line-height: 30px !important;

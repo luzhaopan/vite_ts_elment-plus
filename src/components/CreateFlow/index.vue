@@ -51,20 +51,20 @@
     >
       <!-- 组件属性区 -->
       <FlowAttr
+        v-model:select="currentSelect"
         :plumb="plumb"
         :flowData="flowData"
-        v-model:select="currentSelect"
       />
     </div>
   </div>
 
   <!-- 生成流程图片 -->
   <el-dialog
-    :title="'流程设计图_' + flowData.attr.id + '.png'"
+    v-model="flowImage.modalVisible"
     width="90%"
+    :title="'流程设计图_' + flowData.attr.id + '.png'"
     :closable="false"
     :maskClosable="false"
-    v-model="flowImage.modalVisible"
   >
     <img :src="flowImage.url" style="width: 100%" />
     <template #footer>
@@ -79,8 +79,8 @@
 
   <!-- 设置 -->
   <SettingModal
-    v-model:settingVisible="settingVisible"
     v-model:config="flowConfig"
+    v-model:settingVisible="settingVisible"
   />
 
   <!-- 快捷键大全 -->
@@ -191,80 +191,6 @@
     type: null,
     belongTo: null
   })
-
-  // 初始化流程图
-  function initFlow() {
-    if (flowData.status === FlowStatusEnum.CREATE) {
-      flowData.attr.id = 'flow-' + utils.getId()
-    } else {
-      loadFlow()
-    }
-  }
-
-  // 渲染流程
-  async function loadFlow() {
-    clear()
-    await nextTick()
-    const loadData = { ...props.templateData }
-    flowData.attr = loadData.attr
-    flowData.config = loadData.config
-    flowData.status = FlowStatusEnum.LOADING
-    unref(plumb).batch(async () => {
-      const nodeList = loadData.nodeList
-      nodeList.forEach((node: INode) => {
-        flowData.nodeList.push(node)
-      })
-
-      await nextTick()
-      const linkList = loadData.linkList
-      linkList.forEach((link: ILink) => {
-        flowData.linkList.push(link)
-        let conn = unref(plumb).connect({
-          source: link.sourceId,
-          target: link.targetId,
-          anchor: unref(flowConfig).jsPlumbConfig.anchor.default,
-          connector: [
-            link.cls.linkType,
-            unref(flowConfig).jsPlumbInsConfig.Connector?.[1]
-          ],
-          paintStyle: {
-            stroke: link.cls.linkColor,
-            strokeWidth: link.cls.linkThickness
-          }
-        })
-        let link_id = conn?.canvas.id
-        let link_dom = document.querySelector('.' + link_id)
-        let labelHandle = (e: Event) => {
-          e.stopPropagation()
-          currentSelect.value = flowData.linkList.find(
-            (l: ILink) => l.id === link_id
-          )
-        }
-
-        if (link.label !== '') {
-          conn.setLabel({
-            label: link.label,
-            cssClass: `linkLabel ${link_id}`
-          })
-
-          // 添加label点击事件
-          link_dom?.addEventListener('click', labelHandle)
-        } else {
-          // 移除label点击事件
-          link_dom?.removeEventListener('click', labelHandle)
-        }
-      })
-
-      clearSelect()
-      flowData.status = FlowStatusEnum.MODIFY
-    }, true)
-
-    // 初始化画布的位置为左上角
-    // unref(flowAreaRef).container.pos = {
-    //   top: 0,
-    //   left: 0
-    // }
-  }
 
   // 实例化JsPlumb
   function initJsPlumb() {
@@ -424,16 +350,6 @@
     return true
   }
 
-  // 保存流程
-  function saveFlow() {
-    let flowObj = Object.assign({}, flowData)
-
-    if (!checkFlow()) return
-    flowObj.status = FlowStatusEnum.SAVE
-    ElMessage.success('保存流程成功！请查看控制台。')
-    console.log(flowObj)
-  }
-
   // 设置dragInfo
   function setDragInfo(info: IDragInfo) {
     dragInfo.type = info.type
@@ -548,6 +464,90 @@
         wsCache.get('settingConfig')
       )
     }
+  }
+
+  // 初始化流程图
+  function initFlow() {
+    if (flowData.status === FlowStatusEnum.CREATE) {
+      flowData.attr.id = 'flow-' + utils.getId()
+    } else {
+      loadFlow()
+    }
+  }
+
+  // 渲染流程
+  async function loadFlow() {
+    clear()
+    await nextTick()
+    const loadData = { ...props.templateData }
+    flowData.attr = loadData.attr
+    flowData.config = loadData.config
+    flowData.status = FlowStatusEnum.LOADING
+    unref(plumb).batch(async () => {
+      const nodeList = loadData.nodeList
+      nodeList.forEach((node: INode) => {
+        flowData.nodeList.push(node)
+      })
+
+      await nextTick()
+      const linkList = loadData.linkList
+      linkList.forEach((link: ILink) => {
+        flowData.linkList.push(link)
+        let conn = unref(plumb).connect({
+          source: link.sourceId,
+          target: link.targetId,
+          anchor: unref(flowConfig).jsPlumbConfig.anchor.default,
+          connector: [
+            link.cls.linkType,
+            unref(flowConfig).jsPlumbInsConfig.Connector?.[1]
+          ],
+          paintStyle: {
+            stroke: link.cls.linkColor,
+            strokeWidth: link.cls.linkThickness
+          }
+        })
+        let link_id = conn?.canvas.id
+        let link_dom = document.querySelector('.' + link_id)
+        let labelHandle = (e: Event) => {
+          e.stopPropagation()
+          currentSelect.value = flowData.linkList.find(
+            (l: ILink) => l.id === link_id
+          )
+        }
+
+        if (link.label !== '') {
+          conn.setLabel({
+            label: link.label,
+            cssClass: `linkLabel ${link_id}`
+          })
+
+          // 添加label点击事件
+          link_dom?.addEventListener('click', labelHandle)
+        } else {
+          // 移除label点击事件
+          link_dom?.removeEventListener('click', labelHandle)
+        }
+      })
+
+      clearSelect()
+      flowData.status = FlowStatusEnum.MODIFY
+    }, true)
+
+    // 初始化画布的位置为左上角
+    // unref(flowAreaRef).container.pos = {
+    //   top: 0,
+    //   left: 0
+    // }
+  }
+
+  // 保存流程
+  function saveFlow() {
+    let flowObj = Object.assign({}, flowData)
+
+    if (!checkFlow()) return
+    flowObj.status = FlowStatusEnum.SAVE
+    ElMessage.success('保存流程成功！请查看控制台。')
+    console.log(flowObj)
   }
 
   watch(

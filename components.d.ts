@@ -9,7 +9,6 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Breadcrumb: typeof import('./src/components/Breadcrumb/index.vue')['default']
     ContextMenu: typeof import('./src/components/CreateFlow/components/ContextMenu/src/ContextMenu.vue')['default']
-    CreatedFlow: typeof import('./src/components/CreatedFlow/index.vue')['default']
     CreateFlow: typeof import('./src/components/CreateFlow/index.vue')['default']
     ECharts: typeof import('./src/components/ECharts/index.vue')['default']
     Editor: typeof import('./src/components/Editor/index.vue')['default']
@@ -53,10 +52,8 @@ declare module '@vue/runtime-core' {
     Screenfull: typeof import('./src/components/Screenfull/index.vue')['default']
     SettingModal: typeof import('./src/components/CreateFlow/components/SettingModal.vue')['default']
     ShortcutKeyModal: typeof import('./src/components/CreateFlow/components/ShortcutKeyModal.vue')['default']
-    ShortcutModal: typeof import('./src/components/CreatedFlow/modules/ShortcutModal.vue')['default']
     TestModal: typeof import('./src/components/CreateFlow/components/TestModal.vue')['default']
     Toolbar: typeof import('./src/components/CreateFlow/components/Toolbar.vue')['default']
     UserInfo: typeof import('./src/components/UserInfo/index.vue')['default']
-    UsingDocModal: typeof import('./src/components/CreatedFlow/modules/UsingDocModal.vue')['default']
   }
 }
