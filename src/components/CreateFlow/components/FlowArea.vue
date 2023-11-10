@@ -246,7 +246,7 @@
 
     switch (belongTo) {
       case NodeTypeEnum.Common_Node_Type:
-        node = commonNodes.find((n) => n.type === type)
+        node = commonNodes.find((n) => n.type === type) // 如果自定义节点，那类型都一样，就不可通过类型来过滤，应该取nodeName等其他唯一标识
         break
       case NodeTypeEnum.High_Node_Type:
         node = highNodes.find((n) => n.type === type)
