@@ -32,7 +32,7 @@
         class="px-4"
         onClick={props.handler.bind(null, item)}
       >
-        <span>{item.label}</span>
+        {item.label}
       </span>
     )
   }
@@ -97,16 +97,13 @@
 
           if (!children || children.length === 0) {
             return (
-              <>
-                <el-menu-item
-                  disabled={disabled}
-                  class={`${prefixCls}__item`}
-                  index={index + ''}
-                >
-                  <ItemContent {...contentProps} />
-                </el-menu-item>
-                {divider ? <el-divider key={`d-${label}`} /> : null}
-              </>
+              <el-menu-item
+                disabled={disabled}
+                class={`${prefixCls}__item`}
+                index={index + ''}
+              >
+                <ItemContent {...contentProps} />
+              </el-menu-item>
             )
           }
           if (!unref(showRef)) return null
@@ -132,7 +129,8 @@
               mode="vertical"
               ref={wrapRef}
               style={unref(getStyle)}
-              default-active="0"
+              default-active=""
+              collapse="true"
             >
               {renderMenuItem(items)}
             </el-menu>
@@ -144,11 +142,45 @@
 </script>
 <style lang="scss">
   .context-menu {
+    .el-menu-item,
+    .el-sub-menu {
+      line-height: 30px !important;
+      height: 30px !important;
+    }
+    .el-sub-menu .el-sub-menu__title {
+      line-height: 30px !important;
+      height: 30px !important;
+      span {
+        overflow: visible !important;
+        visibility: visible !important;
+        margin-top: -30px;
+        margin-left: -5px;
+      }
+    }
     &__item {
       margin: 0px !important;
-
+      span {
+        overflow: visible !important;
+        visibility: visible !important;
+        margin-top: -30px;
+      }
+      i {
+        margin-top: -30px;
+      }
       &:hover {
         background-color: #f5f5f5 !important;
+      }
+    }
+    &__popup {
+      .el-sub-menu,
+      .context-menu__item {
+        line-height: 30px !important;
+        height: 30px !important;
+        span {
+          overflow: visible !important;
+          visibility: visible !important;
+          margin-top: -2px;
+        }
       }
     }
   }
