@@ -772,11 +772,6 @@
     }
   }
 
-  defineExpose({
-    container,
-    rectangleMultiple
-  })
-
   watch(
     () => props.select,
     (val) => {
@@ -823,6 +818,11 @@
     },
     { deep: true }
   )
+
+  defineExpose({
+    container,
+    rectangleMultiple
+  })
 </script>
 
 <style lang="scss" scoped>
