@@ -23,7 +23,7 @@
             'min-width': collapse
           }"
         >
-          <NavBar />
+          <!-- <NavBar />-->
         </div>
         <AppMain />
         <!-- <Footer /> -->
