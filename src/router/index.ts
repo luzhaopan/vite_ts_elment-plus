@@ -125,6 +125,12 @@ const routes = [
         name: 'RadarEcharts',
         component: () => import('@/views/echarts/radarEcharts/index.vue'),
         meta: { title: 'RadarEcharts' }
+      },
+      {
+        path: '/echarts/echartsDemo',
+        name: 'EchartsDemo',
+        component: () => import('@/views/echarts/echartsDemo/index.vue'),
+        meta: { title: 'EchartsDemo' }
       }
     ]
   },
