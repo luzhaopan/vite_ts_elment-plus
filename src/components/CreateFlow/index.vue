@@ -553,6 +553,8 @@
   watch(
     () => props.templateData,
     (newValue, oldValue) => {
+      // todo：修改属性值时，属性区的tab切换会被初始化，因为修改属性名称的时候，监听的props.templateData发生改变，导致loadFlow()执行
+      // 需要重新修改监听值或避免值修改时reload
       loadFlow()
     },
     {

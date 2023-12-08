@@ -463,4 +463,7 @@
     color: #fff;
     padding: 5px;
   }
+  .box-card {
+    margin: 20px;
+  }
 </style>

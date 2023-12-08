@@ -1,5 +1,6 @@
 <template>
   <div style="height: 100%">
+    <!-- 不可编辑流程图 -->
     <CreateFlow ref="createdFlow" :is-edit="false" :template-data="flowData" />
   </div>
 </template>
