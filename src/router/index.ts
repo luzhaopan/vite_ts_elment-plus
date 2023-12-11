@@ -169,6 +169,20 @@ const routes = [
     ]
   },
   {
+    path: '/graph3D',
+    name: 'Graph3D',
+    component: Layout,
+    meta: { title: 'Graph3D', icon: 'Unlock' },
+    children: [
+      {
+        path: '/graph3D/graph3D',
+        name: 'Graph3D',
+        component: () => import('@/views/graph3D/graph3D.vue'),
+        meta: { title: 'Graph3D' }
+      }
+    ]
+  },
+  {
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
