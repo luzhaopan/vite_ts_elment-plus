@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive } from 'vue'
+  import { ref } from 'vue'
   import ForceGraph3D from '3d-force-graph'
   import * as THREE from 'three'
   import SpriteText from 'three-spritetext'
@@ -21,6 +21,7 @@
     CSS2DObject
   } from 'three/addons/renderers/CSS2DRenderer.js'
   import { records, testData } from './data/data.js'
+  import imgName from './imgs/cat.jpg'
 
   const drawer = ref(false)
 
@@ -28,34 +29,11 @@
   const highlightNodes = []
   const highlightLinks = []
   let hoverNode = null
-  const graphMap = {}
-  const gData = reactive({
+  // const img = require('./imgs/cat.jpg')
+  const gData = {
     data: {},
     map: {}
-  })
-
-  // var sphereMesh = function (id) {
-  //   var mesh = new THREE.Mesh(
-  //     [new THREE.SphereGeometry(10, 32, 32)][id % 1],
-  //     new THREE.MeshLambertMaterial({
-  //       color: '#277ec9',
-  //       transparent: true,
-  //       opacity: 1.0
-  //     })
-  //   )
-
-  //   // Make it glow.
-  //   var glowMesh = new THREE.GeometricGlowMesh(mesh)
-  //   mesh.add(glowMesh.object3d)
-
-  //   var insideUniforms = glowMesh.insideMesh.material.uniforms
-  //   insideUniforms.glowColor.value.set('yellow')
-
-  //   var outsideUniforms = glowMesh.outsideMesh.material.uniforms
-  //   outsideUniforms.glowColor.value.set('yellow')
-
-  //   return mesh
-  // }
+  }
 
   const handleClose = (done: () => void) => {
     drawer.value = false
@@ -82,14 +60,6 @@
       // 在节点处显示文本
       .nodeLabel((node) => lableTips(node))
       .nodeResolution(20)
-      // 拖动节点后，该节点位置不变
-      // .onNodeDragEnd((node: any) => {
-      //   node.fx = node.x
-      //   node.fy = node.y
-      //   node.fz = node.z
-      // })
-      // .nodeThreeObject((node) => SpriteMesh(node))
-      // .nodeThreeObject((node) => sphereMesh(node))
       .nodeColor((node) =>
         highlightNodes.includes(node.id)
           ? node === hoverNode
@@ -97,13 +67,21 @@
             : 'blue'
           : node['~style']['color']
       )
-      .nodeThreeObject((node) => {
-        const nodeEl = document.createElement('div')
-        nodeEl.textContent = node.id
-        nodeEl.style.color = node.color
-        nodeEl.className = 'node-label'
-        return new CSS2DObject(nodeEl)
-      })
+      // 拖动节点后，该节点位置不变
+      // .onNodeDragEnd((node: any) => {
+      //   node.fx = node.x
+      //   node.fy = node.y
+      //   node.fz = node.z
+      // })
+      .nodeThreeObject((node) => SpriteMesh(node))
+      // .nodeThreeObject((node) => sphereMesh(node))
+      // .nodeThreeObject((node) => {
+      //   const nodeEl = document.createElement('div')
+      //   nodeEl.textContent = node.id
+      //   nodeEl.style.color = node.color
+      //   nodeEl.className = 'node-label'
+      //   return new CSS2DObject(nodeEl)
+      // })
       .nodeThreeObjectExtend(true)
       .onNodeClick((node: any) => {
         // Aim at node from outside it
@@ -125,7 +103,7 @@
         return highlightLinks.includes(link.id) ? 1 : 0
       })
       // 链接对象访问器函数、属性或用于显示在链接线上的粒子（小球体）数量的数字常量
-      .linkDirectionalParticles(1)
+      // .linkDirectionalParticles(1)
       .linkDirectionalParticles((link) =>
         highlightLinks.includes(link.id) ? 1 : 0
       )
@@ -134,7 +112,7 @@
       // 设置线条透明度
       .linkOpacity(0.5)
       // 根据连接属性自动为连接线条着色，（这里官方文档写的是d => gData.nodes[d.source].group ，需要自己根据数据微调）
-      // .linkAutoColorBy( d=> gData.value.nodes[d.value].group )
+      .linkAutoColorBy((d) => d.id)
       .onLinkHover((link: any) => {
         highlightNodes.length = 0
         highlightLinks.length = 0
@@ -176,18 +154,19 @@
       .graphData(gData.data)
 
     cameraCenter()
+    // 适应屏幕大小变化
     window.addEventListener('resize', (el) => Graph.width(elm.offsetWidth))
   }
+  // 节点对象处理成图片展示
   function SpriteMesh(node) {
-    const imgTexture = () => {
-      return new THREE.TextureLoader().load('./imgs/cat.jpg')
-    }
-    // imgTexture.colorSpace = THREE.SRGBColorSpace
-    const material = new THREE.SpriteMaterial({ map: imgTexture() })
+    const imgTexture = new THREE.TextureLoader().load(imgName)
+    imgTexture.colorSpace = THREE.SRGBColorSpace
+    const material = new THREE.SpriteMaterial({ map: imgTexture })
     const sprite = new THREE.Sprite(material)
     sprite.scale.set(12, 12)
     return sprite
   }
+  // 节点hover显示内容
   function lableTips(node) {
     const { properties } = node
     const arr = Object.keys(properties)
@@ -197,14 +176,9 @@
       ele += `<li> ${item}: ${properties[item]} </li>`
     })
     ele + `</ul></div>`
-    // var ele = document.createElement('div')
-    // ele.innerHTML = `<p class="node-label" href="${node.id}" target="_blank">
-    //       <span>${node.id}</span>
-    //     </p>`
-    // ele.style.color = node.color
-    // ele.classList.add('tag')
     return ele
   }
+  // 计算连接线上文字的显示位置
   function getQuadraticXY(t, sx, sy, sz, cp1x, cp1y, cp1z, ex, ey, ez) {
     return {
       x: (1 - t) * (1 - t) * sx + 2 * (1 - t) * t * cp1x + t * t * ex,
@@ -212,6 +186,7 @@
       z: (1 - t) * (1 - t) * sz + 2 * (1 - t) * t * cp1z + t * t * ez
     }
   }
+  // 节点对象处理成其他模型
   function sphereMesh(node) {
     // 球体
     const geometry = new THREE.SphereGeometry(Math.random() * 10)
@@ -229,6 +204,7 @@
     const mesh = new THREE.Mesh(geometry, material)
     return mesh
   }
+  // hover 高亮处理
   function highlightNode(node) {
     // no state change
     if ((!node && !highlightNodes.length) || (node && hoverNode === node))
@@ -236,7 +212,7 @@
 
     highlightNodes.length = 0
     highlightLinks.length = 0
-    if (node) {
+    if (node && node.neighbors) {
       highlightNodes.push(node.id)
       node.neighbors.forEach((neighbor) => highlightNodes.push(neighbor.id))
       node.links.forEach((link) => highlightLinks.push(link.id))
