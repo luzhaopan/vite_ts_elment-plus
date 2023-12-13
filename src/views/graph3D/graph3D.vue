@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { ref, reactive } from 'vue'
   import ForceGraph3D from '3d-force-graph'
   import * as THREE from 'three'
   import SpriteText from 'three-spritetext'
@@ -23,37 +23,16 @@
   import { records, testData } from './data/data.js'
 
   const drawer = ref(false)
-  const curNode = ref(null)
 
   let Graph = null
-  const highlightNodes = new Set()
-  const highlightLinks = new Set()
+  const highlightNodes = []
+  const highlightLinks = []
   let hoverNode = null
-
-  const gData = { ...testData }
-  // const gData = createRandomGraph()
-  // gData.links.forEach((link) => {
-  //   let a: any = {}
-  //   let b: any = {}
-  //   for (let i = 0; i < gData.nodes.length; i++) {
-  //     if (link.source === gData.nodes[i].id) {
-  //       a = gData.nodes[i]
-  //     }
-  //     if (link.target === gData.nodes[i].id) {
-  //       b = gData.nodes[i]
-  //     }
-  //   }
-
-  //   !a.neighbors && (a.neighbors = [])
-  //   !b.neighbors && (b.neighbors = [])
-  //   a.neighbors.push(b)
-  //   b.neighbors.push(a)
-
-  //   !a.links && (a.links = [])
-  //   !b.links && (b.links = [])
-  //   a.links.push(link)
-  //   b.links.push(link)
-  // })
+  const graphMap = {}
+  const gData = reactive({
+    data: {},
+    map: {}
+  })
 
   // var sphereMesh = function (id) {
   //   var mesh = new THREE.Mesh(
@@ -91,7 +70,6 @@
     Graph = ForceGraph3D({
       extraRenderers: [new CSS2DRenderer()]
     })(elm)
-
       .height(window.innerHeight - 150)
       .width(window.innerWidth - 240)
       .showNavInfo(false) //禁用页脚
@@ -112,6 +90,13 @@
       // })
       // .nodeThreeObject((node) => SpriteMesh(node))
       // .nodeThreeObject((node) => sphereMesh(node))
+      .nodeColor((node) =>
+        highlightNodes.includes(node.id)
+          ? node === hoverNode
+            ? 'yellow'
+            : 'blue'
+          : node['~style']['color']
+      )
       .nodeThreeObject((node) => {
         const nodeEl = document.createElement('div')
         nodeEl.textContent = node.id
@@ -127,48 +112,46 @@
       .onNodeRightClick(() => {
         drawer.value = true
       })
-      // .nodeColor((node) =>
-      //   highlightNodes.has(node)
-      //     ? node === hoverNode
-      //       ? 'rgb(255,0,0,1)'
-      //       : 'rgba(255,160,0,0.8)'
-      //     : 'rgba(0,255,255,0.6)'
-      // )
-      // .onNodeHover((node) => {
-      //   highlightNode(node)
-      // })
+      .onNodeHover((node) => {
+        highlightNode(node)
+      })
       // 设置线条的箭头长度
       .linkDirectionalArrowLength(1.5)
       // 用于设置线条箭头的相对位置
       .linkDirectionalArrowRelPos(1)
       // 用于设置线条的曲率 0为直线
       .linkCurvature(0.1)
-      // .linkWidth((link) => (highlightLinks.has(link) ? 4 : 1))
+      .linkWidth((link) => {
+        return highlightLinks.includes(link.id) ? 1 : 0
+      })
       // 链接对象访问器函数、属性或用于显示在链接线上的粒子（小球体）数量的数字常量
       .linkDirectionalParticles(1)
-      // .linkDirectionalParticles((link) => (highlightLinks.has(link) ? 4 : 0))
+      .linkDirectionalParticles((link) =>
+        highlightLinks.includes(link.id) ? 1 : 0
+      )
       // 设置箭头粒子的速度为
       .linkDirectionalParticleSpeed(0.005)
       // 设置线条透明度
       .linkOpacity(0.5)
       // 根据连接属性自动为连接线条着色，（这里官方文档写的是d => gData.nodes[d.source].group ，需要自己根据数据微调）
       // .linkAutoColorBy( d=> gData.value.nodes[d.value].group )
-      // .onLinkHover((link: any) => {
-      //   highlightNodes.clear()
-      //   highlightLinks.clear()
+      .onLinkHover((link: any) => {
+        highlightNodes.length = 0
+        highlightLinks.length = 0
 
-      //   if (link) {
-      //     highlightLinks.add(link)
-      //     highlightNodes.add(link.source)
-      //     highlightNodes.add(link.target)
-      //   }
+        if (link) {
+          highlightLinks.push(link.id)
+          highlightNodes.push(link.source)
+          highlightNodes.push(link.target)
+        }
 
-      //   updateHighlight()
-      // })
+        // updateHighlight()
+      })
       .linkThreeObjectExtend(true)
       .linkThreeObject((link) => {
         // extend link with text sprite
-        const sprite = new SpriteText(`${link.source} > ${link.target}`)
+        // console.log(link)
+        const sprite = new SpriteText(`${link.id}`)
         sprite.color = 'lightgrey'
         sprite.textHeight = 1.5
         return sprite
@@ -190,7 +173,7 @@
         // Position sprite
         Object.assign(sprite.position, middlePos)
       })
-      .graphData(gData)
+      .graphData(gData.data)
 
     cameraCenter()
     window.addEventListener('resize', (el) => Graph.width(elm.offsetWidth))
@@ -248,17 +231,19 @@
   }
   function highlightNode(node) {
     // no state change
-    // if ((!node && !highlightNodes.size) || (node && hoverNode === node)) return
+    if ((!node && !highlightNodes.length) || (node && hoverNode === node))
+      return
 
-    // highlightNodes.clear()
-    // highlightLinks.clear()
-    // if (node) {
-    //   highlightNodes.add(node)
-    //   node.neighbors.forEach((neighbor) => highlightNodes.add(neighbor))
-    //   // node.links.forEach((link) => highlightLinks.add(link))
-    // }
+    highlightNodes.length = 0
+    highlightLinks.length = 0
+    if (node) {
+      highlightNodes.push(node.id)
+      node.neighbors.forEach((neighbor) => highlightNodes.push(neighbor.id))
+      node.links.forEach((link) => highlightLinks.push(link.id))
+    }
 
-    // hoverNode = node || null
+    hoverNode = node || null
+
     updateHighlight()
   }
   function updateHighlight() {
@@ -266,6 +251,7 @@
     Graph.nodeColor(Graph.nodeColor())
       .linkWidth(Graph.linkWidth())
       .linkDirectionalParticles(Graph.linkDirectionalParticles())
+      .linkThreeObject(Graph.linkThreeObject())
   }
   // 聚焦 3d 节点
   function focusNode(node: any) {
@@ -308,6 +294,36 @@
   }
 
   onMounted(() => {
+    gData.data = { ...testData }
+
+    gData.data.nodes.forEach((item) => {
+      gData.map[item.id] = item
+    })
+
+    // const gData = createRandomGraph()
+    gData.data.links.forEach((link) => {
+      let a: any = {}
+      let b: any = {}
+
+      if (gData.map && gData.map[link.source]) {
+        a = gData.map[link.source]
+        b = gData.map[link.target]
+
+        !a.neighbors && (a.neighbors = [])
+        !b.neighbors && (b.neighbors = [])
+        a.neighbors.push(b)
+        b.neighbors.push(a)
+
+        !a.links && (a.links = [])
+        !b.links && (b.links = [])
+
+        a.links.push(link)
+        b.links.push(link)
+      }
+    })
+
+    // console.log(3, gData.map)
+
     threeRender()
   })
 </script>
