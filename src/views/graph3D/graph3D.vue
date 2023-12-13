@@ -1,20 +1,59 @@
 <template>
   <div>
     <div id="3d-graph" class="three-graph"></div>
+    <el-drawer
+      v-model="drawer"
+      title="顶点类型详情"
+      :before-close="handleClose"
+    >
+      <span>顶点信息</span>
+    </el-drawer>
   </div>
 </template>
 
 <script lang="ts" setup>
+  import { ref } from 'vue'
   import ForceGraph3D from '3d-force-graph'
-  // import SpriteText from "three-spritetext";
   import * as THREE from 'three'
+  import SpriteText from 'three-spritetext'
   import {
     CSS2DRenderer,
     CSS2DObject
   } from 'three/addons/renderers/CSS2DRenderer.js'
-  import { top5, records } from './data/data.js'
+  import { records, testData } from './data/data.js'
+
+  const drawer = ref(false)
+  const curNode = ref(null)
 
   let Graph = null
+  const highlightNodes = new Set()
+  const highlightLinks = new Set()
+  let hoverNode = null
+
+  const gData = { ...testData }
+  // const gData = createRandomGraph()
+  // gData.links.forEach((link) => {
+  //   let a: any = {}
+  //   let b: any = {}
+  //   for (let i = 0; i < gData.nodes.length; i++) {
+  //     if (link.source === gData.nodes[i].id) {
+  //       a = gData.nodes[i]
+  //     }
+  //     if (link.target === gData.nodes[i].id) {
+  //       b = gData.nodes[i]
+  //     }
+  //   }
+
+  //   !a.neighbors && (a.neighbors = [])
+  //   !b.neighbors && (b.neighbors = [])
+  //   a.neighbors.push(b)
+  //   b.neighbors.push(a)
+
+  //   !a.links && (a.links = [])
+  //   !b.links && (b.links = [])
+  //   a.links.push(link)
+  //   b.links.push(link)
+  // })
 
   // var sphereMesh = function (id) {
   //   var mesh = new THREE.Mesh(
@@ -39,9 +78,12 @@
   //   return mesh
   // }
 
+  const handleClose = (done: () => void) => {
+    drawer.value = false
+  }
+
   function threeRender() {
-    // const gData = createRandomGraph()
-    const distance = 1400
+    // const distance = 1400
     // DOM初始化及数据挂载
     const elm = document.getElementById('3d-graph')
     //   const width = elm.offsetWidth;
@@ -49,7 +91,7 @@
     Graph = ForceGraph3D({
       extraRenderers: [new CSS2DRenderer()]
     })(elm)
-      .graphData(records)
+
       .height(window.innerHeight - 150)
       .width(window.innerWidth - 240)
       .showNavInfo(false) //禁用页脚
@@ -57,63 +99,173 @@
       // 每个值单位的节点球体体积 (cubic px) 的比率
       // .nodeRelSize(7)
       // 通过groud/Id来分组不同的颜色
-      .nodeAutoColorBy('group')
+      .nodeAutoColorBy('id')
       .nodeOpacity(1)
       // 在节点处显示文本
-      .nodeLabel('id')
+      .nodeLabel((node) => lableTips(node))
       .nodeResolution(20)
-      .nodeThreeObject(({ id }) => sphereMesh(id))
-      // .nodeThreeObject((node) => {
-      //   const nodeEl = document.createElement('div')
-      //   nodeEl.textContent = node.id
-      //   nodeEl.style.color = node.color
-      //   // nodeEl.style.fontSize = '12px'
-      //   nodeEl.className = 'node-label'
-      //   // var nodeEl = document.createElement('div')
-      //   // nodeEl.innerHTML = `<p class="node-label" href="${node.id}" target="_blank">
-      //   //   <span>${node.id}</span>
-      //   // </p>`
-      //   // nodeEl.style.color = node.color
-      //   // nodeEl.classList.add('tag')
-      //   return new CSS2DObject(nodeEl)
+      // 拖动节点后，该节点位置不变
+      // .onNodeDragEnd((node: any) => {
+      //   node.fx = node.x
+      //   node.fy = node.y
+      //   node.fz = node.z
       // })
+      // .nodeThreeObject((node) => SpriteMesh(node))
+      // .nodeThreeObject((node) => sphereMesh(node))
+      .nodeThreeObject((node) => {
+        const nodeEl = document.createElement('div')
+        nodeEl.textContent = node.id
+        nodeEl.style.color = node.color
+        nodeEl.className = 'node-label'
+        return new CSS2DObject(nodeEl)
+      })
       .nodeThreeObjectExtend(true)
       .onNodeClick((node: any) => {
         // Aim at node from outside it
         focusNode(node)
       })
+      .onNodeRightClick(() => {
+        drawer.value = true
+      })
+      // .nodeColor((node) =>
+      //   highlightNodes.has(node)
+      //     ? node === hoverNode
+      //       ? 'rgb(255,0,0,1)'
+      //       : 'rgba(255,160,0,0.8)'
+      //     : 'rgba(0,255,255,0.6)'
+      // )
+      // .onNodeHover((node) => {
+      //   highlightNode(node)
+      // })
       // 设置线条的箭头长度
-      .linkDirectionalArrowLength(3.5)
+      .linkDirectionalArrowLength(1.5)
       // 用于设置线条箭头的相对位置
       .linkDirectionalArrowRelPos(1)
-      // 用于设置线条的曲率
-      .linkCurvature(0.25)
+      // 用于设置线条的曲率 0为直线
+      .linkCurvature(0.1)
+      // .linkWidth((link) => (highlightLinks.has(link) ? 4 : 1))
       // 链接对象访问器函数、属性或用于显示在链接线上的粒子（小球体）数量的数字常量
       .linkDirectionalParticles(1)
+      // .linkDirectionalParticles((link) => (highlightLinks.has(link) ? 4 : 0))
       // 设置箭头粒子的速度为
       .linkDirectionalParticleSpeed(0.005)
       // 设置线条透明度
       .linkOpacity(0.5)
-    // 根据连接属性自动为连接线条着色，（这里官方文档写的是d => gData.nodes[d.source].group ，需要自己根据数据微调）
-    // .linkAutoColorBy( d=> gData.value.nodes[d.value].group )
+      // 根据连接属性自动为连接线条着色，（这里官方文档写的是d => gData.nodes[d.source].group ，需要自己根据数据微调）
+      // .linkAutoColorBy( d=> gData.value.nodes[d.value].group )
+      // .onLinkHover((link: any) => {
+      //   highlightNodes.clear()
+      //   highlightLinks.clear()
+
+      //   if (link) {
+      //     highlightLinks.add(link)
+      //     highlightNodes.add(link.source)
+      //     highlightNodes.add(link.target)
+      //   }
+
+      //   updateHighlight()
+      // })
+      .linkThreeObjectExtend(true)
+      .linkThreeObject((link) => {
+        // extend link with text sprite
+        const sprite = new SpriteText(`${link.source} > ${link.target}`)
+        sprite.color = 'lightgrey'
+        sprite.textHeight = 1.5
+        return sprite
+      })
+      .linkPositionUpdate((sprite, { start, end }, link) => {
+        let middlePos = getQuadraticXY(
+          0.5,
+          start.x,
+          start.y,
+          start.z,
+          link.__curve.v1.x,
+          link.__curve.v1.y,
+          link.__curve.v1.z,
+          end.x,
+          end.y,
+          end.z
+        )
+
+        // Position sprite
+        Object.assign(sprite.position, middlePos)
+      })
+      .graphData(gData)
+
     cameraCenter()
     window.addEventListener('resize', (el) => Graph.width(elm.offsetWidth))
   }
+  function SpriteMesh(node) {
+    const imgTexture = () => {
+      return new THREE.TextureLoader().load('./imgs/cat.jpg')
+    }
+    // imgTexture.colorSpace = THREE.SRGBColorSpace
+    const material = new THREE.SpriteMaterial({ map: imgTexture() })
+    const sprite = new THREE.Sprite(material)
+    sprite.scale.set(12, 12)
+    return sprite
+  }
+  function lableTips(node) {
+    const { properties } = node
+    const arr = Object.keys(properties)
+    let ele = `<div style="color: #000; font-size: 12px; background: #fff; padding: 2px; z-index: 999999999">
+      <ul>`
+    arr.forEach((item) => {
+      ele += `<li> ${item}: ${properties[item]} </li>`
+    })
+    ele + `</ul></div>`
+    // var ele = document.createElement('div')
+    // ele.innerHTML = `<p class="node-label" href="${node.id}" target="_blank">
+    //       <span>${node.id}</span>
+    //     </p>`
+    // ele.style.color = node.color
+    // ele.classList.add('tag')
+    return ele
+  }
+  function getQuadraticXY(t, sx, sy, sz, cp1x, cp1y, cp1z, ex, ey, ez) {
+    return {
+      x: (1 - t) * (1 - t) * sx + 2 * (1 - t) * t * cp1x + t * t * ex,
+      y: (1 - t) * (1 - t) * sy + 2 * (1 - t) * t * cp1y + t * t * ey,
+      z: (1 - t) * (1 - t) * sz + 2 * (1 - t) * t * cp1z + t * t * ez
+    }
+  }
   function sphereMesh(node) {
-    const mesh = new THREE.Mesh(
-      [
-        // 球体
-        new THREE.SphereGeometry(Math.random() * 10),
-        // 圆环
-        new THREE.TorusGeometry(Math.random() * 10, Math.random() * 2)
-      ][1],
-      new THREE.MeshLambertMaterial({
-        color: Math.round(Math.random() * Math.pow(2, 24)),
-        transparent: true,
-        opacity: 0.75
-      })
-    )
+    // 球体
+    const geometry = new THREE.SphereGeometry(Math.random() * 10)
+    // 圆环
+    // const geometry = new THREE.TorusGeometry(7, 0.3, 16, 50)
+    // const material = new THREE.MeshBasicMaterial({ color: node.color })
+    // const loader = new THREE.TextureLoader().load('./resources/diffuse.jpg')
+    const material = new THREE.MeshLambertMaterial({
+      color: Math.round(Math.random() * Math.pow(2, 24)),
+      transparent: true,
+      opacity: 0.75
+      // map: loader
+    })
+    // 根据几何体和材质创建物体
+    const mesh = new THREE.Mesh(geometry, material)
     return mesh
+  }
+  function highlightNode(node) {
+    // no state change
+    // if ((!node && !highlightNodes.size) || (node && hoverNode === node)) return
+
+    // highlightNodes.clear()
+    // highlightLinks.clear()
+    // if (node) {
+    //   highlightNodes.add(node)
+    //   node.neighbors.forEach((neighbor) => highlightNodes.add(neighbor))
+    //   // node.links.forEach((link) => highlightLinks.add(link))
+    // }
+
+    // hoverNode = node || null
+    updateHighlight()
+  }
+  function updateHighlight() {
+    // trigger update of highlighted objects in scene
+    Graph.nodeColor(Graph.nodeColor())
+      .linkWidth(Graph.linkWidth())
+      .linkDirectionalParticles(Graph.linkDirectionalParticles())
   }
   // 聚焦 3d 节点
   function focusNode(node: any) {

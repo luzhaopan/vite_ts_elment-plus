@@ -1,2480 +1,3067 @@
-﻿const top5 = [
-  {
-    p: {
-      start: {
-        identity: 110531,
-        labels: ['Enterprise'],
-        properties: {
-          name: '浙江鹏顺进出口有限公司',
-          setup_time: '2007/5/17',
-          address: '浙江诸暨艮塔路9号银证大厦8楼',
-          captial: '0万人民币',
-          credit_code: '3306812004868'
-        }
+﻿const testData = {
+  nodes: [
+    {
+      id: 'DATA_API',
+      label: 'DATA_API',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 122725,
-        labels: ['Type'],
-        properties: {
-          name: '服务型'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 110531,
-            labels: ['Enterprise'],
-            properties: {
-              name: '浙江鹏顺进出口有限公司',
-              setup_time: '2007/5/17',
-              address: '浙江诸暨艮塔路9号银证大厦8楼',
-              captial: '0万人民币',
-              credit_code: '3306812004868'
-            }
-          },
-          relationship: {
-            identity: 621275,
-            start: 110531,
-            end: 122725,
-            type: 'type',
-            properties: {
-              name: '类型'
-            }
-          },
-          end: {
-            identity: 122725,
-            labels: ['Type'],
-            properties: {
-              name: '服务型'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#e65055',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.307142857142857
-  },
-  {
-    p: {
-      start: {
-        identity: 110531,
-        labels: ['Enterprise'],
-        properties: {
-          name: '浙江鹏顺进出口有限公司',
-          setup_time: '2007/5/17',
-          address: '浙江诸暨艮塔路9号银证大厦8楼',
-          captial: '0万人民币',
-          credit_code: '3306812004868'
-        }
+    {
+      id: '挖掘模型',
+      label: '挖掘模型',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120807,
-        labels: ['Country'],
-        properties: {
-          name: '越南'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 110531,
-            labels: ['Enterprise'],
-            properties: {
-              name: '浙江鹏顺进出口有限公司',
-              setup_time: '2007/5/17',
-              address: '浙江诸暨艮塔路9号银证大厦8楼',
-              captial: '0万人民币',
-              credit_code: '3306812004868'
-            }
-          },
-          relationship: {
-            identity: 572542,
-            start: 110531,
-            end: 120807,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120807,
-            labels: ['Country'],
-            properties: {
-              name: '越南'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#fe5b5d',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.307142857142857
-  },
-  {
-    p: {
-      start: {
-        identity: 110531,
-        labels: ['Enterprise'],
-        properties: {
-          name: '浙江鹏顺进出口有限公司',
-          setup_time: '2007/5/17',
-          address: '浙江诸暨艮塔路9号银证大厦8楼',
-          captial: '0万人民币',
-          credit_code: '3306812004868'
-        }
+    {
+      id: '自助查询',
+      label: '自助查询',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120959,
-        labels: ['Country'],
-        properties: {
-          name: '乌兹别克斯坦'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 110531,
-            labels: ['Enterprise'],
-            properties: {
-              name: '浙江鹏顺进出口有限公司',
-              setup_time: '2007/5/17',
-              address: '浙江诸暨艮塔路9号银证大厦8楼',
-              captial: '0万人民币',
-              credit_code: '3306812004868'
-            }
-          },
-          relationship: {
-            identity: 483409,
-            start: 110531,
-            end: 120959,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120959,
-            labels: ['Country'],
-            properties: {
-              name: '乌兹别克斯坦'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#f2ca00',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.307142857142857
-  },
-  {
-    p: {
-      start: {
-        identity: 110531,
-        labels: ['Enterprise'],
-        properties: {
-          name: '浙江鹏顺进出口有限公司',
-          setup_time: '2007/5/17',
-          address: '浙江诸暨艮塔路9号银证大厦8楼',
-          captial: '0万人民币',
-          credit_code: '3306812004868'
-        }
+    {
+      id: '报表',
+      label: '报表',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120911,
-        labels: ['Country'],
-        properties: {
-          name: '乌克兰'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 110531,
-            labels: ['Enterprise'],
-            properties: {
-              name: '浙江鹏顺进出口有限公司',
-              setup_time: '2007/5/17',
-              address: '浙江诸暨艮塔路9号银证大厦8楼',
-              captial: '0万人民币',
-              credit_code: '3306812004868'
-            }
-          },
-          relationship: {
-            identity: 448692,
-            start: 110531,
-            end: 120911,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120911,
-            labels: ['Country'],
-            properties: {
-              name: '乌克兰'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#ed7600',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.307142857142857
-  },
-  {
-    p: {
-      start: {
-        identity: 110531,
-        labels: ['Enterprise'],
-        properties: {
-          name: '浙江鹏顺进出口有限公司',
-          setup_time: '2007/5/17',
-          address: '浙江诸暨艮塔路9号银证大厦8楼',
-          captial: '0万人民币',
-          credit_code: '3306812004868'
-        }
+    {
+      id: '标签',
+      label: '标签',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120810,
-        labels: ['Country'],
-        properties: {
-          name: '土耳其'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 110531,
-            labels: ['Enterprise'],
-            properties: {
-              name: '浙江鹏顺进出口有限公司',
-              setup_time: '2007/5/17',
-              address: '浙江诸暨艮塔路9号银证大厦8楼',
-              captial: '0万人民币',
-              credit_code: '3306812004868'
-            }
-          },
-          relationship: {
-            identity: 381870,
-            start: 110531,
-            end: 120810,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120810,
-            labels: ['Country'],
-            properties: {
-              name: '土耳其'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#ffe081',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.307142857142857
-  },
-  {
-    p: {
-      start: {
-        identity: 110531,
-        labels: ['Enterprise'],
-        properties: {
-          name: '浙江鹏顺进出口有限公司',
-          setup_time: '2007/5/17',
-          address: '浙江诸暨艮塔路9号银证大厦8楼',
-          captial: '0万人民币',
-          credit_code: '3306812004868'
-        }
+    {
+      id: '数据项',
+      label: '数据项',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120965,
-        labels: ['Country'],
-        properties: {
-          name: '俄罗斯'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 110531,
-            labels: ['Enterprise'],
-            properties: {
-              name: '浙江鹏顺进出口有限公司',
-              setup_time: '2007/5/17',
-              address: '浙江诸暨艮塔路9号银证大厦8楼',
-              captial: '0万人民币',
-              credit_code: '3306812004868'
-            }
-          },
-          relationship: {
-            identity: 272148,
-            start: 110531,
-            end: 120965,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120965,
-            labels: ['Country'],
-            properties: {
-              name: '俄罗斯'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#a64ee6',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.307142857142857
-  },
-  {
-    p: {
-      start: {
-        identity: 110531,
-        labels: ['Enterprise'],
-        properties: {
-          name: '浙江鹏顺进出口有限公司',
-          setup_time: '2007/5/17',
-          address: '浙江诸暨艮塔路9号银证大厦8楼',
-          captial: '0万人民币',
-          credit_code: '3306812004868'
-        }
+    {
+      id: '数据域',
+      label: '数据域',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120786,
-        labels: ['Country'],
-        properties: {
-          name: '印度'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 110531,
-            labels: ['Enterprise'],
-            properties: {
-              name: '浙江鹏顺进出口有限公司',
-              setup_time: '2007/5/17',
-              address: '浙江诸暨艮塔路9号银证大厦8楼',
-              captial: '0万人民币',
-              credit_code: '3306812004868'
-            }
-          },
-          relationship: {
-            identity: 237492,
-            start: 110531,
-            end: 120786,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120786,
-            labels: ['Country'],
-            properties: {
-              name: '印度'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#e048ae',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.307142857142857
-  },
-  {
-    p: {
-      start: {
-        identity: 110531,
-        labels: ['Enterprise'],
-        properties: {
-          name: '浙江鹏顺进出口有限公司',
-          setup_time: '2007/5/17',
-          address: '浙江诸暨艮塔路9号银证大厦8楼',
-          captial: '0万人民币',
-          credit_code: '3306812004868'
-        }
+    {
+      id: '指标',
+      label: '指标',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120861,
-        labels: ['Region'],
-        properties: {
-          name: '浙江省'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 110531,
-            labels: ['Enterprise'],
-            properties: {
-              name: '浙江鹏顺进出口有限公司',
-              setup_time: '2007/5/17',
-              address: '浙江诸暨艮塔路9号银证大厦8楼',
-              captial: '0万人民币',
-              credit_code: '3306812004868'
-            }
-          },
-          relationship: {
-            identity: 14691,
-            start: 110531,
-            end: 120861,
-            type: 'locate',
-            properties: {
-              name: '所在地区'
-            }
-          },
-          end: {
-            identity: 120861,
-            labels: ['Region'],
-            properties: {
-              name: '浙江省'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#fe9227',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.307142857142857
-  },
-  {
-    p: {
-      start: {
-        identity: 46429,
-        labels: ['Enterprise'],
-        properties: {
-          name: '象山东兴雕刻古董家具有限公司(2002)',
-          setup_time: '1900/1/1',
-          address: '城西路4号',
-          captial: '0万人民币',
-          credit_code: '3302251001312'
-        }
+    {
+      id: '生产字段',
+      label: '生产字段',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 122725,
-        labels: ['Type'],
-        properties: {
-          name: '服务型'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 46429,
-            labels: ['Enterprise'],
-            properties: {
-              name: '象山东兴雕刻古董家具有限公司(2002)',
-              setup_time: '1900/1/1',
-              address: '城西路4号',
-              captial: '0万人民币',
-              credit_code: '3302251001312'
-            }
-          },
-          relationship: {
-            identity: 727151,
-            start: 46429,
-            end: 122725,
-            type: 'type',
-            properties: {
-              name: '类型'
-            }
-          },
-          end: {
-            identity: 122725,
-            labels: ['Type'],
-            properties: {
-              name: '服务型'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#5c73e6',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.275
-  },
-  {
-    p: {
-      start: {
-        identity: 46429,
-        labels: ['Enterprise'],
-        properties: {
-          name: '象山东兴雕刻古董家具有限公司(2002)',
-          setup_time: '1900/1/1',
-          address: '城西路4号',
-          captial: '0万人民币',
-          credit_code: '3302251001312'
-        }
+    {
+      id: '生产表',
+      label: '生产表',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120996,
-        labels: ['Country'],
-        properties: {
-          name: '墨西哥'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 46429,
-            labels: ['Enterprise'],
-            properties: {
-              name: '象山东兴雕刻古董家具有限公司(2002)',
-              setup_time: '1900/1/1',
-              address: '城西路4号',
-              captial: '0万人民币',
-              credit_code: '3302251001312'
-            }
-          },
-          relationship: {
-            identity: 596245,
-            start: 46429,
-            end: 120996,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120996,
-            labels: ['Country'],
-            properties: {
-              name: '墨西哥'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#00b5d9',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.275
-  },
-  {
-    p: {
-      start: {
-        identity: 46429,
-        labels: ['Enterprise'],
-        properties: {
-          name: '象山东兴雕刻古董家具有限公司(2002)',
-          setup_time: '1900/1/1',
-          address: '城西路4号',
-          captial: '0万人民币',
-          credit_code: '3302251001312'
-        }
+    {
+      id: 'D模型',
+      label: 'D模型',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120965,
-        labels: ['Country'],
-        properties: {
-          name: '俄罗斯'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 46429,
-            labels: ['Enterprise'],
-            properties: {
-              name: '象山东兴雕刻古董家具有限公司(2002)',
-              setup_time: '1900/1/1',
-              address: '城西路4号',
-              captial: '0万人民币',
-              credit_code: '3302251001312'
-            }
-          },
-          relationship: {
-            identity: 486085,
-            start: 46429,
-            end: 120965,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120965,
-            labels: ['Country'],
-            properties: {
-              name: '俄罗斯'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#0eb880',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.275
-  },
-  {
-    p: {
-      start: {
-        identity: 46429,
-        labels: ['Enterprise'],
-        properties: {
-          name: '象山东兴雕刻古董家具有限公司(2002)',
-          setup_time: '1900/1/1',
-          address: '城西路4号',
-          captial: '0万人民币',
-          credit_code: '3302251001312'
-        }
+    {
+      id: '批量任务',
+      label: '批量任务',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120911,
-        labels: ['Country'],
-        properties: {
-          name: '乌克兰'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 46429,
-            labels: ['Enterprise'],
-            properties: {
-              name: '象山东兴雕刻古董家具有限公司(2002)',
-              setup_time: '1900/1/1',
-              address: '城西路4号',
-              captial: '0万人民币',
-              credit_code: '3302251001312'
-            }
-          },
-          relationship: {
-            identity: 471462,
-            start: 46429,
-            end: 120911,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120911,
-            labels: ['Country'],
-            properties: {
-              name: '乌克兰'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#76c100',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.275
-  },
-  {
-    p: {
-      start: {
-        identity: 46429,
-        labels: ['Enterprise'],
-        properties: {
-          name: '象山东兴雕刻古董家具有限公司(2002)',
-          setup_time: '1900/1/1',
-          address: '城西路4号',
-          captial: '0万人民币',
-          credit_code: '3302251001312'
-        }
+    {
+      id: '数据标准',
+      label: '数据标准',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        当前总成本: 'float',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        自身成本: 'float',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120807,
-        labels: ['Country'],
-        properties: {
-          name: '越南'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 46429,
-            labels: ['Enterprise'],
-            properties: {
-              name: '象山东兴雕刻古董家具有限公司(2002)',
-              setup_time: '1900/1/1',
-              address: '城西路4号',
-              captial: '0万人民币',
-              credit_code: '3302251001312'
-            }
-          },
-          relationship: {
-            identity: 411461,
-            start: 46429,
-            end: 120807,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120807,
-            labels: ['Country'],
-            properties: {
-              name: '越南'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        icon: '',
+        color: '#fd6ace',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.275
-  },
-  {
-    p: {
-      start: {
-        identity: 46429,
-        labels: ['Enterprise'],
-        properties: {
-          name: '象山东兴雕刻古董家具有限公司(2002)',
-          setup_time: '1900/1/1',
-          address: '城西路4号',
-          captial: '0万人民币',
-          credit_code: '3302251001312'
-        }
+    {
+      id: 'C模型',
+      label: 'C模型',
+      primary_keys: [],
+      properties: {
+        数据更新频度: 'text',
+        归属项目: 'text',
+        '数据分类-业务': 'text',
+        '归属数据字典-项': 'text',
+        敏感信息项: 'text',
+        数据消费者: 'text',
+        '数据资产统计指标-有效数据占比': 'float',
+        映射规则: 'text',
+        问题类型: 'text',
+        资产状态: 'text',
+        信息分类: 'text',
+        映射关系: 'text',
+        场景二级归属: 'text',
+        模型参数: 'text',
+        数据标准: 'text',
+        统计口径: 'text',
+        创建人: 'text',
+        监管数据标准: 'text',
+        数据提供者: 'text',
+        数据管理者: 'text',
+        报送频度: 'text',
+        X_feature: 'text',
+        归属D模型: 'text',
+        场景业务收益: 'float',
+        '质量评估规则-业务': 'text',
+        价值: 'float',
+        时效性评估: 'text',
+        项目联系人: 'text',
+        y_label: 'text',
+        '数据资产统计指标-缺失值占比': 'float',
+        适用监管: 'text',
+        数据热度: 'int',
+        '质量评估规则-技术': 'text',
+        模型: 'text',
+        归属批处理任务: 'text',
+        场景一级归属: 'text',
+        创建时间: 'date',
+        价值评级: 'int',
+        当前总成本: 'float',
+        业务术语: 'text',
+        数据开发者: 'text',
+        调用频度: 'text',
+        稀缺性评估: 'text',
+        是否是重点场景: 'boolean',
+        贡献值前三的场景个数: 'int',
+        资产英文名称: 'text',
+        主键标识: 'text',
+        来源接口类型: 'text',
+        '数据资产统计指标-重复数据占比': 'float',
+        默认值: 'text',
+        归属集群: 'text',
+        逻辑子系统: 'text',
+        质量评估: 'text',
+        数据来源系统: 'text',
+        自身成本: 'float',
+        schema: 'text',
+        数据生成方式: 'text',
+        活性评估: 'text',
+        资产中文名称: 'text',
+        数据资产场景收益贡献总值: 'float',
+        '数据分类-技术': 'text',
+        重点场景引用次数: 'int',
+        物理子系统: 'text',
+        备注: 'text',
+        归属表: 'text',
+        评估日期: 'text',
+        数据决策者: 'text',
+        combination_type: 'text',
+        数据资产编号: 'text'
       },
-      end: {
-        identity: 120861,
-        labels: ['Region'],
-        properties: {
-          name: '浙江省'
-        }
+      '~style': {
+        icon: '',
+        color: '#c570ff',
+        size: 'NORMAL',
+        display_fields: ['资产中文名称'],
+        join_symbols: ['-']
+      }
+    }
+  ],
+  links: [
+    {
+      id: '数据项-血缘_数据项_C模型->C模型',
+      label: '血缘_数据项_C模型',
+      source: '数据项',
+      target: 'C模型',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      segments: [
-        {
-          start: {
-            identity: 46429,
-            labels: ['Enterprise'],
-            properties: {
-              name: '象山东兴雕刻古董家具有限公司(2002)',
-              setup_time: '1900/1/1',
-              address: '城西路4号',
-              captial: '0万人民币',
-              credit_code: '3302251001312'
-            }
-          },
-          relationship: {
-            identity: 29583,
-            start: 46429,
-            end: 120861,
-            type: 'locate',
-            properties: {
-              name: '所在地区'
-            }
-          },
-          end: {
-            identity: 120861,
-            labels: ['Region'],
-            properties: {
-              name: '浙江省'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: false,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.275
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: '数据项-血缘_数据项_数据域->数据域',
+      label: '血缘_数据项_数据域',
+      source: '数据项',
+      target: '数据域',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 122725,
-        labels: ['Type'],
-        properties: {
-          name: '服务型'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 716536,
-            start: 55345,
-            end: 122725,
-            type: 'type',
-            properties: {
-              name: '类型'
-            }
-          },
-          end: {
-            identity: 122725,
-            labels: ['Type'],
-            properties: {
-              name: '服务型'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: false,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: '数据项-血缘_正反向寻源_数据项_指标->指标',
+      label: '血缘_正反向寻源_数据项_指标',
+      source: '数据项',
+      target: '指标',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120925,
-        labels: ['Country'],
-        properties: {
-          name: '西班牙'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 328349,
-            start: 55345,
-            end: 120925,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120925,
-            labels: ['Country'],
-            properties: {
-              name: '西班牙'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: '数据项-血缘_正反向寻源_数据项_生产字段->生产字段',
+      label: '血缘_正反向寻源_数据项_生产字段',
+      source: '数据项',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120796,
-        labels: ['Country'],
-        properties: {
-          name: '法国'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 302917,
-            start: 55345,
-            end: 120796,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120796,
-            labels: ['Country'],
-            properties: {
-              name: '法国'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: '指标-血缘_正反向寻源_指标_数据项->数据项',
+      label: '血缘_正反向寻源_指标_数据项',
+      source: '指标',
+      target: '数据项',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120810,
-        labels: ['Country'],
-        properties: {
-          name: '土耳其'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 215167,
-            start: 55345,
-            end: 120810,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120810,
-            labels: ['Country'],
-            properties: {
-              name: '土耳其'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: 'DATA_API-寻源_*_DATA_API_生产字段->生产字段',
+      label: '寻源_*_DATA_API_生产字段',
+      source: 'DATA_API',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120802,
-        labels: ['Country'],
-        properties: {
-          name: '阿联酋'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 214892,
-            start: 55345,
-            end: 120802,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120802,
-            labels: ['Country'],
-            properties: {
-              name: '阿联酋'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: '挖掘模型-寻源_*_挖掘模型_生产字段->生产字段',
+      label: '寻源_*_挖掘模型_生产字段',
+      source: '挖掘模型',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120807,
-        labels: ['Country'],
-        properties: {
-          name: '越南'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 209684,
-            start: 55345,
-            end: 120807,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120807,
-            labels: ['Country'],
-            properties: {
-              name: '越南'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: '自助查询-寻源_*_自助查询_生产字段->生产字段',
+      label: '寻源_*_自助查询_生产字段',
+      source: '自助查询',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120945,
-        labels: ['Country'],
-        properties: {
-          name: '希腊'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 175225,
-            start: 55345,
-            end: 120945,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120945,
-            labels: ['Country'],
-            properties: {
-              name: '希腊'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: '报表-寻源_*_报表_生产字段->生产字段',
+      label: '寻源_*_报表_生产字段',
+      source: '报表',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120965,
-        labels: ['Country'],
-        properties: {
-          name: '俄罗斯'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 138706,
-            start: 55345,
-            end: 120965,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120965,
-            labels: ['Country'],
-            properties: {
-              name: '俄罗斯'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: '指标-寻源_*_指标_生产字段->生产字段',
+      label: '寻源_*_指标_生产字段',
+      source: '指标',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120967,
-        labels: ['Country'],
-        properties: {
-          name: '意大利'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 101540,
-            start: 55345,
-            end: 120967,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120967,
-            labels: ['Country'],
-            properties: {
-              name: '意大利'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 55345,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴蓓蕾纺织品有限公司',
-          setup_time: '2015/6/2',
-          address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-          captial: '0万人民币',
-          credit_code: '91330621076227391Q'
-        }
+    {
+      id: 'DATA_API-血缘_正反向寻源_DATA_API_生产表->生产表',
+      label: '血缘_正反向寻源_DATA_API_生产表',
+      source: 'DATA_API',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120861,
-        labels: ['Region'],
-        properties: {
-          name: '浙江省'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 55345,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴蓓蕾纺织品有限公司',
-              setup_time: '2015/6/2',
-              address: '绍兴市柯桥区柯桥宝汇商务大厦1幢0912室',
-              captial: '0万人民币',
-              credit_code: '91330621076227391Q'
-            }
-          },
-          relationship: {
-            identity: 37085,
-            start: 55345,
-            end: 120861,
-            type: 'locate',
-            properties: {
-              name: '所在地区'
-            }
-          },
-          end: {
-            identity: 120861,
-            labels: ['Region'],
-            properties: {
-              name: '浙江省'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: false,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.25
-  },
-  {
-    p: {
-      start: {
-        identity: 61009,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴千海进出口有限公司',
-          setup_time: '2017/4/18',
-          address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-          captial: '0万人民币',
-          credit_code: '91330600050119683C'
-        }
+    {
+      id: '挖掘模型-血缘_正反向寻源_挖掘模型_生产表->生产表',
+      label: '血缘_正反向寻源_挖掘模型_生产表',
+      source: '挖掘模型',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 122725,
-        labels: ['Type'],
-        properties: {
-          name: '服务型'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 61009,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴千海进出口有限公司',
-              setup_time: '2017/4/18',
-              address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-              captial: '0万人民币',
-              credit_code: '91330600050119683C'
-            }
-          },
-          relationship: {
-            identity: 670921,
-            start: 61009,
-            end: 122725,
-            type: 'type',
-            properties: {
-              name: '类型'
-            }
-          },
-          end: {
-            identity: 122725,
-            labels: ['Type'],
-            properties: {
-              name: '服务型'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: false,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.242857142857143
-  },
-  {
-    p: {
-      start: {
-        identity: 61009,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴千海进出口有限公司',
-          setup_time: '2017/4/18',
-          address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-          captial: '0万人民币',
-          credit_code: '91330600050119683C'
-        }
+    {
+      id: '自助查询-血缘_正反向寻源_自助查询_生产表->生产表',
+      label: '血缘_正反向寻源_自助查询_生产表',
+      source: '自助查询',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120967,
-        labels: ['Country'],
-        properties: {
-          name: '意大利'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 61009,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴千海进出口有限公司',
-              setup_time: '2017/4/18',
-              address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-              captial: '0万人民币',
-              credit_code: '91330600050119683C'
-            }
-          },
-          relationship: {
-            identity: 571233,
-            start: 61009,
-            end: 120967,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120967,
-            labels: ['Country'],
-            properties: {
-              name: '意大利'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: false,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.242857142857143
-  },
-  {
-    p: {
-      start: {
-        identity: 61009,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴千海进出口有限公司',
-          setup_time: '2017/4/18',
-          address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-          captial: '0万人民币',
-          credit_code: '91330600050119683C'
-        }
+    {
+      id: '报表-血缘_正反向寻源_报表_生产表->生产表',
+      label: '血缘_正反向寻源_报表_生产表',
+      source: '报表',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120810,
-        labels: ['Country'],
-        properties: {
-          name: '土耳其'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 61009,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴千海进出口有限公司',
-              setup_time: '2017/4/18',
-              address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-              captial: '0万人民币',
-              credit_code: '91330600050119683C'
-            }
-          },
-          relationship: {
-            identity: 462927,
-            start: 61009,
-            end: 120810,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120810,
-            labels: ['Country'],
-            properties: {
-              name: '土耳其'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: false,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.242857142857143
-  },
-  {
-    p: {
-      start: {
-        identity: 61009,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴千海进出口有限公司',
-          setup_time: '2017/4/18',
-          address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-          captial: '0万人民币',
-          credit_code: '91330600050119683C'
-        }
+    {
+      id: '标签-血缘_正反向寻源_标签_生产表->生产表',
+      label: '血缘_正反向寻源_标签_生产表',
+      source: '标签',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120945,
-        labels: ['Country'],
-        properties: {
-          name: '希腊'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 61009,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴千海进出口有限公司',
-              setup_time: '2017/4/18',
-              address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-              captial: '0万人民币',
-              credit_code: '91330600050119683C'
-            }
-          },
-          relationship: {
-            identity: 313987,
-            start: 61009,
-            end: 120945,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120945,
-            labels: ['Country'],
-            properties: {
-              name: '希腊'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: false,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.242857142857143
-  },
-  {
-    p: {
-      start: {
-        identity: 61009,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴千海进出口有限公司',
-          setup_time: '2017/4/18',
-          address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-          captial: '0万人民币',
-          credit_code: '91330600050119683C'
-        }
+    {
+      id: '指标-血缘_正反向寻源_指标_生产表->生产表',
+      label: '血缘_正反向寻源_指标_生产表',
+      source: '指标',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 121013,
-        labels: ['Country'],
-        properties: {
-          name: '孟加拉国'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 61009,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴千海进出口有限公司',
-              setup_time: '2017/4/18',
-              address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-              captial: '0万人民币',
-              credit_code: '91330600050119683C'
-            }
-          },
-          relationship: {
-            identity: 238328,
-            start: 61009,
-            end: 121013,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 121013,
-            labels: ['Country'],
-            properties: {
-              name: '孟加拉国'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: false,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.242857142857143
-  },
-  {
-    p: {
-      start: {
-        identity: 61009,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴千海进出口有限公司',
-          setup_time: '2017/4/18',
-          address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-          captial: '0万人民币',
-          credit_code: '91330600050119683C'
-        }
+    {
+      id: 'D模型-血缘_正反向寻源_D_model_C_model->C模型',
+      label: '血缘_正反向寻源_D_model_C_model',
+      source: 'D模型',
+      target: 'C模型',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120807,
-        labels: ['Country'],
-        properties: {
-          name: '越南'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 61009,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴千海进出口有限公司',
-              setup_time: '2017/4/18',
-              address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-              captial: '0万人民币',
-              credit_code: '91330600050119683C'
-            }
-          },
-          relationship: {
-            identity: 220651,
-            start: 61009,
-            end: 120807,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120807,
-            labels: ['Country'],
-            properties: {
-              name: '越南'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: false,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.242857142857143
-  },
-  {
-    p: {
-      start: {
-        identity: 61009,
-        labels: ['Enterprise'],
-        properties: {
-          name: '绍兴千海进出口有限公司',
-          setup_time: '2017/4/18',
-          address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-          captial: '0万人民币',
-          credit_code: '91330600050119683C'
-        }
+    {
+      id: 'D模型-血缘_正反向寻源_D_model_生产表->生产表',
+      label: '血缘_正反向寻源_D_model_生产表',
+      source: 'D模型',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120861,
-        labels: ['Region'],
-        properties: {
-          name: '浙江省'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 61009,
-            labels: ['Enterprise'],
-            properties: {
-              name: '绍兴千海进出口有限公司',
-              setup_time: '2017/4/18',
-              address: '绍兴袍江启圣路以南与越英路交叉口生产车间',
-              captial: '0万人民币',
-              credit_code: '91330600050119683C'
-            }
-          },
-          relationship: {
-            identity: 19112,
-            start: 61009,
-            end: 120861,
-            type: 'locate',
-            properties: {
-              name: '所在地区'
-            }
-          },
-          end: {
-            identity: 120861,
-            labels: ['Region'],
-            properties: {
-              name: '浙江省'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.242857142857143
-  },
-  {
-    p: {
-      start: {
-        identity: 44255,
-        labels: ['Enterprise'],
-        properties: {
-          name: '宁波海天精工股份有限公司',
-          setup_time: '2011/9/14',
-          address: '宁波市北仑区黄山西路235号',
-          captial: '0万人民币',
-          credit_code: '0'
-        }
+    {
+      id: '批量任务-调用_输出_批量任务_生产表->生产表',
+      label: '调用_输出_批量任务_生产表',
+      source: '批量任务',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 122725,
-        labels: ['Type'],
-        properties: {
-          name: '服务型'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 44255,
-            labels: ['Enterprise'],
-            properties: {
-              name: '宁波海天精工股份有限公司',
-              setup_time: '2011/9/14',
-              address: '宁波市北仑区黄山西路235号',
-              captial: '0万人民币',
-              credit_code: '0'
-            }
-          },
-          relationship: {
-            identity: 704329,
-            start: 44255,
-            end: 122725,
-            type: 'type',
-            properties: {
-              name: '类型'
-            }
-          },
-          end: {
-            identity: 122725,
-            labels: ['Type'],
-            properties: {
-              name: '服务型'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.073078749505342
-  },
-  {
-    p: {
-      start: {
-        identity: 44255,
-        labels: ['Enterprise'],
-        properties: {
-          name: '宁波海天精工股份有限公司',
-          setup_time: '2011/9/14',
-          address: '宁波市北仑区黄山西路235号',
-          captial: '0万人民币',
-          credit_code: '0'
-        }
+    {
+      id: '标签-寻源_*_标签_生产字段->生产字段',
+      label: '寻源_*_标签_生产字段',
+      source: '标签',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120913,
-        labels: ['Country'],
-        properties: {
-          name: '伊朗'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 44255,
-            labels: ['Enterprise'],
-            properties: {
-              name: '宁波海天精工股份有限公司',
-              setup_time: '2011/9/14',
-              address: '宁波市北仑区黄山西路235号',
-              captial: '0万人民币',
-              credit_code: '0'
-            }
-          },
-          relationship: {
-            identity: 502695,
-            start: 44255,
-            end: 120913,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120913,
-            labels: ['Country'],
-            properties: {
-              name: '伊朗'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.073078749505342
-  },
-  {
-    p: {
-      start: {
-        identity: 44255,
-        labels: ['Enterprise'],
-        properties: {
-          name: '宁波海天精工股份有限公司',
-          setup_time: '2011/9/14',
-          address: '宁波市北仑区黄山西路235号',
-          captial: '0万人民币',
-          credit_code: '0'
-        }
+    {
+      id: '批量任务-调用_输入_批量任务_生产表->生产表',
+      label: '调用_输入_批量任务_生产表',
+      source: '批量任务',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120965,
-        labels: ['Country'],
-        properties: {
-          name: '俄罗斯'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 44255,
-            labels: ['Enterprise'],
-            properties: {
-              name: '宁波海天精工股份有限公司',
-              setup_time: '2011/9/14',
-              address: '宁波市北仑区黄山西路235号',
-              captial: '0万人民币',
-              credit_code: '0'
-            }
-          },
-          relationship: {
-            identity: 484005,
-            start: 44255,
-            end: 120965,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120965,
-            labels: ['Country'],
-            properties: {
-              name: '俄罗斯'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.073078749505342
-  },
-  {
-    p: {
-      start: {
-        identity: 44255,
-        labels: ['Enterprise'],
-        properties: {
-          name: '宁波海天精工股份有限公司',
-          setup_time: '2011/9/14',
-          address: '宁波市北仑区黄山西路235号',
-          captial: '0万人民币',
-          credit_code: '0'
-        }
+    {
+      id: '批量任务-后置任务->批量任务',
+      label: '后置任务',
+      source: '批量任务',
+      target: '批量任务',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120810,
-        labels: ['Country'],
-        properties: {
-          name: '土耳其'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 44255,
-            labels: ['Enterprise'],
-            properties: {
-              name: '宁波海天精工股份有限公司',
-              setup_time: '2011/9/14',
-              address: '宁波市北仑区黄山西路235号',
-              captial: '0万人民币',
-              credit_code: '0'
-            }
-          },
-          relationship: {
-            identity: 478870,
-            start: 44255,
-            end: 120810,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120810,
-            labels: ['Country'],
-            properties: {
-              name: '土耳其'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.073078749505342
-  },
-  {
-    p: {
-      start: {
-        identity: 44255,
-        labels: ['Enterprise'],
-        properties: {
-          name: '宁波海天精工股份有限公司',
-          setup_time: '2011/9/14',
-          address: '宁波市北仑区黄山西路235号',
-          captial: '0万人民币',
-          credit_code: '0'
-        }
+    {
+      id: '批量任务-上游依赖->批量任务',
+      label: '上游依赖',
+      source: '批量任务',
+      target: '批量任务',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120786,
-        labels: ['Country'],
-        properties: {
-          name: '印度'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 44255,
-            labels: ['Enterprise'],
-            properties: {
-              name: '宁波海天精工股份有限公司',
-              setup_time: '2011/9/14',
-              address: '宁波市北仑区黄山西路235号',
-              captial: '0万人民币',
-              credit_code: '0'
-            }
-          },
-          relationship: {
-            identity: 274297,
-            start: 44255,
-            end: 120786,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120786,
-            labels: ['Country'],
-            properties: {
-              name: '印度'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.073078749505342
-  },
-  {
-    p: {
-      start: {
-        identity: 44255,
-        labels: ['Enterprise'],
-        properties: {
-          name: '宁波海天精工股份有限公司',
-          setup_time: '2011/9/14',
-          address: '宁波市北仑区黄山西路235号',
-          captial: '0万人民币',
-          credit_code: '0'
-        }
+    {
+      id: '生产表-血缘_连接_生产表_DATA_API->DATA_API',
+      label: '血缘_连接_生产表_DATA_API',
+      source: '生产表',
+      target: 'DATA_API',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120807,
-        labels: ['Country'],
-        properties: {
-          name: '越南'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 44255,
-            labels: ['Enterprise'],
-            properties: {
-              name: '宁波海天精工股份有限公司',
-              setup_time: '2011/9/14',
-              address: '宁波市北仑区黄山西路235号',
-              captial: '0万人民币',
-              credit_code: '0'
-            }
-          },
-          relationship: {
-            identity: 83384,
-            start: 44255,
-            end: 120807,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120807,
-            labels: ['Country'],
-            properties: {
-              name: '越南'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.073078749505342
-  },
-  {
-    p: {
-      start: {
-        identity: 44255,
-        labels: ['Enterprise'],
-        properties: {
-          name: '宁波海天精工股份有限公司',
-          setup_time: '2011/9/14',
-          address: '宁波市北仑区黄山西路235号',
-          captial: '0万人民币',
-          credit_code: '0'
-        }
+    {
+      id: '生产表-血缘_筛选_生产表_DATA_API->DATA_API',
+      label: '血缘_筛选_生产表_DATA_API',
+      source: '生产表',
+      target: 'DATA_API',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120861,
-        labels: ['Region'],
-        properties: {
-          name: '浙江省'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 44255,
-            labels: ['Enterprise'],
-            properties: {
-              name: '宁波海天精工股份有限公司',
-              setup_time: '2011/9/14',
-              address: '宁波市北仑区黄山西路235号',
-              captial: '0万人民币',
-              credit_code: '0'
-            }
-          },
-          relationship: {
-            identity: 37818,
-            start: 44255,
-            end: 120861,
-            type: 'locate',
-            properties: {
-              name: '所在地区'
-            }
-          },
-          end: {
-            identity: 120861,
-            labels: ['Region'],
-            properties: {
-              name: '浙江省'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 2.073078749505342
-  },
-  {
-    p: {
-      start: {
-        identity: 10,
-        labels: ['Enterprise'],
-        properties: {
-          name: '玉环达丰环保设备有限公司',
-          setup_time: '2007/5/31',
-          address: '玉环市芦浦镇漩门工业城',
-          captial: '2000.0万人民币',
-          credit_code: '91331021148341995W'
-        }
+    {
+      id: '生产表-血缘_投影_生产表_DATA_API->DATA_API',
+      label: '血缘_投影_生产表_DATA_API',
+      source: '生产表',
+      target: 'DATA_API',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 122725,
-        labels: ['Type'],
-        properties: {
-          name: '服务型'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 10,
-            labels: ['Enterprise'],
-            properties: {
-              name: '玉环达丰环保设备有限公司',
-              setup_time: '2007/5/31',
-              address: '玉环市芦浦镇漩门工业城',
-              captial: '2000.0万人民币',
-              credit_code: '91331021148341995W'
-            }
-          },
-          relationship: {
-            identity: 624028,
-            start: 10,
-            end: 122725,
-            type: 'type',
-            properties: {
-              name: '类型'
-            }
-          },
-          end: {
-            identity: 122725,
-            labels: ['Type'],
-            properties: {
-              name: '服务型'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 0.0
-  },
-  {
-    p: {
-      start: {
-        identity: 10,
-        labels: ['Enterprise'],
-        properties: {
-          name: '玉环达丰环保设备有限公司',
-          setup_time: '2007/5/31',
-          address: '玉环市芦浦镇漩门工业城',
-          captial: '2000.0万人民币',
-          credit_code: '91331021148341995W'
-        }
+    {
+      id: '生产表-血缘_连接_生产表_挖掘模型->挖掘模型',
+      label: '血缘_连接_生产表_挖掘模型',
+      source: '生产表',
+      target: '挖掘模型',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120810,
-        labels: ['Country'],
-        properties: {
-          name: '土耳其'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 10,
-            labels: ['Enterprise'],
-            properties: {
-              name: '玉环达丰环保设备有限公司',
-              setup_time: '2007/5/31',
-              address: '玉环市芦浦镇漩门工业城',
-              captial: '2000.0万人民币',
-              credit_code: '91331021148341995W'
-            }
-          },
-          relationship: {
-            identity: 604982,
-            start: 10,
-            end: 120810,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120810,
-            labels: ['Country'],
-            properties: {
-              name: '土耳其'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['数据资产场景贡献值'],
+        join_symbols: ['-']
+      }
     },
-    score: 0.0
-  },
-  {
-    p: {
-      start: {
-        identity: 10,
-        labels: ['Enterprise'],
-        properties: {
-          name: '玉环达丰环保设备有限公司',
-          setup_time: '2007/5/31',
-          address: '玉环市芦浦镇漩门工业城',
-          captial: '2000.0万人民币',
-          credit_code: '91331021148341995W'
-        }
+    {
+      id: '生产表-血缘_筛选_生产表_挖掘模型->挖掘模型',
+      label: '血缘_筛选_生产表_挖掘模型',
+      source: '生产表',
+      target: '挖掘模型',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120965,
-        labels: ['Country'],
-        properties: {
-          name: '俄罗斯'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 10,
-            labels: ['Enterprise'],
-            properties: {
-              name: '玉环达丰环保设备有限公司',
-              setup_time: '2007/5/31',
-              address: '玉环市芦浦镇漩门工业城',
-              captial: '2000.0万人民币',
-              credit_code: '91331021148341995W'
-            }
-          },
-          relationship: {
-            identity: 577929,
-            start: 10,
-            end: 120965,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120965,
-            labels: ['Country'],
-            properties: {
-              name: '俄罗斯'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['数据资产场景贡献值'],
+        join_symbols: ['-']
+      }
     },
-    score: 0.0
-  },
-  {
-    p: {
-      start: {
-        identity: 10,
-        labels: ['Enterprise'],
-        properties: {
-          name: '玉环达丰环保设备有限公司',
-          setup_time: '2007/5/31',
-          address: '玉环市芦浦镇漩门工业城',
-          captial: '2000.0万人民币',
-          credit_code: '91331021148341995W'
-        }
+    {
+      id: '生产表-血缘_投影_生产表_挖掘模型->挖掘模型',
+      label: '血缘_投影_生产表_挖掘模型',
+      source: '生产表',
+      target: '挖掘模型',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120911,
-        labels: ['Country'],
-        properties: {
-          name: '乌克兰'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 10,
-            labels: ['Enterprise'],
-            properties: {
-              name: '玉环达丰环保设备有限公司',
-              setup_time: '2007/5/31',
-              address: '玉环市芦浦镇漩门工业城',
-              captial: '2000.0万人民币',
-              credit_code: '91331021148341995W'
-            }
-          },
-          relationship: {
-            identity: 406404,
-            start: 10,
-            end: 120911,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120911,
-            labels: ['Country'],
-            properties: {
-              name: '乌克兰'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['数据资产场景贡献值'],
+        join_symbols: ['-']
+      }
     },
-    score: 0.0
-  },
-  {
-    p: {
-      start: {
-        identity: 10,
-        labels: ['Enterprise'],
-        properties: {
-          name: '玉环达丰环保设备有限公司',
-          setup_time: '2007/5/31',
-          address: '玉环市芦浦镇漩门工业城',
-          captial: '2000.0万人民币',
-          credit_code: '91331021148341995W'
-        }
+    {
+      id: '生产表-血缘_连接_生产表_自助查询->自助查询',
+      label: '血缘_连接_生产表_自助查询',
+      source: '生产表',
+      target: '自助查询',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120945,
-        labels: ['Country'],
-        properties: {
-          name: '希腊'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 10,
-            labels: ['Enterprise'],
-            properties: {
-              name: '玉环达丰环保设备有限公司',
-              setup_time: '2007/5/31',
-              address: '玉环市芦浦镇漩门工业城',
-              captial: '2000.0万人民币',
-              credit_code: '91331021148341995W'
-            }
-          },
-          relationship: {
-            identity: 219530,
-            start: 10,
-            end: 120945,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120945,
-            labels: ['Country'],
-            properties: {
-              name: '希腊'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 0.0
-  },
-  {
-    p: {
-      start: {
-        identity: 10,
-        labels: ['Enterprise'],
-        properties: {
-          name: '玉环达丰环保设备有限公司',
-          setup_time: '2007/5/31',
-          address: '玉环市芦浦镇漩门工业城',
-          captial: '2000.0万人民币',
-          credit_code: '91331021148341995W'
-        }
+    {
+      id: '生产表-血缘_筛选_生产表_自助查询->自助查询',
+      label: '血缘_筛选_生产表_自助查询',
+      source: '生产表',
+      target: '自助查询',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120807,
-        labels: ['Country'],
-        properties: {
-          name: '越南'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 10,
-            labels: ['Enterprise'],
-            properties: {
-              name: '玉环达丰环保设备有限公司',
-              setup_time: '2007/5/31',
-              address: '玉环市芦浦镇漩门工业城',
-              captial: '2000.0万人民币',
-              credit_code: '91331021148341995W'
-            }
-          },
-          relationship: {
-            identity: 115562,
-            start: 10,
-            end: 120807,
-            type: 'export',
-            properties: {
-              name: '出口'
-            }
-          },
-          end: {
-            identity: 120807,
-            labels: ['Country'],
-            properties: {
-              name: '越南'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 0.0
-  },
-  {
-    p: {
-      start: {
-        identity: 10,
-        labels: ['Enterprise'],
-        properties: {
-          name: '玉环达丰环保设备有限公司',
-          setup_time: '2007/5/31',
-          address: '玉环市芦浦镇漩门工业城',
-          captial: '2000.0万人民币',
-          credit_code: '91331021148341995W'
-        }
+    {
+      id: '生产表-血缘_投影_生产表_自助查询->自助查询',
+      label: '血缘_投影_生产表_自助查询',
+      source: '生产表',
+      target: '自助查询',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
       },
-      end: {
-        identity: 120861,
-        labels: ['Region'],
-        properties: {
-          name: '浙江省'
-        }
-      },
-      segments: [
-        {
-          start: {
-            identity: 10,
-            labels: ['Enterprise'],
-            properties: {
-              name: '玉环达丰环保设备有限公司',
-              setup_time: '2007/5/31',
-              address: '玉环市芦浦镇漩门工业城',
-              captial: '2000.0万人民币',
-              credit_code: '91331021148341995W'
-            }
-          },
-          relationship: {
-            identity: 31637,
-            start: 10,
-            end: 120861,
-            type: 'locate',
-            properties: {
-              name: '所在地区'
-            }
-          },
-          end: {
-            identity: 120861,
-            labels: ['Region'],
-            properties: {
-              name: '浙江省'
-            }
-          }
-        }
-      ],
-      length: 1.0
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
     },
-    score: 0.0
-  }
-]
+    {
+      id: '生产表-血缘_连接_生产表_报表->报表',
+      label: '血缘_连接_生产表_报表',
+      source: '生产表',
+      target: '报表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_筛选_生产表_报表->报表',
+      label: '血缘_筛选_生产表_报表',
+      source: '生产表',
+      target: '报表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_投影_生产表_报表->报表',
+      label: '血缘_投影_生产表_报表',
+      source: '生产表',
+      target: '报表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_连接_生产表_标签->标签',
+      label: '血缘_连接_生产表_标签',
+      source: '生产表',
+      target: '标签',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_筛选_生产表_标签->标签',
+      label: '血缘_筛选_生产表_标签',
+      source: '生产表',
+      target: '标签',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_投影_生产表_标签->标签',
+      label: '血缘_投影_生产表_标签',
+      source: '生产表',
+      target: '标签',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_连接_生产表_指标->指标',
+      label: '血缘_连接_生产表_指标',
+      source: '生产表',
+      target: '指标',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_筛选_生产表_指标->指标',
+      label: '血缘_筛选_生产表_指标',
+      source: '生产表',
+      target: '指标',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_投影_生产表_指标->指标',
+      label: '血缘_投影_生产表_指标',
+      source: '生产表',
+      target: '指标',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_正反向寻源_生产表_D_model->D模型',
+      label: '血缘_正反向寻源_生产表_D_model',
+      source: '生产表',
+      target: 'D模型',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-调用_输出_生产表_批量任务->批量任务',
+      label: '调用_输出_生产表_批量任务',
+      source: '生产表',
+      target: '批量任务',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-调用_输入_生产表_批量任务->批量任务',
+      label: '调用_输入_生产表_批量任务',
+      source: '生产表',
+      target: '批量任务',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-主从表->生产表',
+      label: '主从表',
+      source: '生产表',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_连接_生产表_生产表->生产表',
+      label: '血缘_连接_生产表_生产表',
+      source: '生产表',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_筛选_生产表_生产表->生产表',
+      label: '血缘_筛选_生产表_生产表',
+      source: '生产表',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-血缘_投影_生产表_生产表->生产表',
+      label: '血缘_投影_生产表_生产表',
+      source: '生产表',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_投影_生产字段_生产字段->生产字段',
+      label: '血缘_投影_生产字段_生产字段',
+      source: '生产字段',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产表-寻源_*_生产表_生产字段->生产字段',
+      label: '寻源_*_生产表_生产字段',
+      source: '生产表',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_筛选_生产字段_生产字段->生产字段',
+      label: '血缘_筛选_生产字段_生产字段',
+      source: '生产字段',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_连接_生产字段_DATA_API->DATA_API',
+      label: '血缘_连接_生产字段_DATA_API',
+      source: '生产字段',
+      target: 'DATA_API',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_连接_生产字段_生产字段->生产字段',
+      label: '血缘_连接_生产字段_生产字段',
+      source: '生产字段',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-主外键->生产字段',
+      label: '主外键',
+      source: '生产字段',
+      target: '生产字段',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_投影_生产字段_生产表->生产表',
+      label: '血缘_投影_生产字段_生产表',
+      source: '生产字段',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_筛选_生产字段_生产表->生产表',
+      label: '血缘_筛选_生产字段_生产表',
+      source: '生产字段',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_连接_生产字段_生产表->生产表',
+      label: '血缘_连接_生产字段_生产表',
+      source: '生产字段',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-属性_字段->生产表',
+      label: '属性_字段',
+      source: '生产字段',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-属性_主键->生产表',
+      label: '属性_主键',
+      source: '生产字段',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_筛选_生产字段_DATA_API->DATA_API',
+      label: '血缘_筛选_生产字段_DATA_API',
+      source: '生产字段',
+      target: 'DATA_API',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_投影_生产字段_DATA_API->DATA_API',
+      label: '血缘_投影_生产字段_DATA_API',
+      source: '生产字段',
+      target: 'DATA_API',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_连接_生产字段_挖掘模型->挖掘模型',
+      label: '血缘_连接_生产字段_挖掘模型',
+      source: '生产字段',
+      target: '挖掘模型',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['数据资产场景贡献值'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_筛选_生产字段_挖掘模型->挖掘模型',
+      label: '血缘_筛选_生产字段_挖掘模型',
+      source: '生产字段',
+      target: '挖掘模型',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['数据资产场景贡献值'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_投影_生产字段_挖掘模型->挖掘模型',
+      label: '血缘_投影_生产字段_挖掘模型',
+      source: '生产字段',
+      target: '挖掘模型',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['数据资产场景贡献值'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_连接_生产字段_自助查询->自助查询',
+      label: '血缘_连接_生产字段_自助查询',
+      source: '生产字段',
+      target: '自助查询',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_筛选_生产字段_自助查询->自助查询',
+      label: '血缘_筛选_生产字段_自助查询',
+      source: '生产字段',
+      target: '自助查询',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_投影_生产字段_自助查询->自助查询',
+      label: '血缘_投影_生产字段_自助查询',
+      source: '生产字段',
+      target: '自助查询',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_连接_生产字段_报表->报表',
+      label: '血缘_连接_生产字段_报表',
+      source: '生产字段',
+      target: '报表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_筛选_生产字段_报表->报表',
+      label: '血缘_筛选_生产字段_报表',
+      source: '生产字段',
+      target: '报表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_投影_生产字段_报表->报表',
+      label: '血缘_投影_生产字段_报表',
+      source: '生产字段',
+      target: '报表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_连接_生产字段_标签->标签',
+      label: '血缘_连接_生产字段_标签',
+      source: '生产字段',
+      target: '标签',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_筛选_生产字段_标签->标签',
+      label: '血缘_筛选_生产字段_标签',
+      source: '生产字段',
+      target: '标签',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_投影_生产字段_标签->标签',
+      label: '血缘_投影_生产字段_标签',
+      source: '生产字段',
+      target: '标签',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_连接_生产字段_指标->指标',
+      label: '血缘_连接_生产字段_指标',
+      source: '生产字段',
+      target: '指标',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_筛选_生产字段_指标->指标',
+      label: '血缘_筛选_生产字段_指标',
+      source: '生产字段',
+      target: '指标',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_投影_生产字段_指标->指标',
+      label: '血缘_投影_生产字段_指标',
+      source: '生产字段',
+      target: '指标',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-血缘_正反向寻源_生产字段_数据项->数据项',
+      label: '血缘_正反向寻源_生产字段_数据项',
+      source: '生产字段',
+      target: '数据项',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-属性_衍生字段->生产表',
+      label: '属性_衍生字段',
+      source: '生产字段',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    },
+    {
+      id: '生产字段-属性_外键->生产表',
+      label: '属性_外键',
+      source: '生产字段',
+      target: '生产表',
+      sort_keys: [],
+      properties: {
+        数据资产场景贡献值: 'float',
+        规则: 'text',
+        数据资产场景收益贡献值: 'float',
+        权重: 'float',
+        分配权重: 'float',
+        描述: 'text',
+        关键字: 'text'
+      },
+      '~style': {
+        color: '#8ecc93',
+        with_arrow: true,
+        line_type: 'SOLID',
+        thickness: 'NORMAL',
+        display_fields: ['分配权重'],
+        join_symbols: ['-']
+      }
+    }
+  ]
+}
 
 const records = {
   nodes: [
@@ -2814,4 +3401,4 @@ const records = {
   ]
 }
 
-export { top5, records }
+export { testData, records }
