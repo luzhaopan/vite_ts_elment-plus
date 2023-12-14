@@ -20,7 +20,8 @@
     CSS2DRenderer,
     CSS2DObject
   } from 'three/addons/renderers/CSS2DRenderer.js'
-  import { records, testData } from './data/data.js'
+  import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
+  import { testData } from './data/data.js'
   import imgName from './imgs/cat.jpg'
 
   const drawer = ref(false)
@@ -73,15 +74,15 @@
       //   node.fy = node.y
       //   node.fz = node.z
       // })
-      .nodeThreeObject((node) => SpriteMesh(node))
+      // .nodeThreeObject((node) => SpriteMesh(node))
       // .nodeThreeObject((node) => sphereMesh(node))
-      // .nodeThreeObject((node) => {
-      //   const nodeEl = document.createElement('div')
-      //   nodeEl.textContent = node.id
-      //   nodeEl.style.color = node.color
-      //   nodeEl.className = 'node-label'
-      //   return new CSS2DObject(nodeEl)
-      // })
+      .nodeThreeObject((node) => {
+        const nodeEl = document.createElement('div')
+        nodeEl.textContent = node.id
+        nodeEl.style.color = '#fff'
+        nodeEl.className = 'node-label'
+        return new CSS2DObject(nodeEl)
+      })
       .nodeThreeObjectExtend(true)
       .onNodeClick((node: any) => {
         // Aim at node from outside it
@@ -153,9 +154,19 @@
       })
       .graphData(gData.data)
 
+    glowHandle()
+
     cameraCenter()
     // 适应屏幕大小变化
     window.addEventListener('resize', (el) => Graph.width(elm.offsetWidth))
+  }
+  // 发光效果处理
+  function glowHandle() {
+    const bloomPass = new UnrealBloomPass()
+    bloomPass.strength = 0.5 // 强度
+    bloomPass.radius = 2 // 半径
+    bloomPass.threshold = 0.1 // 阈值
+    Graph.postProcessingComposer().addPass(bloomPass)
   }
   // 节点对象处理成图片展示
   function SpriteMesh(node) {
