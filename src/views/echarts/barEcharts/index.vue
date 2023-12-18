@@ -12,7 +12,7 @@
       <ECharts :options="optionsW3" height="500px" />
     </el-col>
 
-    <el-col :span="24"> ---- </el-col>
+    <el-col :span="24"> ----44444444444444444444444444444 </el-col>
 
     <el-col :span="12">
       <ECharts :options="options1" height="600px" />
@@ -51,6 +51,9 @@
       top: '60',
       icon: 'rect',
       itemHeight: 4,
+      textStyle: {
+        fontSize: 18
+      },
       data: ['真实样本', '合成样本']
     },
     color: ['blue', 'orange'],
@@ -61,9 +64,9 @@
         nameTextStyle: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 18
         },
-        nameGap: 30,
+        nameGap: 40,
         axisLine: {
           show: true
         },
@@ -76,7 +79,7 @@
         axisLabel: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 18,
           interval: 29
         },
         data: dataW1.map(function (item) {
@@ -105,11 +108,11 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 18
         },
         max: 1,
         min: 0,
-        nameGap: 35,
+        nameGap: 45,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -120,7 +123,7 @@
         axisLabel: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 18
         }
       },
       {
@@ -171,6 +174,9 @@
       top: '60',
       icon: 'rect',
       itemHeight: 4,
+      textStyle: {
+        fontSize: 18
+      },
       data: ['真实样本', '合成样本']
     },
     color: ['blue', 'orange'],
@@ -181,9 +187,9 @@
         nameTextStyle: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 18
         },
-        nameGap: 30,
+        nameGap: 40,
         axisLine: {
           show: true
         },
@@ -196,7 +202,7 @@
         axisLabel: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 18,
           interval: 29
         },
         data: dataW1.map(function (item) {
@@ -225,11 +231,11 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 18
         },
         max: 1,
         min: 0,
-        nameGap: 35,
+        nameGap: 45,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -240,7 +246,7 @@
         axisLabel: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 18
         }
       },
       {
@@ -287,6 +293,9 @@
       top: '60',
       icon: 'rect',
       itemHeight: 4,
+      textStyle: {
+        fontSize: 18
+      },
       data: ['真实样本', '合成样本']
     },
     color: ['blue', 'orange'],
@@ -297,9 +306,9 @@
         nameTextStyle: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 18
         },
-        nameGap: 30,
+        nameGap: 40,
         axisLine: {
           show: true
         },
@@ -312,7 +321,7 @@
         axisLabel: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 18,
           interval: 29
         },
         data: dataW3.map(function (item) {
@@ -341,11 +350,11 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 18
         },
         max: 1,
         min: 0,
-        nameGap: 35,
+        nameGap: 45,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -356,7 +365,7 @@
         axisLabel: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 18
         }
       },
       {
@@ -404,9 +413,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 22
         },
-        nameGap: 30,
+        nameGap: 40,
         data: [
           '0.0',
           '',
@@ -448,7 +457,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           interval: 0
         }
       },
@@ -502,9 +511,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 16
+          fontSize: 22
         },
-        nameGap: 35,
+        nameGap: 45,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -515,7 +524,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
           }
@@ -538,8 +547,11 @@
       itemHeight: 4,
       itemGap: 15,
       width: 100,
-      left: '66%',
+      left: '50%',
       bottom: '15%',
+      textStyle: {
+        fontSize: 22
+      },
       data: [
         'Raw data AUC = 0.5338',
         'RUS AUC = 0.6439',
@@ -772,9 +784,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 22
         },
-        nameGap: 30,
+        nameGap: 40,
         data: [
           '0.0',
           '',
@@ -816,7 +828,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 18,
           interval: 0
         }
       },
@@ -870,9 +882,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 16
+          fontSize: 22
         },
-        nameGap: 35,
+        nameGap: 45,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -883,7 +895,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
           }
@@ -906,8 +918,11 @@
       itemHeight: 4,
       itemGap: 15,
       width: 100,
-      left: '66%',
+      left: '55%',
       bottom: '15%',
+      textStyle: {
+        fontSize: 22
+      },
       data: [
         'Raw data AUC = 0.5795',
         'RUS AUC = 0.7058',
@@ -1140,9 +1155,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 22
         },
-        nameGap: 30,
+        nameGap: 40,
         data: [
           '0.0',
           '',
@@ -1184,7 +1199,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           interval: 0
         }
       },
@@ -1238,9 +1253,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 16
+          fontSize: 22
         },
-        nameGap: 35,
+        nameGap: 45,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -1251,7 +1266,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
           }
@@ -1274,8 +1289,11 @@
       itemHeight: 4,
       itemGap: 15,
       width: 100,
-      left: '60%',
+      left: '12%',
       bottom: '12%',
+      textStyle: {
+        fontSize: 22
+      },
       data: [
         'SVM AUC = 0.3743',
         'BF AUC = 0.4703',
@@ -1537,9 +1555,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 22
         },
-        nameGap: 30,
+        nameGap: 40,
         data: [
           '0.0',
           '',
@@ -1581,7 +1599,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           interval: 0
         }
       },
@@ -1635,9 +1653,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 16
+          fontSize: 22
         },
-        nameGap: 35,
+        nameGap: 45,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -1648,7 +1666,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
           }
@@ -1671,8 +1689,11 @@
       itemHeight: 4,
       itemGap: 15,
       width: 100,
-      left: '60%',
+      left: '44%',
       bottom: '15%',
+      textStyle: {
+        fontSize: 22
+      },
       data: [
         'SVM AUC = 0.6144',
         'BF AUC = 0.7053',
@@ -1935,9 +1956,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 22
         },
-        nameGap: 30,
+        nameGap: 40,
         data: [
           '0.0',
           '',
@@ -1979,7 +2000,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           interval: 0
         }
       },
@@ -2033,9 +2054,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 16
+          fontSize: 22
         },
-        nameGap: 35,
+        nameGap: 45,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -2046,7 +2067,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
           }
@@ -2069,8 +2090,11 @@
       itemHeight: 4,
       itemGap: 15,
       width: 100,
-      left: '66%',
+      left: '56%',
       bottom: '15%',
+      textStyle: {
+        fontSize: 22
+      },
       data: [
         'Test1 AUC = 0.7765',
         'Test2 AUC = 0.7946',
@@ -2227,9 +2251,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14
+          fontSize: 22
         },
-        nameGap: 30,
+        nameGap: 40,
         data: [
           '0.0',
           '',
@@ -2271,7 +2295,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           interval: 0
         }
       },
@@ -2325,9 +2349,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 16
+          fontSize: 22
         },
-        nameGap: 35,
+        nameGap: 45,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -2338,7 +2362,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 14,
+          fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
           }
@@ -2361,8 +2385,11 @@
       itemHeight: 4,
       itemGap: 15,
       width: 100,
-      left: '66%',
+      left: '56%',
       bottom: '15%',
+      textStyle: {
+        fontSize: 22
+      },
       data: [
         'Test1 AUC = 0.8434',
         'Test2 AUC = 0.8631',
