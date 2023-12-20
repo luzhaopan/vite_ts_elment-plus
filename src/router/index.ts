@@ -179,6 +179,12 @@ const routes = [
         name: 'Graph3D',
         component: () => import('@/views/graph3D/graph3D.vue'),
         meta: { title: 'Graph3D' }
+      },
+      {
+        path: '/graph3D/materialNode',
+        name: 'MaterialNode',
+        component: () => import('@/views/graph3D/materialNode.vue'),
+        meta: { title: 'MaterialNode' }
       }
     ]
   },
