@@ -50,8 +50,8 @@
     // DOM初始化及数据挂载
     const elm = document.getElementById('3d-graph-m')
     Graph = ForceGraph3D()(elm)
-      .width(window.innerWidth)
-      .height(window.innerHeight)
+      .width(window.innerWidth - 240)
+      .height(window.innerHeight - 220)
       .graphData(data)
       .backgroundColor('#0a1247')
       .showNavInfo(false)
@@ -61,7 +61,6 @@
       .linkDirectionalParticles((link) => (highlightLinks.has(link) ? 4 : 0))
       .linkDirectionalParticleWidth(4)
       .linkDirectionalParticleResolution(8)
-
       .nodeLabel((node) => `<p style="color:#0f0;">${node.num}<p>`)
       .nodeThreeObject((node) => {
         const vertexShader = [
@@ -155,10 +154,11 @@
         // 显示文字
         const sprite = new SpriteText(node.num)
         sprite.color = node.status === 'red' ? '#f00' : '#fff'
-        sprite.textHeight = 1.5
+        sprite.textHeight = 7
         bottomSphereMesh1.add(sprite)
 
         const group = new THREE.Group()
+        // group.add(bottomSphereMesh2, bottomSphereMesh1)
         group.add(bottomSphereMesh2, bottomSphereMesh1, haloMesh)
         // Graph.scene().add(group)
 
@@ -237,6 +237,23 @@
       })
       .dagMode('radialin') // 布局径向向内
       .dagLevelDistance(15) // 节点距离
+
+    // Graph.d3Force('charge').strength(-10) // 节点之间的距离，数越小距离越大
+    Graph.cameraPosition({
+      x: 0,
+      y: 0,
+      z: 400
+    }) // 相机位置，更改z轴位置即可调整镜头远近距离
+
+    // 轨道控制器，在相机进行轨道运动时隐藏弹出框
+    const controls = new OrbitControls(
+      Graph.camera(),
+      Graph.renderer().domElement
+    )
+    controls.addEventListener('change', (event) => {
+      // dialog.style.display = 'none';
+      console.log(3232)
+    })
   }
 
   // 材质对象  MeshBasicMaterial   MeshLambertMaterial  MeshPhongMaterial
