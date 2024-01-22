@@ -1,8 +1,8 @@
 <template>
   <div>
     <div id="3d-graph" class="three-graph">434342</div>
-    <div class="menu" :style="menuStyle" v-show="showMenu">
-      <MenuView @handle-change="menuClick" />
+    <div class="menu" :style="menuStyle">
+      <MenuView @handle-change="menuClick" v-if="showMenu" />
     </div>
     <el-drawer
       v-model="drawer"
