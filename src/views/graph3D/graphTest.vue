@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="3d-graph" class="three-graph">434342</div>
+    <div id="3d-graph" class="three-graph" @click="graphClick"></div>
     <div class="menu" :style="menuStyle">
       <MenuView @handle-change="menuClick" v-if="showMenu" />
     </div>
@@ -130,6 +130,10 @@
           target: Math.round(Math.random() * (id - 1))
         }))
     }
+  }
+
+  function graphClick() {
+    showMenu.value = false
   }
 
   function menuClick(val) {

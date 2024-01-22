@@ -55,7 +55,7 @@
   // 圆半径
   const or = ref(0)
   // 默认圆的半径附加值，在自动生成的圆的半径基础上加上这个值，放大缩小圆可用
-  const circleOr = ref(100)
+  const circleOr = ref(10)
   // item 原点位置，默认o(中心) Option：top right bottom left o
   const itemO = ref('o')
   // 菜单展开方向 Option：top right bottom left
