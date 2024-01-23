@@ -4,6 +4,15 @@
     <div class="menu" :style="menuStyle">
       <MenuView @handle-change="menuClick" v-if="showMenu" />
     </div>
+
+    <div class="echarts-box" :style="menuStyle1" v-show="dialogEchartsWrap">
+      <div id="myChart" :style="{ width: '200px', height: '140px' }"></div>
+    </div>
+
+    <div v-show="dialogDetailsWrap" :style="menuStyle3">
+      <NodeDetail />
+    </div>
+
     <el-drawer
       v-model="drawer"
       title="顶点类型详情"
@@ -15,25 +24,34 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed } from 'vue'
+  import { ref, computed, reactive } from 'vue'
   import ForceGraph3D from '3d-force-graph'
-  // import * as THREE from 'three'
-  // import SpriteText from 'three-spritetext'
-  import {
-    CSS2DRenderer,
-    CSS2DObject
-  } from 'three/addons/renderers/CSS2DRenderer.js'
-  // import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
-  // import { testData } from './datasets/blocks.js'
+  import { CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer.js'
+  import * as echarts from 'echarts'
 
-  import MenuView from './MenuView.vue'
-
-  // const menuStyle = { top: `10px`, left: `10px` }
+  import MenuView from './components/MenuView.vue'
+  import NodeDetail from './components/NodeDetail.vue'
 
   const menuStyle = computed(() => {
     return {
       top: `${menuTop.value}px`,
       left: `${menuLeft.value}px`
+    }
+  })
+
+  const menuStyle1 = computed(() => {
+    return {
+      position: 'absolute',
+      top: `${menuTop.value - 120}px`,
+      left: `${menuLeft.value - 230}px`
+    }
+  })
+
+  const menuStyle3 = computed(() => {
+    return {
+      position: 'absolute',
+      top: `${menuTop.value}px`,
+      left: `${menuLeft.value + 210}px`
     }
   })
 
@@ -136,8 +154,98 @@
     showMenu.value = false
   }
 
-  function menuClick(val) {
-    console.log('menuClick', val)
+  // 弹框显示内容 --雷达图
+  const state = reactive({
+    option: {
+      radar: {
+        radius: 40,
+        center: ['50%', '56%'],
+        splitLine: false,
+        axisName: {
+          color: '#fff'
+        },
+        splitArea: {
+          areaStyle: {
+            color: '#82B7CE', // 每个圆的背景颜色
+            shadowColor: '#32dadd', // 每个圈的阴影颜色
+            shadowBlur: 10
+          }
+        },
+        axisLine: {
+          show: false
+        },
+        indicator: [
+          { name: 'name1', max: 5 },
+          { name: 'name2', max: 5 },
+          { name: 'name3', max: 5 },
+          { name: 'name4', max: 5 },
+          { name: 'name5', max: 5 }
+        ]
+      },
+      series: [
+        {
+          name: 'Budget vs spending',
+          type: 'radar',
+          data: [
+            {
+              value: [4, 3, 2, 3, 1],
+              name: '',
+              areaStyle: {
+                color: '#9EDDF0'
+              },
+              lineStyle: {
+                color: '#9EDDF0'
+              },
+              symbolSize: 'none'
+            }
+          ]
+        }
+      ]
+    }
+  })
+  const initeCharts = () => {
+    let myChart = echarts.init(document.getElementById('myChart'))
+    // 绘制图表
+    myChart.setOption(state.option)
+  }
+
+  const dialogEchartsWrap = ref(false)
+  const dialogDetailsWrap = ref(false)
+  const dynamicStyle = ref()
+  const detailsStyle = ref()
+  function menuClick(v, event) {
+    let left1 = event.clientX > 1000 ? event.clientX - 400 : event.clientX + 100
+    let left = event.clientX > 1000 ? event.clientX - 280 : event.clientX + 100
+    let top1 = event.clientY > 400 ? event.clientY - 300 : event.clientY + 100
+    let top = event.clientY > 400 ? event.clientY - 200 : event.clientY + 100
+    if (v === 2) {
+      dialogEchartsWrap.value = true
+      dialogDetailsWrap.value = false
+      nextTick(() => {
+        initeCharts()
+      })
+      dynamicStyle.value = {
+        position: 'absolute',
+        zIndex: 999999999,
+        left: `${left}px`,
+        top: `${top}px`
+      }
+    } else if (v === 1) {
+      dialogDetailsWrap.value = true
+      dialogEchartsWrap.value = false
+      detailsStyle.value = {
+        position: 'absolute',
+        zIndex: 999999999,
+        left: `${left1}px`,
+        top: `${top1}px`
+      }
+    } else {
+      hideDialogs()
+    }
+  }
+  function hideDialogs() {
+    dialogDetailsWrap.value = false
+    dialogEchartsWrap.value = false
   }
 
   onMounted(() => {
@@ -181,5 +289,13 @@
 
   li:hover {
     background-color: #eaeaea; /* 鼠标悬停时改变背景颜色 */
+  }
+  .echarts-box {
+    position: absolutel;
+    padding: 10px;
+    width: 230px;
+    height: 160px;
+    background-image: url('@/assets/menu/radar.png');
+    background-size: cover;
   }
 </style>

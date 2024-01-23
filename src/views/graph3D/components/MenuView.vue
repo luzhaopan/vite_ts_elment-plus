@@ -1,21 +1,21 @@
 <template>
   <div class="container">
-    <div class="layer" @click="handleClick(1)">
+    <div class="layer" @click="handleClick(1, $event)">
       <img class="img1" src="@/assets/menu/u23.svg" alt="" />
       <div class="text">节点详情</div>
     </div>
     <div class="center">
-      <div class="layer" @click="handleClick(2)">
+      <div class="layer" @click="handleClick(2, $event)">
         <img class="img2" src="@/assets/menu/u24.svg" alt="" />
         <div class="text">节点评价</div>
       </div>
-      <div class="layer" @click="handleClick(3)">
+      <div class="layer" @click="handleClick(3, $event)">
         <img class="img3" src="@/assets/menu/u27.svg" alt="" />
         <div class="text">专题分析</div>
       </div>
     </div>
     <div class="center">
-      <div class="layer" @click="handleClick(4)">
+      <div class="layer" @click="handleClick(4, $event)">
         <img class="img4" src="@/assets/menu/u25.svg" alt="" />
         <div class="text">流转关系</div>
       </div>
@@ -23,11 +23,11 @@
         <img class="img5" src="@/assets/menu/u28.svg" alt="" />
       </div>
     </div>
-    <div class="layer" @click="handleClick(6)">
+    <div class="layer" @click="handleClick(6, $event)">
       <img class="img6" src="@/assets/menu/u26.svg" alt="" />
       <div class="text">查看字段</div>
     </div>
-    <!-- <div class="node" ref="switchRef">
+    <div class="node" ref="menuRef">
       <div ref="ulRef" class="expand-menu" :class="showItem ? 'open' : 'close'">
         <div class="item">1</div>
         <div class="item">2</div>
@@ -36,9 +36,9 @@
         <div class="item">5</div>
         <div class="item">6</div>
       </div>
-    </div> -->
+    </div>
   </div>
-  <div class="more" v-if="showItem" @click="handleClick(0)"></div>
+  <!-- <div class="more" v-if="showItem" @click="handleClick(0)"></div> -->
 </template>
 
 <script setup lang="ts">
@@ -88,9 +88,9 @@
     return 360 * completeCircle.value
   })
 
-  const switchRef = ref()
+  const menuRef = ref()
   const switchDom = computed(() => {
-    return switchRef.value
+    return menuRef.value
   })
 
   // 获取中心点的宽高
@@ -111,8 +111,9 @@
     showItem.value = !showItem.value
   }
 
-  const handleClick = (v) => {
-    emit('handle-change', v)
+  const handleClick = (v, e) => {
+    showItem.value = false
+    emit('handle-change', v, e)
   }
 
   // 获取每个子元素宽高
@@ -307,12 +308,12 @@
   }
 
   onMounted(() => {
-    // init()
+    init()
   })
 
-  // watch(showItem, () => {
-  //   showItem.value ? animateItem() : reset()
-  // })
+  watch(showItem, () => {
+    showItem.value ? animateItem() : reset()
+  })
 </script>
 
 <style scoped>

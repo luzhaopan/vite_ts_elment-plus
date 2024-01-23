@@ -1,384 +1,323 @@
 <template>
-  <div class="control">
-    <!-- 加add 减subtract -->
-
-    <!-- 云台控件 摄像头控制 -->
-    <div class="camera-control" v-show="isShowCameraControl">
-      <div class="camera-control-left flex">
-        <div class="content-box">
-          <!-- 拼接辅助线 -->
-          <!-- <div class="line1"></div>
-          <div class="line2"></div> -->
-          <!-- 展示圆环 -->
-          <div
-            class="img-box"
-            :class="'img-box' + (i + 1)"
-            v-for="(url, i) in imgArr"
-            :key="i"
-          >
-            <img
-              @mouseenter="handleMouseEnter(i)"
-              @mouseleave="handleMouseLeave(i)"
-              :src="url"
-              alt=""
-            />
-          </div>
-          <!-- 绑定事件的透明圆环 -->
-          <div id="circle0">
-            <div id="left">
-              <div
-                class="circle-left"
-                @mouseenter="handleMouseEnter(1)"
-                @mouseleave="handleMouseLeave(1)"
-                id="circle2"
-              ></div>
-              <div
-                class="circle-left"
-                @mouseenter="handleMouseEnter(2)"
-                @mouseleave="handleMouseLeave(2)"
-                id="circle3"
-              ></div>
-              <div
-                class="circle-left"
-                @mouseenter="handleMouseEnter(3)"
-                @mouseleave="handleMouseLeave(3)"
-                id="circle4"
-              ></div>
-              <div
-                class="circle-left"
-                @mouseenter="handleMouseEnter(4)"
-                @mouseleave="handleMouseLeave(4)"
-                id="circle5"
-              ></div>
-            </div>
-            <div id="right">
-              <div
-                class="circle-right"
-                @mouseenter="handleMouseEnter(8)"
-                @mouseleave="handleMouseLeave(8)"
-                id="circle9"
-              ></div>
-              <div
-                class="circle-right"
-                @mouseenter="handleMouseEnter(7)"
-                @mouseleave="handleMouseLeave(7)"
-                id="circle8"
-              ></div>
-              <div
-                class="circle-right"
-                @mouseenter="handleMouseEnter(6)"
-                @mouseleave="handleMouseLeave(6)"
-                id="circle7"
-              ></div>
-              <div
-                class="circle-right"
-                @mouseenter="handleMouseEnter(5)"
-                @mouseleave="handleMouseLeave(5)"
-                id="circle6"
-              ></div>
-            </div>
-            <div class="center"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div>
+    <div id="3d-graph" class="three-graph"></div>
+    <el-drawer
+      v-model="drawer"
+      title="顶点类型详情"
+      :before-close="handleClose"
+    >
+      <span>顶点信息</span>
+    </el-drawer>
   </div>
 </template>
 
-<script>
-  import img from '@/assets/vue.svg'
-  import img2 from '@/assets/vue.svg'
-  export default {
-    name: '',
-    components: {},
-    props: [],
-    data() {
-      return {
-        isShowCameraControl: false,
-        imgArr: [img, img, img, img, img, img, img, img]
-      }
-    },
-    mounted() {},
-    methods: {
-      handleMouseEnter(i) {
-        this.$set(this.imgArr, i - 1, img2)
-      },
-      handleMouseLeave(i) {
-        this.$set(this.imgArr, i - 1, img)
-      },
-      setCameraControl() {
-        this.isShowCameraControl = !this.isShowCameraControl
-      },
-      screenfull() {
-        this.$emit('screenfull')
-      },
-      toScale(str) {
-        console.log('缩放', str)
-      },
-      toZoom(str) {
-        console.log('变焦', str)
-      }
+<script lang="ts" setup>
+  import { ref } from 'vue'
+  import ForceGraph3D from '3d-force-graph'
+  import * as THREE from 'three'
+  import SpriteText from 'three-spritetext'
+  import {
+    CSS2DRenderer,
+    CSS2DObject
+  } from 'three/addons/renderers/CSS2DRenderer.js'
+  import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
+  import { testData } from './data/data.js'
+  import imgName from './imgs/cat.jpg'
+
+  const drawer = ref(false)
+
+  let Graph = null
+  const highlightNodes = []
+  const highlightLinks = []
+  let hoverNode = null
+  // const img = require('./imgs/cat.jpg')
+  const gData = {
+    data: {},
+    map: {}
+  }
+
+  const handleClose = (done: () => void) => {
+    drawer.value = false
+  }
+
+  function threeRender() {
+    // const distance = 1400
+    // DOM初始化及数据挂载
+    const elm = document.getElementById('3d-graph')
+    //   const width = elm.offsetWidth;
+    // const height = elm.offsetHeight;
+    Graph = ForceGraph3D({
+      extraRenderers: [new CSS2DRenderer()]
+    })(elm)
+      .height(window.innerHeight - 150)
+      .width(window.innerWidth - 240)
+      .showNavInfo(false) //禁用页脚
+      .backgroundColor('#000011') //画布背景色
+      // 每个值单位的节点球体体积 (cubic px) 的比率
+      // .nodeRelSize(7)
+      // 通过groud/Id来分组不同的颜色
+      .nodeAutoColorBy('id')
+      .nodeOpacity(1)
+      // 在节点处显示文本
+      .nodeLabel((node) => lableTips(node))
+      .nodeResolution(20)
+      .nodeColor((node) =>
+        highlightNodes.includes(node.id)
+          ? node === hoverNode
+            ? 'yellow'
+            : 'blue'
+          : node['~style']['color']
+      )
+      // 拖动节点后，该节点位置不变
+      // .onNodeDragEnd((node: any) => {
+      //   node.fx = node.x
+      //   node.fy = node.y
+      //   node.fz = node.z
+      // })
+      // .nodeThreeObject((node) => SpriteMesh(node))
+      // .nodeThreeObject((node) => sphereMesh(node))
+      .nodeThreeObject((node) => {
+        const nodeEl = document.createElement('div')
+        nodeEl.textContent = node.id
+        nodeEl.style.color = '#fff'
+        nodeEl.className = 'node-label'
+        return new CSS2DObject(nodeEl)
+      })
+      .nodeThreeObjectExtend(true)
+      .onNodeClick((node: any) => {
+        // Aim at node from outside it
+        focusNode(node)
+      })
+      .onNodeRightClick(() => {
+        drawer.value = true
+      })
+      .onNodeHover((node) => {
+        highlightNode(node)
+      })
+      // 设置线条的箭头长度
+      .linkDirectionalArrowLength(1.5)
+      // 用于设置线条箭头的相对位置
+      .linkDirectionalArrowRelPos(1)
+      // 用于设置线条的曲率 0为直线
+      .linkCurvature(0.1)
+      .linkWidth((link) => {
+        return highlightLinks.includes(link.id) ? 1 : 0
+      })
+      // 链接对象访问器函数、属性或用于显示在链接线上的粒子（小球体）数量的数字常量
+      // .linkDirectionalParticles(1)
+      .linkDirectionalParticles((link) =>
+        highlightLinks.includes(link.id) ? 1 : 0
+      )
+      // 设置箭头粒子的速度为
+      .linkDirectionalParticleSpeed(0.005)
+      // 设置线条透明度
+      .linkOpacity(0.5)
+      // 根据连接属性自动为连接线条着色，（这里官方文档写的是d => gData.nodes[d.source].group ，需要自己根据数据微调）
+      .linkAutoColorBy((d) => d.id)
+      .onLinkHover((link: any) => {
+        highlightNodes.length = 0
+        highlightLinks.length = 0
+
+        if (link) {
+          highlightLinks.push(link.id)
+          highlightNodes.push(link.source)
+          highlightNodes.push(link.target)
+        }
+
+        // updateHighlight()
+      })
+      .linkThreeObjectExtend(true)
+      .linkThreeObject((link) => {
+        // extend link with text sprite
+        // console.log(link)
+        const sprite = new SpriteText(`${link.id}`)
+        sprite.color = 'lightgrey'
+        sprite.textHeight = 1.5
+        return sprite
+      })
+      .linkPositionUpdate((sprite, { start, end }, link) => {
+        let middlePos = getQuadraticXY(
+          0.5,
+          start.x,
+          start.y,
+          start.z,
+          link.__curve.v1.x,
+          link.__curve.v1.y,
+          link.__curve.v1.z,
+          end.x,
+          end.y,
+          end.z
+        )
+
+        // Position sprite
+        Object.assign(sprite.position, middlePos)
+      })
+      .graphData(gData.data)
+
+    glowHandle()
+
+    cameraCenter()
+    // 适应屏幕大小变化
+    window.addEventListener('resize', (el) => Graph.width(elm.offsetWidth))
+  }
+  // 发光效果处理
+  function glowHandle() {
+    const bloomPass = new UnrealBloomPass()
+    bloomPass.strength = 0.5 // 强度
+    bloomPass.radius = 2 // 半径
+    bloomPass.threshold = 0.1 // 阈值
+    Graph.postProcessingComposer().addPass(bloomPass)
+  }
+  // 节点对象处理成图片展示
+  function SpriteMesh(node) {
+    const imgTexture = new THREE.TextureLoader().load(imgName)
+    imgTexture.colorSpace = THREE.SRGBColorSpace
+    const material = new THREE.SpriteMaterial({ map: imgTexture })
+    const sprite = new THREE.Sprite(material)
+    sprite.scale.set(12, 12)
+    return sprite
+  }
+  // 节点hover显示内容
+  function lableTips(node) {
+    const { properties } = node
+    const arr = Object.keys(properties)
+    let ele = `<div style="color: #000; font-size: 12px; background: #fff; padding: 2px; z-index: 999999999">
+      <ul>`
+    arr.forEach((item) => {
+      ele += `<li> ${item}: ${properties[item]} </li>`
+    })
+    ele + `</ul></div>`
+    return ele
+  }
+  // 计算连接线上文字的显示位置
+  function getQuadraticXY(t, sx, sy, sz, cp1x, cp1y, cp1z, ex, ey, ez) {
+    return {
+      x: (1 - t) * (1 - t) * sx + 2 * (1 - t) * t * cp1x + t * t * ex,
+      y: (1 - t) * (1 - t) * sy + 2 * (1 - t) * t * cp1y + t * t * ey,
+      z: (1 - t) * (1 - t) * sz + 2 * (1 - t) * t * cp1z + t * t * ez
     }
   }
+  // 节点对象处理成其他模型
+  function sphereMesh(node) {
+    // 球体
+    const geometry = new THREE.SphereGeometry(Math.random() * 10)
+    // 圆环
+    // const geometry = new THREE.TorusGeometry(7, 0.3, 16, 50)
+    // const material = new THREE.MeshBasicMaterial({ color: node.color })
+    // const loader = new THREE.TextureLoader().load('./resources/diffuse.jpg')
+    const material = new THREE.MeshLambertMaterial({
+      color: Math.round(Math.random() * Math.pow(2, 24)),
+      transparent: true,
+      opacity: 0.75
+      // map: loader
+    })
+    // 根据几何体和材质创建物体
+    const mesh = new THREE.Mesh(geometry, material)
+    return mesh
+  }
+  // hover 高亮处理
+  function highlightNode(node) {
+    // no state change
+    if ((!node && !highlightNodes.length) || (node && hoverNode === node))
+      return
+
+    highlightNodes.length = 0
+    highlightLinks.length = 0
+    if (node && node.neighbors) {
+      highlightNodes.push(node.id)
+      node.neighbors.forEach((neighbor) => highlightNodes.push(neighbor.id))
+      node.links.forEach((link) => highlightLinks.push(link.id))
+    }
+
+    hoverNode = node || null
+
+    updateHighlight()
+  }
+  function updateHighlight() {
+    // trigger update of highlighted objects in scene
+    Graph.nodeColor(Graph.nodeColor())
+      .linkWidth(Graph.linkWidth())
+      .linkDirectionalParticles(Graph.linkDirectionalParticles())
+      .linkThreeObject(Graph.linkThreeObject())
+  }
+  // 聚焦 3d 节点
+  function focusNode(node: any) {
+    const distance = 40
+    const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z)
+    const newPos =
+      node.x || node.y || node.z
+        ? {
+            x: node.x * distRatio,
+            y: node.y * distRatio,
+            z: node.z * distRatio
+          }
+        : { x: 0, y: 0, z: distance } // special case if node is in (0,0,0)
+
+    Graph.cameraPosition(
+      newPos, // new position
+      node, // lookAt ({ x, y, z })
+      3000 // ms transition duration
+    )
+  }
+  // 3d 镜头拉近
+  function cameraCenter(x: any = -300, y: any = 30, z: any = 300) {
+    Graph.cameraPosition({
+      x: x,
+      y: y,
+      z: z
+    })
+  }
+  // 随机生成一个规模为N的图
+  function createRandomGraph(N = 300) {
+    return {
+      nodes: [...Array(N).keys()].map((i) => ({ id: i })),
+      links: [...Array(N).keys()]
+        .filter((id) => id)
+        .map((id) => ({
+          source: id,
+          target: Math.round(Math.random() * (id - 1))
+        }))
+    }
+  }
+
+  onMounted(() => {
+    gData.data = { ...testData }
+
+    gData.data.nodes.forEach((item) => {
+      gData.map[item.id] = item
+    })
+
+    // const gData = createRandomGraph()
+    gData.data.links.forEach((link) => {
+      let a: any = {}
+      let b: any = {}
+
+      if (gData.map && gData.map[link.source]) {
+        a = gData.map[link.source]
+        b = gData.map[link.target]
+
+        !a.neighbors && (a.neighbors = [])
+        !b.neighbors && (b.neighbors = [])
+        a.neighbors.push(b)
+        b.neighbors.push(a)
+
+        !a.links && (a.links = [])
+        !b.links && (b.links = [])
+
+        a.links.push(link)
+        b.links.push(link)
+      }
+    })
+
+    // console.log(3, gData.map)
+
+    threeRender()
+  })
 </script>
+
 <style lang="scss" scoped>
-  .control {
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
+  .three-graph {
     width: 100%;
-    padding: 15px 7px;
-    display: flex;
-    justify-content: flex-end;
-
-    &_img_box {
-      cursor: pointer;
-      padding: 10px 10px 6px;
-      margin-right: 10px;
-      background: linear-gradient(
-        162deg,
-        rgba(3, 33, 120, 0.9) 0%,
-        rgba(3, 33, 120, 0.4) 100%
-      );
-      border-radius: 3px;
-      opacity: 1;
-      border: 1px solid;
-      border-image: linear-gradient(
-          180deg,
-          rgba(18, 106, 205, 1),
-          rgba(11, 87, 173, 0)
-        )
-        1 1;
-
-      > img {
-        width: 20px;
-        height: 20px;
-      }
-    }
-
-    .camera-control {
-      position: absolute;
-      display: flex;
-      top: -150px;
-      right: 16px;
-      padding: 6px 10px;
-      width: 319px;
-      height: 150px;
-      background: linear-gradient(
-        to bottom right,
-        #032078ab 30%,
-        #0b57ad60 100%
-      );
-
-      > div {
-        flex: 1;
-      }
-      &-left {
-        .content-box {
-          position: relative;
-          width: 125px;
-          height: 125px;
-          border-radius: 50%;
-          background: url('@/assets/image/circle.png');
-          background-size: 125px 125px;
-
-          .circle-left {
-            width: 62.5px;
-            height: 125px;
-            border-radius: 0px 62.5px 62.5px 0px;
-            position: absolute;
-            right: 0;
-            transform-origin: 0 50%;
-          }
-          .circle-right {
-            width: 62.5px;
-            height: 125px;
-            border-radius: 62.5px 0px 0px 62.5px;
-            position: absolute;
-            right: 0;
-            transform-origin: 100% 50%;
-          }
-          #circle0 {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 125px;
-            height: 125px;
-            border-radius: 62.5px;
-            position: relative;
-            transform: rotate(-22.5deg);
-
-            .center {
-              position: absolute;
-              left: 50%;
-              top: 50%;
-              transform: translate(-50%, -50%);
-              width: 50px;
-              height: 50px;
-              border-radius: 50%;
-            }
-          }
-
-          #circle3 {
-            transform: rotate(45deg);
-          }
-          #circle4 {
-            transform: rotate(90deg);
-          }
-          #circle5 {
-            transform: rotate(135deg);
-          }
-          #circle6 {
-            transform: rotate(-135deg);
-          }
-          #circle7 {
-            transform: rotate(270deg);
-          }
-          #circle8 {
-            transform: rotate(315deg);
-          }
-          #circle9 {
-            transform: rotate(45deg);
-          }
-
-          #left {
-            clip: rect(0px 62.5px 125px 0px);
-            position: absolute;
-            right: 0px;
-            width: 62.5px;
-            height: 125px;
-            overflow: hidden;
-          }
-          #right {
-            clip: rect(0px 62.5px 125px 0px);
-            position: absolute;
-            left: 0px;
-            width: 62.5px;
-            height: 125px;
-            overflow: hidden;
-          }
-
-          .line1 {
-            position: absolute;
-            width: 125px;
-            height: 2px;
-            background: red;
-            left: 50%;
-            margin-left: -62.5px;
-            top: 50%;
-            margin-top: -1px;
-            z-index: 999;
-          }
-
-          .line2 {
-            position: absolute;
-            left: 50%;
-            margin-top: -62.5px;
-            top: 50%;
-            margin-left: -1px;
-            width: 2px;
-            height: 125px;
-            background: red;
-            z-index: 999;
-          }
-
-          .img-box {
-            // width: 54px;
-            // height: 58px;
-            position: absolute;
-
-            // > img {
-            //     width: 54px;
-            //     height: 58px;
-            // }
-          }
-
-          .img-box1 {
-            left: 31px;
-            top: -14px;
-            transform: rotate(-90deg);
-          }
-
-          .img-box2 {
-            left: 64px;
-            top: -2px;
-            transform: rotate(-45deg);
-          }
-
-          .img-box3 {
-            left: 79px;
-            top: 29px;
-            transform: rotate(0deg);
-          }
-
-          .img-box4 {
-            left: 67px;
-            top: 62px;
-            transform: rotate(46deg);
-          }
-
-          .img-box5 {
-            left: 36px;
-            top: 77px;
-            transform: rotate(90deg);
-          }
-
-          .img-box6 {
-            left: 4px;
-            top: 66px;
-            transform: rotate(135deg);
-          }
-
-          .img-box7 {
-            left: -12px;
-            top: 35px;
-            transform: rotate(-180deg);
-          }
-
-          .img-box8 {
-            left: -1px;
-            top: 2px;
-            transform: rotate(-135deg);
-          }
-        }
-      }
-
-      &-right {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-size: 14px;
-        font-weight: bold;
-        color: #a5c3ff;
-
-        .btn-list {
-          display: flex;
-          align-items: center;
-          margin: 12px 0px;
-        }
-        .btn-box {
-          width: 70px;
-          height: 32px;
-          margin-left: 12px;
-          background: linear-gradient(180deg, #009afc 0%, #003cb1 100%);
-          box-shadow: inset 0px 2px 4px 0px #08ebff,
-            0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-          border-radius: 2px;
-          border: 1px solid #0e2977;
-          display: flex;
-
-          > div {
-            width: 35px;
-            height: 32px;
-            cursor: pointer;
-            > img {
-              width: 16px;
-              height: 16px;
-            }
-          }
-        }
-      }
-    }
+    height: 350px;
   }
 </style>
