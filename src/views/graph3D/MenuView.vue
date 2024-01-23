@@ -27,7 +27,7 @@
       <img class="img6" src="@/assets/menu/u26.svg" alt="" />
       <div class="text">查看字段</div>
     </div>
-    <div class="node" ref="switchRef">
+    <!-- <div class="node" ref="switchRef">
       <div ref="ulRef" class="expand-menu" :class="showItem ? 'open' : 'close'">
         <div class="item">1</div>
         <div class="item">2</div>
@@ -36,9 +36,9 @@
         <div class="item">5</div>
         <div class="item">6</div>
       </div>
-    </div>
+    </div> -->
   </div>
-  <!-- <div class="more" v-if="false" @click="handleClick(0)"></div> -->
+  <div class="more" v-if="showItem" @click="handleClick(0)"></div>
 </template>
 
 <script setup lang="ts">
@@ -73,6 +73,7 @@
 
   const ulRef = ref()
   const allAtems = computed(() => {
+    if (!ulRef.value) return
     return ulRef.value.children
   })
 
@@ -309,12 +310,12 @@
   }
 
   onMounted(() => {
-    init()
+    // init()
   })
 
-  watch(showItem, () => {
-    showItem.value ? animateItem() : reset()
-  })
+  // watch(showItem, () => {
+  //   showItem.value ? animateItem() : reset()
+  // })
 </script>
 
 <style scoped>

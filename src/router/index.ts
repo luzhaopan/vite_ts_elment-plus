@@ -195,6 +195,32 @@ const routes = [
     ]
   },
   {
+    path: '/menuList',
+    name: 'MenuList',
+    component: Layout,
+    meta: { title: 'MenuList', icon: 'Unlock' },
+    children: [
+      {
+        path: '/menuList/sectorMenu',
+        name: 'SectorMenu',
+        component: () => import('@/views/menuList/SectorMenu.vue'),
+        meta: { title: 'SectorMenu' }
+      },
+      {
+        path: '/menuList/sectorMenu1',
+        name: 'SectorMenu1',
+        component: () => import('@/views/menuList/SectorMenu1.vue'),
+        meta: { title: 'SectorMenu1' }
+      },
+      {
+        path: '/menuList/sectorMenu2',
+        name: 'SectorMenu2',
+        component: () => import('@/views/menuList/SectorMenu2.vue'),
+        meta: { title: 'SectorMenu2' }
+      }
+    ]
+  },
+  {
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
