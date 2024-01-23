@@ -29,7 +29,9 @@
     </div>
     <div class="node" ref="menuRef">
       <div ref="ulRef" class="expand-menu" :class="showItem ? 'open' : 'close'">
-        <div class="item">1</div>
+        <div class="item">
+          <div class="option">1</div>
+        </div>
         <div class="item">2</div>
         <div class="item">3</div>
         <div class="item">4</div>
@@ -397,15 +399,26 @@
     position: absolute;
     transition: all 0.5s;
     color: #fff;
-    /* background-image: url('@/assets/vue.svg');
-    background-size: 100% 100%; */
-    background-color: aqua;
-    padding: 10px 20px;
-    /* width: 50px;
-    height: 50px; */
+    background-image: url('@/assets/vue.svg');
+    background-size: 100% 100%;
+    /* background-color: aqua; */
+    /* padding: 10px 20px; */
+    width: 50px;
+    height: 50px;
+    /* border-radius: 0px 0px 0px 50px; */
+    /* border-bottom: 50px solid #333;
+    border-right: 25px solid transparent;
+    border-top: 50px solid transparent;
+    border-left: 25px solid transparent; */
   }
   .close.expand-menu > .item {
     opacity: 0;
     overflow: hidden;
+  }
+
+  .option {
+    position: relative; /* 必须设置为相对定位 */
+    transform: rotate(45deg);
+    transform-origin: 0 50%;
   }
 </style>
