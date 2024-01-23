@@ -282,7 +282,6 @@
         x: calculateItemO(x, w, 'x')
       }
     })
-    console.log(2, itemPoint.value)
   }
 
   // 计算每一个元素的位置
@@ -291,8 +290,6 @@
     arr.forEach((v, i) => {
       v.style.transform = `translate(${itemPoint.value[i].x}px,${itemPoint.value[i].y}px)`
       v.style.transition = `all ${duration.value}s ${i * delay.value}s`
-      // console.log(itemPoint.value[i].x, itemPoint.value[i].y)
-      // console.log(duration.value, i * delay.value)
     })
   }
 
