@@ -57,7 +57,7 @@
   // 圆半径
   const or = ref(0)
   // 默认圆的半径附加值，在自动生成的圆的半径基础上加上这个值，放大缩小圆可用
-  const circleOr = ref(10)
+  const circleOr = ref(-15)
   // item 原点位置，默认o(中心) Option：top right bottom left o
   const itemO = ref('o')
   // 菜单展开方向 Option：top right bottom left
@@ -405,6 +405,8 @@
     /* padding: 10px 20px; */
     width: 50px;
     height: 50px;
+    text-align: center;
+    cursor: pointer;
     /* border-radius: 0px 0px 0px 50px; */
     /* border-bottom: 50px solid #333;
     border-right: 25px solid transparent;
@@ -418,7 +420,7 @@
 
   .option {
     position: relative; /* 必须设置为相对定位 */
-    transform: rotate(45deg);
+    transform: rotate(0deg);
     transform-origin: 0 50%;
   }
 </style>

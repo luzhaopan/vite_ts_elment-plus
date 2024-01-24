@@ -152,6 +152,8 @@
 
   function graphClick() {
     showMenu.value = false
+    dialogEchartsWrap.value = false
+    dialogDetailsWrap.value = false
   }
 
   // 弹框显示内容 --雷达图
