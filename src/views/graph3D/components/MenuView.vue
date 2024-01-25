@@ -19,7 +19,7 @@
         <img class="img4" src="@/assets/menu/u25.svg" alt="" />
         <div class="text">流转关系</div>
       </div>
-      <div class="layer" @click="showItemF">
+      <div class="layer" @click="showSecondMenu">
         <img class="img5" src="@/assets/menu/u28.svg" alt="" />
       </div>
     </div>
@@ -74,6 +74,7 @@
   const completeCircle = ref(0.5)
 
   const ulRef = ref()
+  // 获取所有的二级菜单标签元素
   const allAtems = computed(() => {
     if (!ulRef.value) return
     return ulRef.value.children
@@ -90,6 +91,7 @@
     return 360 * completeCircle.value
   })
 
+  // 二级菜单圆的中心点
   const menuRef = ref()
   const switchDom = computed(() => {
     return menuRef.value
@@ -105,11 +107,8 @@
     }
   })
 
-  const showItemF = () => {
-    if (isClick.value) {
-      isClick.value = false
-      return
-    }
+  // 二级菜单显示隐藏触发
+  const showSecondMenu = () => {
     showItem.value = !showItem.value
   }
 
