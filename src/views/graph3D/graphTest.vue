@@ -92,13 +92,10 @@
         focusNode(node)
       })
       .onNodeRightClick((node, event) => {
-        // console.log('node', node)
-        // console.log('event', event)
         menuTop.value = event.offsetY - 80
         menuLeft.value = event.offsetX - 80
-        // drawer.value = true
-
         showMenu.value = true
+        // drawer.value = true
       })
       // 根据连接属性自动为连接线条着色，（这里官方文档写的是d => gData.nodes[d.source].group ，需要自己根据数据微调）
       .linkAutoColorBy((d) => d.id)
@@ -110,8 +107,7 @@
   }
 
   // 聚焦 3d 节点
-  function focusNode(node: any) {
-    const distance = 40
+  function focusNode(node: any, distance = 50) {
     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z)
     const newPos =
       node.x || node.y || node.z
