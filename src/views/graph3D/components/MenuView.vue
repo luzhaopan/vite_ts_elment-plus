@@ -44,10 +44,9 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted, reactive } from 'vue'
+  import { ref, onMounted, reactive, computed } from 'vue'
   const emit = defineEmits(['handle-change'])
 
-  const isClick = ref(false)
   // 二级菜单显示隐藏
   const showItem = ref(false)
   // 每个item宽高
@@ -184,8 +183,7 @@
     }
   }
 
-  // item的原点位置
-  // type:x/y
+  // item的原点位置  type:x/y
   function calculateItemO(itemXorY, wh, type) {
     const o = itemXorY > 0 ? 1 : -1
     itemXorY = Math.abs(itemXorY)
@@ -389,11 +387,6 @@
     left: -95px;
   }
 
-  /* .expand-menu {
-    z-index: -1;
-     background-image: url('@/assets/menu/u16.png');
-    background-size: 100% 100%; 
-  }*/
   .expand-menu > .item {
     position: absolute;
     transition: all 0.5s;

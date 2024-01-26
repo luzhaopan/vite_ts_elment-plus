@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed, reactive } from 'vue'
+  import { ref, computed, reactive, onMounted } from 'vue'
   import ForceGraph3D from '3d-force-graph'
   import { CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer.js'
   import * as echarts from 'echarts'
@@ -264,30 +264,6 @@
     border-radius: 50%;
   }
 
-  ul.circle {
-    list-style-type: none; /* 去除列表样式 */
-    margin: 0; /* 清空外边距 */
-    padding: 0; /* 清空内边距 */
-    display: flex; /* 使用flex布局 */
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
-    transform: rotate(45deg); /* 旋转角度（根据需求调整）*/
-  }
-
-  li {
-    text-align: center; /* 文本居中 */
-    font-size: 16px; /* 字体大小 */
-    color: #333; /* 字体颜色 */
-    background-color: #f9f9f9; /* 背景颜色 */
-    border: 1px solid #ccc; /* 边框样式 */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
-    cursor: pointer; /* 光标变成手型 */
-    transition: all 0.3s ease; /* 添加动画效果 */
-  }
-
-  li:hover {
-    background-color: #eaeaea; /* 鼠标悬停时改变背景颜色 */
-  }
   .echarts-box {
     position: absolutel;
     padding: 10px;
