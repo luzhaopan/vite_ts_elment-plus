@@ -44,7 +44,8 @@
     "vue-router": "4",
     "vue3-colorpicker": "^2.2.2",
     "vue3-json-viewer": "^2.2.2",
-    "web-storage-cache": "^1.1.1"
+    "web-storage-cache": "^1.1.1",
+    "url": "^0.11.3"
   },
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
