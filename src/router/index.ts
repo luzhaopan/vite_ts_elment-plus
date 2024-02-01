@@ -42,6 +42,18 @@ const routes = [
     ]
   },
   {
+    path: '/pyEditor',
+    component: Layout,
+    children: [
+      {
+        path: '/pyEditor/index',
+        name: 'PyEditor',
+        component: () => import('@/views/pyEditor/index.vue'),
+        meta: { title: 'PyEditor', icon: 'Edit' }
+      }
+    ]
+  },
+  {
     path: '/print',
     component: Layout,
     children: [

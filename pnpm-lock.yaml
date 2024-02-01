@@ -68,6 +68,9 @@ dependencies:
   mockjs:
     specifier: ^1.1.0
     version: 1.1.0
+  monaco-editor:
+    specifier: ^0.45.0
+    version: 0.45.0
   nprogress:
     specifier: ^0.2.0
     version: 0.2.0
@@ -1636,12 +1639,12 @@ packages:
       acorn-walk: 6.2.0
     dev: false
 
-  /acorn-import-assertions@1.9.0(acorn@8.8.1):
+  /acorn-import-assertions@1.9.0(acorn@8.11.3):
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
     peerDependencies:
       acorn: ^8
     dependencies:
-      acorn: 8.8.1
+      acorn: 8.11.3
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.8.1):
@@ -3873,6 +3876,10 @@ packages:
       commander: 9.4.1
     dev: false
 
+  /monaco-editor@0.45.0:
+    resolution: {integrity: sha512-mjv1G1ZzfEE3k9HZN0dQ2olMdwIfaeAAjFiwNprLfYNRSz7ctv9XuCT7gPtBGrMUeV1/iZzYKj17Khu1hxoHOA==}
+    dev: false
+
   /ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
     dev: false
@@ -5313,8 +5320,8 @@ packages:
       '@webassemblyjs/ast': 1.11.6
       '@webassemblyjs/wasm-edit': 1.11.6
       '@webassemblyjs/wasm-parser': 1.11.6
-      acorn: 8.8.1
-      acorn-import-assertions: 1.9.0(acorn@8.8.1)
+      acorn: 8.11.3
+      acorn-import-assertions: 1.9.0(acorn@8.11.3)
       browserslist: 4.22.1
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.15.0
