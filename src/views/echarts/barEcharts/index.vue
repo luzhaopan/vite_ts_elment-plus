@@ -4,6 +4,10 @@
       <ECharts :options="optionsRoc" height="500px" />
     </el-col>
 
+    <el-col :span="12">
+      <ECharts :options="optionsDd" height="500px" />
+    </el-col>
+
     <el-col :span="24"> ----2024/02/18---- </el-col>
 
     <el-col :span="12">
@@ -57,7 +61,7 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 22
+          fontSize: 18
         },
         nameGap: 40,
         data: [
@@ -155,7 +159,7 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 22
+          fontSize: 18
         },
         nameGap: 45,
         position: 'left',
@@ -168,7 +172,7 @@
         axisLabel: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 22,
+          fontSize: 18,
           formatter: function (value, index) {
             return !value ? '0.0' : value
           }
@@ -331,6 +335,224 @@
         type: 'line',
         showSymbol: false,
         connectNulls: true
+      }
+    ]
+  }
+  const optionsDd = {
+    xAxis: [
+      {
+        type: 'category',
+        name: '迭代次数',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18
+        },
+        nameGap: 40,
+        data: [
+          '1',
+          '2',
+          '3',
+          '4',
+          '5',
+          '6',
+          '7',
+          '8',
+          '9',
+          '10',
+          '11',
+          '12',
+          '13',
+          '14'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: ['', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: '各项指标',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18
+        },
+        nameGap: 55,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        min: 0.6,
+        // max: 1,
+        interval: 0.05,
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18
+          // formatter: function (value, index) {
+          //   return !value ? '0.0' : value
+          // }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    gird: {
+      left: '0%',
+      right: '0%',
+      bottom: '10%',
+      top: '0%'
+    },
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '75%',
+      bottom: '15%',
+      textStyle: {
+        fontSize: 20
+      },
+      data: ['P', 'S', 'F1', 'MCC', 'AUC']
+    },
+    series: [
+      {
+        name: 'P',
+        data: [
+          0.86, 0.848, 0.851, 0.852, 0.843, 0.84, 0.87, 0.872, 0.852, 0.858,
+          0.88, 0.883, 0.876, 0.878
+        ],
+        type: 'line',
+        symbol: 'triangle',
+        symbolSize: 10,
+        lineStyle: {
+          color: 'blue',
+          width: 2
+        },
+        itemStyle: {
+          borderWidth: 1,
+          borderColor: 'blue',
+          color: 'blue'
+        }
+      },
+      {
+        name: 'S',
+        data: [
+          0.811, 0.83, 0.84, 0.85, 0.853, 0.86, 0.864, 0.866, 0.862, 0.87, 0.87,
+          0.875, 0.878, 0.88
+        ],
+        type: 'line',
+        symbol: 'diamond',
+        symbolSize: 10,
+        lineStyle: {
+          color: 'red',
+          width: 2
+        },
+        itemStyle: {
+          borderWidth: 1,
+          borderColor: 'red',
+          color: 'red'
+        }
+      },
+      {
+        name: 'F1',
+        data: [
+          0.766, 0.82, 0.835, 0.838, 0.84, 0.848, 0.88, 0.882, 0.876, 0.88,
+          0.868, 0.87, 0.882, 0.888
+        ],
+        type: 'line',
+        symbol: 'roundRect',
+        symbolSize: 10,
+        lineStyle: {
+          color: '#d7b50d',
+          width: 2
+        },
+        itemStyle: {
+          borderWidth: 1,
+          borderColor: '#d7b50d',
+          color: '#d7b50d'
+        }
+      },
+      {
+        name: 'MCC',
+        data: [
+          0.63, 0.77, 0.81, 0.818, 0.853, 0.87, 0.85, 0.87, 0.878, 0.88, 0.88,
+          0.87, 0.86, 0.88
+        ],
+        type: 'line',
+        symbol: 'circle',
+        symbolSize: 10,
+        lineStyle: {
+          color: 'green',
+          width: 2
+        },
+        itemStyle: {
+          borderWidth: 1,
+          borderColor: 'green',
+          color: 'green'
+        }
+      },
+      {
+        name: 'AUC',
+        data: [
+          0.62, 0.68, 0.7, 0.718, 0.723, 0.748, 0.8, 0.812, 0.822, 0.825, 0.83,
+          0.838, 0.842, 0.85
+        ],
+        type: 'line',
+        symbol: '#19e7b7',
+        symbolSize: 10,
+        lineStyle: {
+          color: '#19e7b7',
+          width: 2
+        },
+        itemStyle: {
+          borderWidth: 1,
+          borderColor: '#19e7b7',
+          color: '#19e7b7'
+        }
       }
     ]
   }
