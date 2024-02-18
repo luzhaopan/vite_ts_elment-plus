@@ -1,6 +1,12 @@
 <template>
   <el-row :gutter="0" style="margin-top: 20px; padding: 20px">
     <el-col :span="12">
+      <ECharts :options="optionsRoc" height="500px" />
+    </el-col>
+
+    <el-col :span="24"> ----2024/02/18---- </el-col>
+
+    <el-col :span="12">
       <ECharts :options="optionsW1" height="500px" />
     </el-col>
 
@@ -40,8 +46,294 @@
   </el-row>
 </template>
 <script lang="ts" setup>
-  import { Bottom } from '@element-plus/icons-vue'
   import { dataW1, dataW3 } from '../data'
+
+  const optionsRoc = {
+    xAxis: [
+      {
+        type: 'category',
+        name: 'FPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 22
+        },
+        nameGap: 40,
+        data: [
+          '0.0',
+          '',
+          '',
+          '',
+          '',
+          '0.2',
+          '',
+          '',
+          '',
+          '',
+          '0.4',
+          '',
+          '',
+          '',
+          '',
+          '0.6',
+          '',
+          '',
+          '',
+          '',
+          '0.8',
+          '',
+          '',
+          '',
+          '',
+          '1.0'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: 'TPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 22
+        },
+        nameGap: 45,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 22,
+          formatter: function (value, index) {
+            return !value ? '0.0' : value
+          }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    gird: {
+      left: '0%',
+      right: '0%',
+      bottom: '10%',
+      top: '0%'
+    },
+    color: ['orange', 'red', 'green', 'blue', 'purple', '#333'],
+    series: [
+      {
+        name: 'Raw data AUC = 0.5795',
+        data: [
+          0,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true
+      },
+      {
+        name: 'RUS AUC = 0.7058',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          '',
+          '',
+          '',
+          '',
+          '',
+          0.44,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true
+      },
+      {
+        name: 'ROS AUC = 0.8156',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          '',
+          '',
+          '',
+          '',
+          0.55,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true
+      },
+      {
+        name: 'ADASYN AUC = 0.9358',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          0.66,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true
+      }
+    ]
+  }
 
   const optionsW1 = {
     tooltip: {
