@@ -8,7 +8,44 @@
       <ECharts :options="optionsDd" height="500px" />
     </el-col>
 
-    <el-col :span="24"> ----2024/02/18---- </el-col>
+    <el-col :span="12">
+      <ECharts :options="optionsC1" height="500px" />
+      <div style="text-align: center">a--原始数据</div>
+    </el-col>
+    <el-col :span="12">
+      <ECharts :options="optionsC2" height="500px" />
+      <div style="text-align: center">b--NearMiss-1</div>
+    </el-col>
+    <el-col :span="12">
+      <ECharts :options="optionsC1" height="500px" />
+      <div style="text-align: center">c--NearMiss-2</div>
+    </el-col>
+    <el-col :span="12">
+      <ECharts :options="optionsC1" height="500px" />
+      <div style="text-align: center">d--IHT</div>
+    </el-col>
+
+    <el-col :span="12">
+      <ECharts :options="optionsC1" height="500px" />
+      <div style="text-align: center">e-- SMOTE</div>
+    </el-col>
+    <el-col :span="12">
+      <ECharts :options="optionsC1" height="500px" />
+      <div style="text-align: center">f-- B-SMOTE</div>
+    </el-col>
+    <el-col :span="12">
+      <ECharts :options="optionsC1" height="500px" />
+      <div style="text-align: center">g-- K-SMOTE</div>
+    </el-col>
+
+    <el-col :span="12">
+      <ECharts :options="optionsC1" height="500px" />
+      <div style="text-align: center">h-- 混合采样</div>
+    </el-col>
+
+    <el-col :span="24">
+      <div style="margin: 20px 0">----2024/02/18----</div>
+    </el-col>
 
     <el-col :span="12">
       <ECharts :options="optionsW1" height="500px" />
@@ -51,6 +88,75 @@
 </template>
 <script lang="ts" setup>
   import { dataW1, dataW3 } from '../data'
+  import { female1, female2, arr2, arr3, arr4, arr5, arr6 } from './data1'
+  import {
+    female21,
+    female22,
+    arr22,
+    arr23,
+    arr24,
+    arr25,
+    arr26
+  } from './data2'
+
+  // const female1 = []
+  // const female2 = []
+  // const arr2 = []
+  // const arr3 = []
+  // const arr4 = []
+  // const arr5 = []
+  // const arr6 = []
+
+  // for (let i = 0; i < 500; i++) {
+  //   let l = Math.random() * (0.7 - 0.1) + 0.1
+  //   let r = Math.random() * (0.7 - 0.1) + 0.1
+  //   // if (l < 0.7) {
+  //   female1.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+  //   // }
+  // }
+  // console.log('female1', female1)
+
+  // for (let i = 0; i < 30; i++) {
+  //   let l = Math.random() * (0.9 - 0.7) + 0.7
+  //   let r = Math.random() * (0.9 - 0.7) + 0.7
+  //   female2.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+  // }
+  // console.log('female2', female2)
+
+  // for (let i = 0; i < 100; i++) {
+  //   let l = Math.random() * (1 - 0.7) + 0.7
+  //   let r = Math.random() * (1 - 0.7) + 0.7
+  //   arr2.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+  // }
+  // console.log('arr2', arr2)
+
+  // for (let i = 0; i < 300; i++) {
+  //   let l = Math.random() * (1 - 0.7) + 0.7
+  //   let r = Math.random() * (0.7 - 0) + 0
+  //   arr3.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+  // }
+  // console.log('arr3', arr3)
+
+  // for (let i = 0; i < 100; i++) {
+  //   let l = Math.random() * (0.7 - 0) + 0
+  //   let r = Math.random() * (0.1 - 0) + 0
+  //   arr4.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+  // }
+  // console.log('arr4', arr4)
+
+  // for (let i = 0; i < 300; i++) {
+  //   let l = Math.random() * (0.7 - 0) + 0
+  //   let r = Math.random() * (1 - 0.7) + 0.7
+  //   arr5.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+  // }
+  // console.log('arr5', arr5)
+
+  // for (let i = 0; i < 90; i++) {
+  //   let l = Math.random() * (0.1 - 0) + 0
+  //   let r = Math.random() * (0.7 - 0.1) + 0.1
+  //   arr6.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+  // }
+  // console.log('arr6', arr6)
 
   const optionsRoc = {
     xAxis: [
@@ -553,6 +659,258 @@
           borderColor: '#19e7b7',
           color: '#19e7b7'
         }
+      }
+    ]
+  }
+
+  const optionsC1 = {
+    xAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b0}: {c0}'
+    },
+    series: [
+      {
+        type: 'scatter',
+        id: 'female1',
+        dataGroupId: 'female1',
+        itemStyle: {
+          color: '#ef8484'
+        },
+        data: female1 // 中间红色
+      },
+      {
+        type: 'scatter',
+        id: 'female2',
+        dataGroupId: 'female2',
+        itemStyle: {
+          color: '#ef8484'
+        },
+        data: female2 // 右上红色
+      },
+      {
+        type: 'scatter',
+        id: 'male2',
+        dataGroupId: 'male2',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr2 // 右上
+      },
+      {
+        type: 'scatter',
+        id: 'male3',
+        dataGroupId: 'male3',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr3 // 右
+      },
+      {
+        type: 'scatter',
+        id: 'male4',
+        dataGroupId: 'male4',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr4 // 下
+      },
+      {
+        type: 'scatter',
+        id: 'male5',
+        dataGroupId: 'male5',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr5 // 上
+      },
+      {
+        type: 'scatter',
+        id: 'male6',
+        dataGroupId: 'male6',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr6 // 左
+      }
+    ]
+  }
+
+  const optionsC2 = {
+    xAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b0}: {c0}'
+    },
+    series: [
+      {
+        type: 'scatter',
+        id: 'female1',
+        dataGroupId: 'female1',
+        itemStyle: {
+          color: '#ef8484'
+        },
+        data: female21 // 中间红色
+      },
+      {
+        type: 'scatter',
+        id: 'female2',
+        dataGroupId: 'female2',
+        itemStyle: {
+          color: '#ef8484'
+        },
+        data: female22 // 右上红色
+      },
+      {
+        type: 'scatter',
+        id: 'male2',
+        dataGroupId: 'male2',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr22 // 右上
+      },
+      {
+        type: 'scatter',
+        id: 'male3',
+        dataGroupId: 'male3',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr23 // 右
+      },
+      {
+        type: 'scatter',
+        id: 'male4',
+        dataGroupId: 'male4',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr24 // 下
+      },
+      {
+        type: 'scatter',
+        id: 'male5',
+        dataGroupId: 'male5',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr25 // 上
+      },
+      {
+        type: 'scatter',
+        id: 'male6',
+        dataGroupId: 'male6',
+        itemStyle: {
+          color: '#5572c6'
+        },
+        data: arr26 // 左
       }
     ]
   }
