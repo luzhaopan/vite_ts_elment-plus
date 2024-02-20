@@ -6,6 +6,7 @@ import { useDebounceFn } from '@vueuse/core'
 import { useEventListener } from '@/hooks/event/useEventListener'
 import { useBreakpoint } from '@/hooks/event/useBreakpoint'
 import * as echarts from 'echarts'
+import { log } from 'console'
 
 type Fn = (...arg: any) => any
 
@@ -60,7 +61,9 @@ export function useECharts(
       setTimeout(() => {
         if (!chartInstance) {
           initCharts('default')
-
+          // chartInstance.on('click', function (params) {
+          //   console.log(params.data)
+          // })
           if (!chartInstance) return
         }
         clear && chartInstance?.clear()

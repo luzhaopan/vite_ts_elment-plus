@@ -1,5 +1,5 @@
 <template>
-  <el-row :gutter="0" style="margin-top: 20px; padding: 20px">
+  <el-row :gutter="0" style="margin-top: 20px; padding: 20px; background: #fff">
     <el-col :span="12">
       <ECharts :options="optionsRoc" height="500px" />
     </el-col>
@@ -9,7 +9,7 @@
     </el-col>
 
     <el-col :span="12">
-      <ECharts :options="optionsC1" height="500px" />
+      <ECharts :options="optionsC1" height="500px" :event="true" />
       <div style="text-align: center">a--原始数据</div>
     </el-col>
     <el-col :span="12">
@@ -17,16 +17,16 @@
       <div style="text-align: center">b--NearMiss-1</div>
     </el-col>
     <el-col :span="12">
-      <ECharts :options="optionsC1" height="500px" />
+      <ECharts :options="optionsC3" height="500px" />
       <div style="text-align: center">c--NearMiss-2</div>
     </el-col>
     <el-col :span="12">
-      <ECharts :options="optionsC1" height="500px" />
+      <ECharts :options="optionsC4" height="500px" />
       <div style="text-align: center">d--IHT</div>
     </el-col>
 
     <el-col :span="12">
-      <ECharts :options="optionsC1" height="500px" />
+      <ECharts :options="optionsC5" height="500px" :event="true" />
       <div style="text-align: center">e-- SMOTE</div>
     </el-col>
     <el-col :span="12">
@@ -45,6 +45,45 @@
 
     <el-col :span="24">
       <div style="margin: 20px 0">----2024/02/18----</div>
+    </el-col>
+
+    <el-col :span="7">
+      <ECharts :options="optionsCl1" height="500px" />
+      <div style="text-align: center">a--原始数据</div>
+    </el-col>
+    <el-col :span="7">
+      <!-- <ECharts :options="optionsC2" height="500px" /> -->
+      <div style="text-align: center">b--NearMiss-1</div>
+    </el-col>
+    <el-col :span="7">
+      <!-- <ECharts :options="optionsC3" height="500px" /> -->
+      <div style="text-align: center">c--NearMiss-2</div>
+    </el-col>
+    <el-col :span="7">
+      <!-- <ECharts :options="optionsC4" height="500px" /> -->
+      <div style="text-align: center">d--IHT</div>
+    </el-col>
+
+    <el-col :span="7">
+      <!-- <ECharts :options="optionsC5" height="500px" /> -->
+      <div style="text-align: center">e-- SMOTE</div>
+    </el-col>
+    <el-col :span="7">
+      <!-- <ECharts :options="optionsC1" height="500px" /> -->
+      <div style="text-align: center">f-- B-SMOTE</div>
+    </el-col>
+    <el-col :span="7">
+      <!-- <ECharts :options="optionsC1" height="500px" /> -->
+      <div style="text-align: center">g-- K-SMOTE</div>
+    </el-col>
+
+    <el-col :span="7">
+      <!-- <ECharts :options="optionsC1" height="500px" /> -->
+      <div style="text-align: center">h-- 混合采样</div>
+    </el-col>
+
+    <el-col :span="24">
+      <div style="margin: 20px 0">----2024/02/19----</div>
     </el-col>
 
     <el-col :span="12">
@@ -88,16 +127,11 @@
 </template>
 <script lang="ts" setup>
   import { dataW1, dataW3 } from '../data'
-  import { female1, female2, arr2, arr3, arr4, arr5, arr6 } from './data1'
-  import {
-    female21,
-    female22,
-    arr22,
-    arr23,
-    arr24,
-    arr25,
-    arr26
-  } from './data2'
+  import { female1, arr2, arr3, arr4, arr5, arr6 } from './data1'
+  import { female21, arr22 } from './data2'
+  import { female31, arr32 } from './data3'
+  import { female41, arr42 } from './data4'
+  import { female51, female52, arr52, arr53 } from './data5'
 
   // const female1 = []
   // const female2 = []
@@ -107,21 +141,28 @@
   // const arr5 = []
   // const arr6 = []
 
-  // for (let i = 0; i < 500; i++) {
-  //   let l = Math.random() * (0.7 - 0.1) + 0.1
-  //   let r = Math.random() * (0.7 - 0.1) + 0.1
-  //   // if (l < 0.7) {
-  //   female1.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
-  //   // }
-  // }
-  // console.log('female1', female1)
+  const femalex = []
+  const femaley = []
 
-  // for (let i = 0; i < 30; i++) {
-  //   let l = Math.random() * (0.9 - 0.7) + 0.7
-  //   let r = Math.random() * (0.9 - 0.7) + 0.7
-  //   female2.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
-  // }
+  for (let i = 0; i < 500; i++) {
+    let l = Math.random() * (0.7 - 0.1) + 0.1
+    let r = Math.random() * (0.7 - 0.1) + 0.1
+    // if (l < 0.7) {
+    // female1.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+    femalex.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+    // }
+  }
+  // // console.log('female1', female1)
+  console.log('femalex', femalex)
+
+  for (let i = 0; i < 30; i++) {
+    let l = Math.random() * (0.9 - 0.7) + 0.7
+    let r = Math.random() * (0.9 - 0.7) + 0.7
+    // female2.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+    femaley.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
+  }
   // console.log('female2', female2)
+  console.log('femaley', femaley)
 
   // for (let i = 0; i < 100; i++) {
   //   let l = Math.random() * (1 - 0.7) + 0.7
@@ -728,25 +769,16 @@
         id: 'female1',
         dataGroupId: 'female1',
         itemStyle: {
-          color: '#ef8484'
+          color: '#758dd0'
         },
         data: female1 // 中间红色
-      },
-      {
-        type: 'scatter',
-        id: 'female2',
-        dataGroupId: 'female2',
-        itemStyle: {
-          color: '#ef8484'
-        },
-        data: female2 // 右上红色
       },
       {
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
         itemStyle: {
-          color: '#5572c6'
+          color: '#767676'
         },
         data: arr2 // 右上
       },
@@ -755,7 +787,7 @@
         id: 'male3',
         dataGroupId: 'male3',
         itemStyle: {
-          color: '#5572c6'
+          color: '#767676'
         },
         data: arr3 // 右
       },
@@ -764,7 +796,7 @@
         id: 'male4',
         dataGroupId: 'male4',
         itemStyle: {
-          color: '#5572c6'
+          color: '#767676'
         },
         data: arr4 // 下
       },
@@ -773,7 +805,7 @@
         id: 'male5',
         dataGroupId: 'male5',
         itemStyle: {
-          color: '#5572c6'
+          color: '#767676'
         },
         data: arr5 // 上
       },
@@ -782,7 +814,7 @@
         id: 'male6',
         dataGroupId: 'male6',
         itemStyle: {
-          color: '#5572c6'
+          color: '#767676'
         },
         data: arr6 // 左
       }
@@ -854,63 +886,180 @@
         id: 'female1',
         dataGroupId: 'female1',
         itemStyle: {
-          color: '#ef8484'
+          color: '#758dd0'
         },
-        data: female21 // 中间红色
-      },
-      {
-        type: 'scatter',
-        id: 'female2',
-        dataGroupId: 'female2',
-        itemStyle: {
-          color: '#ef8484'
-        },
-        data: female22 // 右上红色
+        data: female21
       },
       {
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
         itemStyle: {
-          color: '#5572c6'
+          color: '#767676'
         },
-        data: arr22 // 右上
+        data: arr22
+      }
+    ]
+  }
+
+  const optionsC3 = {
+    xAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b0}: {c0}'
+    },
+    series: [
+      {
+        type: 'scatter',
+        id: 'female1',
+        dataGroupId: 'female1',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female31
       },
       {
         type: 'scatter',
-        id: 'male3',
-        dataGroupId: 'male3',
+        id: 'male2',
+        dataGroupId: 'male2',
         itemStyle: {
-          color: '#5572c6'
+          color: '#767676'
         },
-        data: arr23 // 右
+        data: arr32
+      }
+    ]
+  }
+
+  const optionsC4 = {
+    xAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b0}: {c0}'
+    },
+    series: [
+      {
+        type: 'scatter',
+        id: 'female1',
+        dataGroupId: 'female1',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female41
       },
       {
         type: 'scatter',
-        id: 'male4',
-        dataGroupId: 'male4',
+        id: 'male2',
+        dataGroupId: 'male2',
         itemStyle: {
-          color: '#5572c6'
+          color: '#767676'
         },
-        data: arr24 // 下
-      },
-      {
-        type: 'scatter',
-        id: 'male5',
-        dataGroupId: 'male5',
-        itemStyle: {
-          color: '#5572c6'
-        },
-        data: arr25 // 上
-      },
-      {
-        type: 'scatter',
-        id: 'male6',
-        dataGroupId: 'male6',
-        itemStyle: {
-          color: '#5572c6'
-        },
-        data: arr26 // 左
+        data: arr42
       }
     ]
   }
@@ -1034,6 +1183,287 @@
             return item[1] * (Math.floor(Math.random() * 1.5) + 0.8)
           }
         })
+      }
+    ]
+  }
+
+  const optionsC5 = {
+    xAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b0}: {c0}'
+    },
+    series: [
+      {
+        type: 'scatter',
+        id: 'female1',
+        dataGroupId: 'female1',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female51 // 中间红色
+      },
+      {
+        type: 'scatter',
+        id: 'female2',
+        dataGroupId: 'female2',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female52 // 右上红色
+      },
+      {
+        type: 'scatter',
+        id: 'male2',
+        dataGroupId: 'male2',
+        itemStyle: {
+          color: '#767676'
+        },
+        data: arr52 // 右上
+      },
+      {
+        type: 'scatter',
+        id: 'male3',
+        dataGroupId: 'male3',
+        itemStyle: {
+          color: '#ef8484'
+        },
+        data: arr53 // 右
+      }
+    ]
+  }
+
+  const optionsCl1 = {
+    xAxis: [
+      {
+        type: 'category',
+        name: 'FPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18
+        },
+        nameGap: 40,
+        data: [
+          '0.0',
+          '',
+          '',
+          '',
+          '',
+          '0.2',
+          '',
+          '',
+          '',
+          '',
+          '0.4',
+          '',
+          '',
+          '',
+          '',
+          '0.6',
+          '',
+          '',
+          '',
+          '',
+          '0.8',
+          '',
+          '',
+          '',
+          '',
+          '1.0'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: 'TPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18
+        },
+        nameGap: 45,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          formatter: function (value, index) {
+            return !value ? '0.0' : value
+          }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    gird: {
+      left: '0%',
+      right: '0%',
+      bottom: '10%',
+      top: '0%'
+    },
+    series: [
+      {
+        name: '',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          '',
+          '',
+          '',
+          '',
+          0.55,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true
       }
     ]
   }
@@ -1284,7 +1714,7 @@
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 40,
@@ -1328,7 +1758,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           interval: 0
         }
@@ -1382,7 +1812,7 @@
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 45,
@@ -1395,7 +1825,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
@@ -1430,7 +1860,7 @@
         'ROS AUC = 0.7490',
         'ADASYN AUC = 0.7832',
         'SMOTE AUC = 0.7915',
-        'WGAN AUC = 0.9469'
+        '混合 AUC = 0.9469'
       ]
     },
     gird: {
@@ -1612,7 +2042,7 @@
         connectNulls: true
       },
       {
-        name: 'WGAN AUC = 0.9469',
+        name: '混合 AUC = 0.9469',
         data: [
           1,
           '',
@@ -1651,11 +2081,11 @@
     xAxis: [
       {
         type: 'category',
-        name: 'False Positive Rate',
+        name: 'FPR',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 40,
@@ -1699,7 +2129,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 18,
           interval: 0
         }
@@ -1749,11 +2179,11 @@
     yAxis: [
       {
         type: 'value',
-        name: 'True Positive Rate',
+        name: 'TPR',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 45,
@@ -1766,7 +2196,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
@@ -1801,7 +2231,7 @@
         'ROS AUC = 0.8156',
         'ADASYN AUC = 0.9358',
         'SMOTE AUC = 0.8527',
-        'WGAN AUC = 0.9684'
+        '混合AUC = 0.9684'
       ]
     },
     gird: {
@@ -1983,7 +2413,7 @@
         connectNulls: true
       },
       {
-        name: 'WGAN AUC = 0.9684',
+        name: '混合AUC = 0.9684',
         data: [
           0,
           '',
@@ -2026,7 +2456,7 @@
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 40,
@@ -2070,7 +2500,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           interval: 0
         }
@@ -2124,7 +2554,7 @@
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 45,
@@ -2137,7 +2567,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
@@ -2173,7 +2603,7 @@
         'DT AUC = 0.5824',
         'LSTM&MLP AUC = 0.6719',
         'SOSTLink&Bi-GRU AUC = 0.7795',
-        'WGAN AUC = 0.9469'
+        '混合 AUC = 0.9469'
       ]
     },
     color: ['purple', 'green', 'pink', 'blue', 'orange', 'red', '#333'],
@@ -2383,7 +2813,7 @@
         connectNulls: true
       },
       {
-        name: 'WGAN AUC = 0.9469',
+        name: '混合 AUC = 0.9469',
         data: [
           1,
           '',
@@ -2422,11 +2852,11 @@
     xAxis: [
       {
         type: 'category',
-        name: 'False Positive Rate',
+        name: 'FPR',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 40,
@@ -2470,7 +2900,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           interval: 0
         }
@@ -2520,11 +2950,11 @@
     yAxis: [
       {
         type: 'value',
-        name: 'True Positive Rate',
+        name: 'TPR',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 45,
@@ -2537,7 +2967,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
@@ -2573,7 +3003,7 @@
         'DT AUC = 0.7444',
         'LSTM&MLP AUC = 0.8789',
         'SOSTLink&Bi-GRU AUC = 0.9332',
-        'WGAN AUC = 0.9684'
+        '混合AUC = 0.9684'
       ]
     },
     color: ['purple', 'green', 'pink', 'blue', 'orange', 'red', '#333'],
@@ -2783,7 +3213,7 @@
         connectNulls: true
       },
       {
-        name: 'WGAN AUC = 0.9684',
+        name: '混合AUC = 0.9684',
         data: [
           0,
           '',
@@ -2827,7 +3257,7 @@
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 40,
@@ -2871,7 +3301,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           interval: 0
         }
@@ -2925,7 +3355,7 @@
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 45,
@@ -2938,7 +3368,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
@@ -2971,7 +3401,7 @@
         'Test1 AUC = 0.7765',
         'Test2 AUC = 0.7946',
         'Test3 AUC = 0.8988',
-        'WGAN AUC = 0.9469'
+        '混合 AUC = 0.9469'
       ]
     },
     color: ['blue', 'orange', 'green', 'red'],
@@ -3079,7 +3509,7 @@
         connectNulls: true
       },
       {
-        name: 'WGAN AUC = 0.9469',
+        name: '混合 AUC = 0.9469',
         data: [
           1,
           '',
@@ -3118,11 +3548,11 @@
     xAxis: [
       {
         type: 'category',
-        name: 'False Positive Rate',
+        name: 'FPR',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 40,
@@ -3166,7 +3596,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           interval: 0
         }
@@ -3216,11 +3646,11 @@
     yAxis: [
       {
         type: 'value',
-        name: 'True Positive Rate',
+        name: 'TPR',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22
         },
         nameGap: 45,
@@ -3233,7 +3663,7 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
+          // fontWeight: '600',
           fontSize: 22,
           formatter: function (value, index) {
             return !value ? '0.0' : value
@@ -3266,7 +3696,7 @@
         'Test1 AUC = 0.8434',
         'Test2 AUC = 0.8631',
         'Test3 AUC = 0.9363',
-        'WGAN AUC = 0.9684'
+        '混合AUC = 0.9684'
       ]
     },
     color: ['blue', 'orange', 'green', 'red'],
@@ -3374,7 +3804,7 @@
         connectNulls: true
       },
       {
-        name: 'WGAN AUC = 0.9684',
+        name: '混合AUC = 0.9684',
         data: [
           0,
           0.9684,

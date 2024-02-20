@@ -498,7 +498,10 @@ const female1 = [
   [0.57, 0.67],
   [0.22, 0.43],
   [0.65, 0.62],
-  [0.51, 0.22],
+  [0.51, 0.22]
+]
+
+const female2 = [
   [0.73, 0.71],
   [0.72, 0.73],
   [0.72, 0.75],
@@ -1478,4 +1481,4 @@ const arr6 = [
   [0.01, 0.1]
 ]
 
-export { female1, arr2, arr3, arr4, arr5, arr6 }
+export { female1, female2, arr2, arr3, arr4, arr5, arr6 }

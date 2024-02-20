@@ -18,13 +18,26 @@
     options: {
       type: Object as PropType<EChartsOption>,
       required: true
+    },
+    event: {
+      type: Boolean,
+      default: false
     }
   })
 
   const chartRef = ref<HTMLDivElement | null>(null)
-  const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>, 'light')
+  const { setOptions, getInstance } = useECharts(
+    chartRef as Ref<HTMLDivElement>,
+    'light'
+  )
 
   onMounted(() => {
     setOptions(props.options)
+    const arr = []
+    props.event &&
+      getInstance().on('click', function (params) {
+        arr.push(params.data)
+        console.log(arr)
+      })
   })
 </script>
