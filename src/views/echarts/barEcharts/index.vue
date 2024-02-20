@@ -62,38 +62,38 @@
       <div style="margin: 20px 0">----2024/02/18----</div>
     </el-col>
 
-    <el-col :span="7">
+    <el-col :span="8">
       <ECharts :options="optionsCl1" height="500px" />
       <div style="text-align: center">a--原始数据</div>
     </el-col>
-    <el-col :span="7">
-      <!-- <ECharts :options="optionsC2" height="500px" /> -->
+    <el-col :span="8">
+      <ECharts :options="optionsCl2" height="500px" />
       <div style="text-align: center">b--NearMiss-1</div>
     </el-col>
-    <el-col :span="7">
-      <!-- <ECharts :options="optionsC3" height="500px" /> -->
+    <el-col :span="8">
+      <ECharts :options="optionsCl3" height="500px" />
       <div style="text-align: center">c--NearMiss-2</div>
     </el-col>
-    <el-col :span="7">
-      <!-- <ECharts :options="optionsC4" height="500px" /> -->
+    <el-col :span="8">
+      <ECharts :options="optionsCl4" height="500px" />
       <div style="text-align: center">d--IHT</div>
     </el-col>
 
-    <el-col :span="7">
-      <!-- <ECharts :options="optionsC5" height="500px" /> -->
+    <el-col :span="8">
+      <ECharts :options="optionsCl5" height="500px" />
       <div style="text-align: center">e-- SMOTE</div>
     </el-col>
-    <el-col :span="7">
-      <!-- <ECharts :options="optionsC1" height="500px" /> -->
+    <el-col :span="8">
+      <ECharts :options="optionsCl6" height="500px" />
       <div style="text-align: center">f-- B-SMOTE</div>
     </el-col>
-    <el-col :span="7">
-      <!-- <ECharts :options="optionsC1" height="500px" /> -->
+    <el-col :span="8">
+      <ECharts :options="optionsCl7" height="500px" />
       <div style="text-align: center">g-- K-SMOTE</div>
     </el-col>
 
-    <el-col :span="7">
-      <!-- <ECharts :options="optionsC1" height="500px" /> -->
+    <el-col :span="8">
+      <ECharts :options="optionsCl8" height="500px" />
       <div style="text-align: center">h-- 混合采样</div>
     </el-col>
 
@@ -388,10 +388,10 @@
         }
       }
     ],
-    gird: {
-      left: '0%',
-      right: '0%',
-      bottom: '10%',
+    grid: {
+      left: '10%',
+      right: '2%',
+      bottom: '12%',
       top: '0%'
     },
     color: ['orange', 'red', 'green', 'blue', 'purple', '#333'],
@@ -638,10 +638,10 @@
         }
       }
     ],
-    gird: {
-      left: '0%',
-      right: '0%',
-      bottom: '10%',
+    grid: {
+      left: '10%',
+      right: '2%',
+      bottom: '12%',
       top: '0%'
     },
     legend: {
@@ -757,6 +757,12 @@
   }
 
   const optionsC1 = {
+    grid: {
+      left: '8%',
+      right: '3%',
+      bottom: '8%',
+      top: '4%'
+    },
     xAxis: [
       {
         scale: true,
@@ -765,8 +771,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -792,8 +798,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -874,6 +880,12 @@
   }
 
   const optionsC2 = {
+    grid: {
+      left: '8%',
+      right: '3%',
+      bottom: '8%',
+      top: '4%'
+    },
     xAxis: [
       {
         scale: true,
@@ -882,8 +894,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -909,8 +921,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -955,6 +967,12 @@
   }
 
   const optionsC3 = {
+    grid: {
+      left: '8%',
+      right: '3%',
+      bottom: '8%',
+      top: '4%'
+    },
     xAxis: [
       {
         scale: true,
@@ -963,8 +981,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -990,8 +1008,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1036,6 +1054,12 @@
   }
 
   const optionsC4 = {
+    grid: {
+      left: '8%',
+      right: '3%',
+      bottom: '8%',
+      top: '4%'
+    },
     xAxis: [
       {
         scale: true,
@@ -1044,8 +1068,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1240,6 +1264,12 @@
   }
 
   const optionsC5 = {
+    grid: {
+      left: '8%',
+      right: '3%',
+      bottom: '8%',
+      top: '4%'
+    },
     xAxis: [
       {
         scale: true,
@@ -1248,8 +1278,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1275,8 +1305,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1339,6 +1369,12 @@
   }
 
   const optionsC6 = {
+    grid: {
+      left: '8%',
+      right: '3%',
+      bottom: '8%',
+      top: '4%'
+    },
     xAxis: [
       {
         scale: true,
@@ -1347,8 +1383,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1374,8 +1410,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1438,6 +1474,12 @@
   }
 
   const optionsC7 = {
+    grid: {
+      left: '8%',
+      right: '3%',
+      bottom: '8%',
+      top: '4%'
+    },
     xAxis: [
       {
         scale: true,
@@ -1446,8 +1488,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1473,8 +1515,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1537,6 +1579,12 @@
   }
 
   const optionsC8 = {
+    grid: {
+      left: '8%',
+      right: '3%',
+      bottom: '8%',
+      top: '4%'
+    },
     xAxis: [
       {
         scale: true,
@@ -1545,8 +1593,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1572,8 +1620,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 26,
           interval: 0
         }
       },
@@ -1644,7 +1692,7 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 18
+          fontSize: 26
         },
         nameGap: 40,
         data: [
@@ -1687,8 +1735,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 25,
           interval: 0
         }
       },
@@ -1742,9 +1790,9 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 18
+          fontSize: 26
         },
-        nameGap: 45,
+        nameGap: 40,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -1754,8 +1802,8 @@
         },
         axisLabel: {
           color: '#333',
-          fontWeight: '600',
-          fontSize: 18,
+          // fontWeight: '600',
+          fontSize: 25,
           formatter: function (value, index) {
             return !value ? '0.0' : value
           }
@@ -1772,11 +1820,751 @@
         }
       }
     ],
-    gird: {
-      left: '0%',
-      right: '0%',
-      bottom: '10%',
-      top: '0%'
+    grid: {
+      left: '15%',
+      right: '3%',
+      bottom: '14%',
+      top: '3%'
+    },
+    series: [
+      {
+        name: '',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          0.14,
+          '',
+          0.32,
+          '',
+          0.43,
+          '',
+          0.53,
+          '',
+          '',
+          0.67,
+          '',
+          '',
+          '',
+          0.78,
+          '',
+          '',
+          '',
+          0.878,
+          '',
+          '',
+          0.95,
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true,
+        lineStyle: {
+          color: '#ff5a5a'
+        }
+      }
+    ]
+  }
+
+  const optionsCl2 = {
+    xAxis: [
+      {
+        type: 'category',
+        name: 'FPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        data: [
+          '0.0',
+          '',
+          '',
+          '',
+          '',
+          '0.2',
+          '',
+          '',
+          '',
+          '',
+          '0.4',
+          '',
+          '',
+          '',
+          '',
+          '0.6',
+          '',
+          '',
+          '',
+          '',
+          '0.8',
+          '',
+          '',
+          '',
+          '',
+          '1.0'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: 'TPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          formatter: function (value, index) {
+            return !value ? '0.0' : value
+          }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    grid: {
+      left: '15%',
+      right: '3%',
+      bottom: '14%',
+      top: '3%'
+    },
+    series: [
+      {
+        name: '',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          0.18,
+          '',
+          0.33,
+          '',
+          0.45,
+          '',
+          0.55,
+          '',
+          '',
+          '',
+          0.66,
+          '',
+          '',
+          0.76,
+          '',
+          '',
+          '',
+          0.878,
+          '',
+          '',
+          0.95,
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true,
+        lineStyle: {
+          color: '#20db5f'
+        }
+      }
+    ]
+  }
+
+  const optionsCl3 = {
+    xAxis: [
+      {
+        type: 'category',
+        name: 'FPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        data: [
+          '0.0',
+          '',
+          '',
+          '',
+          '',
+          '0.2',
+          '',
+          '',
+          '',
+          '',
+          '0.4',
+          '',
+          '',
+          '',
+          '',
+          '0.6',
+          '',
+          '',
+          '',
+          '',
+          '0.8',
+          '',
+          '',
+          '',
+          '',
+          '1.0'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: 'TPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          formatter: function (value, index) {
+            return !value ? '0.0' : value
+          }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    grid: {
+      left: '15%',
+      right: '3%',
+      bottom: '14%',
+      top: '3%'
+    },
+    series: [
+      {
+        name: '',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          0.18,
+          '',
+          0.32,
+          '',
+          0.45,
+          '',
+          0.54,
+          '',
+          '',
+          '',
+          0.67,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          0.88,
+          '',
+          '',
+          0.94,
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true,
+        lineStyle: {
+          color: 'blue'
+        }
+      }
+    ]
+  }
+
+  const optionsCl4 = {
+    xAxis: [
+      {
+        type: 'category',
+        name: 'FPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        data: [
+          '0.0',
+          '',
+          '',
+          '',
+          '',
+          '0.2',
+          '',
+          '',
+          '',
+          '',
+          '0.4',
+          '',
+          '',
+          '',
+          '',
+          '0.6',
+          '',
+          '',
+          '',
+          '',
+          '0.8',
+          '',
+          '',
+          '',
+          '',
+          '1.0'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: 'TPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          formatter: function (value, index) {
+            return !value ? '0.0' : value
+          }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    grid: {
+      left: '15%',
+      right: '3%',
+      bottom: '14%',
+      top: '3%'
+    },
+    series: [
+      {
+        name: '',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          '',
+          '',
+          0.65,
+          '',
+          0.77,
+          '',
+          0.84,
+          '',
+          0.87,
+          '',
+          0.9,
+          '',
+          '',
+          '',
+          0.93,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true,
+        lineStyle: {
+          color: '#848484'
+        }
+      }
+    ]
+  }
+
+  const optionsCl5 = {
+    xAxis: [
+      {
+        type: 'category',
+        name: 'FPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        data: [
+          '0.0',
+          '',
+          '',
+          '',
+          '',
+          '0.2',
+          '',
+          '',
+          '',
+          '',
+          '0.4',
+          '',
+          '',
+          '',
+          '',
+          '0.6',
+          '',
+          '',
+          '',
+          '',
+          '0.8',
+          '',
+          '',
+          '',
+          '',
+          '1.0'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: 'TPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          formatter: function (value, index) {
+            return !value ? '0.0' : value
+          }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    grid: {
+      left: '15%',
+      right: '3%',
+      bottom: '14%',
+      top: '3%'
     },
     series: [
       {
@@ -1787,8 +2575,563 @@
           '',
           '',
           '',
+          0.71,
           '',
-          0.55,
+          '',
+          0.84,
+          '',
+          0.88,
+          '',
+          0.92,
+          '',
+          '',
+          0.93,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true,
+        lineStyle: {
+          color: '#fd6e97'
+        }
+      }
+    ]
+  }
+
+  const optionsCl6 = {
+    xAxis: [
+      {
+        type: 'category',
+        name: 'FPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        data: [
+          '0.0',
+          '',
+          '',
+          '',
+          '',
+          '0.2',
+          '',
+          '',
+          '',
+          '',
+          '0.4',
+          '',
+          '',
+          '',
+          '',
+          '0.6',
+          '',
+          '',
+          '',
+          '',
+          '0.8',
+          '',
+          '',
+          '',
+          '',
+          '1.0'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: 'TPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          formatter: function (value, index) {
+            return !value ? '0.0' : value
+          }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    grid: {
+      left: '15%',
+      right: '3%',
+      bottom: '14%',
+      top: '3%'
+    },
+    series: [
+      {
+        name: '',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          '',
+          '',
+          '',
+          0.7,
+          '',
+          '',
+          0.86,
+          '',
+          '',
+          '',
+          0.91,
+          '',
+          '',
+          0.93,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true,
+        lineStyle: {
+          color: 'orange'
+        }
+      }
+    ]
+  }
+
+  const optionsCl7 = {
+    xAxis: [
+      {
+        type: 'category',
+        name: 'FPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        data: [
+          '0.0',
+          '',
+          '',
+          '',
+          '',
+          '0.2',
+          '',
+          '',
+          '',
+          '',
+          '0.4',
+          '',
+          '',
+          '',
+          '',
+          '0.6',
+          '',
+          '',
+          '',
+          '',
+          '0.8',
+          '',
+          '',
+          '',
+          '',
+          '1.0'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: 'TPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          formatter: function (value, index) {
+            return !value ? '0.0' : value
+          }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    grid: {
+      left: '15%',
+      right: '3%',
+      bottom: '14%',
+      top: '3%'
+    },
+    series: [
+      {
+        name: '',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          '',
+          0.795,
+          0.855,
+          '',
+          '',
+          '',
+          0.899,
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          1
+        ],
+        type: 'line',
+        showSymbol: false,
+        connectNulls: true,
+        lineStyle: {
+          color: '#0099ff'
+        }
+      }
+    ]
+  }
+
+  const optionsCl8 = {
+    xAxis: [
+      {
+        type: 'category',
+        name: 'FPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        data: [
+          '0.0',
+          '',
+          '',
+          '',
+          '',
+          '0.2',
+          '',
+          '',
+          '',
+          '',
+          '0.4',
+          '',
+          '',
+          '',
+          '',
+          '0.6',
+          '',
+          '',
+          '',
+          '',
+          '0.8',
+          '',
+          '',
+          '',
+          '',
+          '1.0'
+        ],
+        boundaryGap: false,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisTick: {
+          show: false // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          interval: 0
+        }
+      },
+      {
+        type: 'category',
+        data: [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: 'TPR',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        position: 'left',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#333',
+          // fontWeight: '600',
+          fontSize: 25,
+          formatter: function (value, index) {
+            return !value ? '0.0' : value
+          }
+        }
+      },
+      {
+        type: 'value',
+        position: 'right',
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        }
+      }
+    ],
+    grid: {
+      left: '15%',
+      right: '3%',
+      bottom: '14%',
+      top: '3%'
+    },
+    series: [
+      {
+        name: '',
+        smooth: true, // 开启平滑效果
+        data: [
+          0,
+          '',
+          0.825,
+          '',
+          '',
+          '',
           '',
           '',
           '',
@@ -1812,7 +3155,10 @@
         ],
         type: 'line',
         showSymbol: false,
-        connectNulls: true
+        connectNulls: true,
+        lineStyle: {
+          color: '#ff7e51'
+        }
       }
     ]
   }
@@ -2212,7 +3558,7 @@
         '混合 AUC = 0.9469'
       ]
     },
-    gird: {
+    grid: {
       left: '0%',
       right: 0,
       bottom: '10%',
@@ -2583,7 +3929,7 @@
         '混合AUC = 0.9684'
       ]
     },
-    gird: {
+    grid: {
       left: '0%',
       right: '0%',
       bottom: '10%',
