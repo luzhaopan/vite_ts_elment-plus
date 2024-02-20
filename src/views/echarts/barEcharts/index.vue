@@ -26,20 +26,35 @@
     </el-col>
 
     <el-col :span="12">
-      <ECharts :options="optionsC5" height="500px" :event="true" />
+      <ECharts
+        :options="optionsC5"
+        height="500px"
+        :event="true"
+        @handle-change="handleClick"
+      />
       <div style="text-align: center">e-- SMOTE</div>
     </el-col>
     <el-col :span="12">
-      <ECharts :options="optionsC1" height="500px" />
+      <ECharts
+        :options="optionsC6"
+        height="500px"
+        :event="true"
+        @handle-change="handleClick6"
+      />
       <div style="text-align: center">f-- B-SMOTE</div>
     </el-col>
     <el-col :span="12">
-      <ECharts :options="optionsC1" height="500px" />
+      <ECharts :options="optionsC7" height="500px" />
       <div style="text-align: center">g-- K-SMOTE</div>
     </el-col>
 
     <el-col :span="12">
-      <ECharts :options="optionsC1" height="500px" />
+      <ECharts
+        :options="optionsC8"
+        height="500px"
+        :event="true"
+        @handle-change="handleClick8"
+      />
       <div style="text-align: center">h-- 混合采样</div>
     </el-col>
 
@@ -132,6 +147,43 @@
   import { female31, arr32 } from './data3'
   import { female41, arr42 } from './data4'
   import { female51, female52, arr52, arr53 } from './data5'
+  import { female61, female62, arr62, arr63 } from './data6'
+  import { female71, female72, arr72, arr73 } from './data7'
+  import { female81, female82, arr82, arr83 } from './data8'
+
+  function handleClick(val) {
+    let arr = []
+    arr53.forEach((item, index) => {
+      if (item[0] === val[0] && item[1] === val[1]) {
+        // arr.push(item)
+        arr53.splice(index, 1)
+      }
+    })
+    console.log('1,arr53', arr53)
+    // console.log('2,arr', arr)
+  }
+
+  function handleClick6(val) {
+    arr63.forEach((item, index) => {
+      if (item[0] === val[0] && item[1] === val[1]) {
+        // arr.push(item)
+        arr63.splice(index, 1)
+      }
+    })
+    console.log('arr63', arr63)
+    // console.log('2,arr', arr)
+  }
+
+  function handleClick8(val) {
+    arr83.forEach((item, index) => {
+      if (item[0] === val[0] && item[1] === val[1]) {
+        // arr.push(item)
+        arr83.splice(index, 1)
+      }
+    })
+    console.log('arr83', arr83)
+    // console.log('2,arr', arr)
+  }
 
   // const female1 = []
   // const female2 = []
@@ -1272,7 +1324,7 @@
         itemStyle: {
           color: '#767676'
         },
-        data: arr52 // 右上
+        data: arr52 // 蓝
       },
       {
         type: 'scatter',
@@ -1281,7 +1333,304 @@
         itemStyle: {
           color: '#ef8484'
         },
-        data: arr53 // 右
+        data: arr53 // 红
+      }
+    ]
+  }
+
+  const optionsC6 = {
+    xAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b0}: {c0}'
+    },
+    series: [
+      {
+        type: 'scatter',
+        id: 'female1',
+        dataGroupId: 'female1',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female61 // 中间红色
+      },
+      {
+        type: 'scatter',
+        id: 'female2',
+        dataGroupId: 'female2',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female62 // 右上红色
+      },
+      {
+        type: 'scatter',
+        id: 'male2',
+        dataGroupId: 'male2',
+        itemStyle: {
+          color: '#767676'
+        },
+        data: arr62 // 蓝
+      },
+      {
+        type: 'scatter',
+        id: 'male3',
+        dataGroupId: 'male3',
+        itemStyle: {
+          color: '#ef8484'
+        },
+        data: arr63 // 红
+      }
+    ]
+  }
+
+  const optionsC7 = {
+    xAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b0}: {c0}'
+    },
+    series: [
+      {
+        type: 'scatter',
+        id: 'female1',
+        dataGroupId: 'female1',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female71 // 中间红色
+      },
+      {
+        type: 'scatter',
+        id: 'female2',
+        dataGroupId: 'female2',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female72 // 右上红色
+      },
+      {
+        type: 'scatter',
+        id: 'male2',
+        dataGroupId: 'male2',
+        itemStyle: {
+          color: '#767676'
+        },
+        data: arr72 // 蓝
+      },
+      {
+        type: 'scatter',
+        id: 'male3',
+        dataGroupId: 'male3',
+        itemStyle: {
+          color: '#ef8484'
+        },
+        data: arr73 // 红
+      }
+    ]
+  }
+
+  const optionsC8 = {
+    xAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    yAxis: [
+      {
+        scale: true,
+        splitLine: {
+          show: false // 是否显示网格线
+        },
+        axisLabel: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 0
+        }
+      },
+      {
+        scale: true,
+        axisTick: {
+          show: false,
+          alignWithLabel: true
+        },
+        axisLine: {
+          onZero: false,
+          lineStyle: {
+            color: '#333'
+          }
+        }
+      }
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b0}: {c0}'
+    },
+    series: [
+      {
+        type: 'scatter',
+        id: 'female1',
+        dataGroupId: 'female1',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female81 // 中间红色
+      },
+      {
+        type: 'scatter',
+        id: 'female2',
+        dataGroupId: 'female2',
+        itemStyle: {
+          color: '#758dd0'
+        },
+        data: female82 // 右上红色
+      },
+      {
+        type: 'scatter',
+        id: 'male2',
+        dataGroupId: 'male2',
+        itemStyle: {
+          color: '#767676'
+        },
+        data: arr82 // 蓝
+      },
+      {
+        type: 'scatter',
+        id: 'male3',
+        dataGroupId: 'male3',
+        itemStyle: {
+          color: '#ef8484'
+        },
+        data: arr83 // 红
       }
     ]
   }
