@@ -54,14 +54,22 @@ const routes = [
     ]
   },
   {
-    path: '/print',
+    path: '/download',
+    name: 'Download',
     component: Layout,
+    meta: { title: 'Download', icon: 'Download' },
     children: [
       {
-        path: '/print/index',
+        path: '/download/print/index',
         name: 'Print',
-        component: () => import('@/views/print/index.vue'),
+        component: () => import('@/views/download/print/index.vue'),
         meta: { title: 'Print', icon: 'Printer' }
+      },
+      {
+        path: '/download/word/index',
+        name: 'Word',
+        component: () => import('@/views/download/word/index.vue'),
+        meta: { title: 'Word', icon: 'Tickets' }
       }
     ]
   },
