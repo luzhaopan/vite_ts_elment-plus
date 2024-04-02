@@ -32,17 +32,22 @@
     </el-row>
   </el-card>
 
-  <h2>预期资产收益率与预期资产波动率</h2>
-  <ECharts :options="scatterOptions" height="300px" />
-
-  <h2>相关性分析</h2>
-  <ECharts :options="heatmapOption" height="500px" />
-
-  <h2>组合业绩归因</h2>
-  <ECharts :options="lineOption" height="500px" />
-
-  <h2>中国信用环境指标时序看板</h2>
-  <ECharts :options="combineOption" height="800px" />
+  <el-card class="box-card">
+    <h2>预期资产收益率与预期资产波动率</h2>
+    <ECharts :options="scatterOptions" height="300px" />
+  </el-card>
+  <el-card class="box-card">
+    <h2>相关性分析</h2>
+    <ECharts :options="heatmapOption" height="500px" />
+  </el-card>
+  <el-card class="box-card">
+    <h2>组合业绩归因</h2>
+    <ECharts :options="lineOption" height="500px" />
+  </el-card>
+  <el-card class="box-card">
+    <h2>中国信用环境指标时序看板</h2>
+    <ECharts :options="combineOption" height="800px" />
+  </el-card>
 </template>
 <script lang="ts" setup>
   import * as echarts from 'echarts'
