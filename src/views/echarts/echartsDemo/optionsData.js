@@ -202,7 +202,9 @@ const heatmapOption = {
   tooltip: {
     position: 'top',
     formatter: function (e) {
-      return `${yAxisVal}与${xAxisVal}</br>相关性： ${(e.data && e.data[2]) || '-'} `
+      return `${yAxisVal}与${xAxisVal}</br>相关性： ${
+        (e.data && e.data[2]) || '-'
+      } `
     }
   },
   grid: {
@@ -487,8 +489,8 @@ const lineOption = {
         }
       },
       data: [
-        281.55, -98.35, 214.02, 119.55, 289.57, 296.14, 364.18, 522.69, 306.08, 152.84, 205.97,
-        332.79
+        281.55, -98.35, 214.02, 119.55, 289.57, 296.14, 364.18, 522.69, 306.08,
+        152.84, 205.97, 332.79
       ]
     },
     {
@@ -499,8 +501,8 @@ const lineOption = {
       showSymbol: false,
       areaStyle: {},
       data: [
-        28.55, 348.35, 234.02, 249.55, 299.57, 286.14, 264.18, 382.69, 386.08, 452.84, 285.97,
-        432.79
+        28.55, 348.35, 234.02, 249.55, 299.57, 286.14, 264.18, 382.69, 386.08,
+        452.84, 285.97, 432.79
       ]
     },
     {
@@ -523,8 +525,8 @@ const lineOption = {
         }
       },
       data: [
-        -198.66, -330.81, 151.95, 160.12, 222.56, 229.05, 128.53, 250.91, 224.47, 473.99, 126.85,
-        260.5
+        -198.66, -330.81, 151.95, 160.12, 222.56, 229.05, 128.53, 250.91,
+        224.47, 473.99, 126.85, 260.5
       ]
     },
     {
@@ -542,7 +544,10 @@ const lineOption = {
           }
         }
       },
-      data: [-82.89, 67.54, 162.07, 89.43, 97.02, 67.09, 165.66, 171.78, 81.61, 78.85, 79.12, 72.3]
+      data: [
+        -82.89, 67.54, 162.07, 89.43, 97.02, 67.09, 165.66, 171.78, 81.61,
+        78.85, 79.12, 72.3
+      ]
     }
   ]
 }
@@ -567,7 +572,12 @@ const combineOption = {
   ],
   xAxis: [
     {
-      show: false,
+      axisTick: {
+        show: false
+      },
+      axisLabel: {
+        show: false
+      },
       data: [
         '2024/3/1',
         '2024/3/2',
@@ -582,6 +592,9 @@ const combineOption = {
       ]
     },
     {
+      axisTick: {
+        show: false
+      },
       data: [
         '2024/3/1',
         '2024/3/2',
@@ -600,25 +613,58 @@ const combineOption = {
   yAxis: [
     {
       type: 'value',
+      min: 0,
+      max: 100,
+      splitNumber: 10,
       splitLine: {
-        show: true
-        // interval: 0
+        show: true,
+        // interval: 0,
+        lineStyle: {
+          type: 'dashed'
+        }
+      },
+      axisTick: {
+        show: false
+      },
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#777'
+        }
       },
       axisLabel: {
         formatter: function (val) {
           return val + '%'
         }
-      }
+      },
+      gridIndex: 0
     },
     {
       type: 'value',
+      min: 0,
+      max: 100,
+      splitNumber: 10,
       splitLine: {
-        show: true
-        // interval: 0
+        show: true,
+        // interval: 0,
+        lineStyle: {
+          type: 'dashed'
+        }
+      },
+      axisTick: {
+        show: false
+      },
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#777'
+        }
       },
       axisLabel: {
-        formatter: function (val) {
-          return val + '%'
+        formatter: function (val, index) {
+          if (index !== 10) {
+            return val + '%'
+          }
         }
       },
       gridIndex: 1
@@ -626,10 +672,10 @@ const combineOption = {
   ],
   grid: [
     {
-      bottom: '43%'
+      bottom: '50%'
     },
     {
-      top: '60%'
+      top: '50%'
     }
   ],
   tooltip: {
@@ -641,7 +687,13 @@ const combineOption = {
       var src = params[0].axisValue + '<br>'
       for (var x in params) {
         if (params[x].value !== '-') {
-          src += params[x].marker + params[x].seriesName + '：' + params[x].value + ' %' + '<br>'
+          src +=
+            params[x].marker +
+            params[x].seriesName +
+            '：' +
+            params[x].value +
+            ' %' +
+            '<br>'
         }
       }
       return src
