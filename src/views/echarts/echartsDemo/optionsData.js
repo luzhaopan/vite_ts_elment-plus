@@ -563,7 +563,7 @@ const combineOption = {
     },
     {
       show: true,
-      top: '60%',
+      top: '52%',
       icon: 'rect',
       itemWidth: 40,
       itemHeight: 2,
@@ -577,6 +577,9 @@ const combineOption = {
       },
       axisLabel: {
         show: false
+      },
+      axisLine: {
+        onZero: false
       },
       data: [
         '2024/3/1',
@@ -594,6 +597,9 @@ const combineOption = {
     {
       axisTick: {
         show: false
+      },
+      axisLine: {
+        onZero: false
       },
       data: [
         '2024/3/1',
@@ -613,8 +619,8 @@ const combineOption = {
   yAxis: [
     {
       type: 'value',
-      min: 0,
-      max: 100,
+      // min: 0,
+      // max: 100,
       splitNumber: 10,
       splitLine: {
         show: true,
@@ -641,8 +647,8 @@ const combineOption = {
     },
     {
       type: 'value',
-      min: 0,
-      max: 100,
+      // min: 0,
+      // max: 100,
       splitNumber: 10,
       splitLine: {
         show: true,
@@ -829,7 +835,7 @@ const combineOption = {
       name: '价值板-收益率',
       smooth: false,
       symbol: 'none',
-      data: [40, 21, 17, 63, 20, 30, 61, 70, 60, '-'],
+      data: [40, 21, 17, 63, -20, 30, 61, 74, 60, '-'],
       xAxisIndex: 1,
       yAxisIndex: 1,
       markArea: {
@@ -863,6 +869,7 @@ const combineOption = {
     }
   ]
 }
+
 import * as echarts from 'echarts'
 var dataArr = 0.15
 const gaugeChartsoption = {
