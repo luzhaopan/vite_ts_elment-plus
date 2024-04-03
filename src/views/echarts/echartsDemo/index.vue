@@ -45,7 +45,7 @@
     <ECharts :options="lineOption" height="500px" />
   </el-card>
   <el-card class="box-card">
-    <h2>中国信用环境指标时序看板</h2>
+    <h2>环境指标时序看板</h2>
     <ECharts :options="combineOption" height="800px" />
   </el-card>
   <el-card class="box-card">
