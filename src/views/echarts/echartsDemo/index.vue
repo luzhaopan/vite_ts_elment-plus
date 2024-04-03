@@ -48,6 +48,10 @@
     <h2>中国信用环境指标时序看板</h2>
     <ECharts :options="combineOption" height="800px" />
   </el-card>
+  <el-card class="box-card">
+    <h2>指标预测综合分析</h2>
+    <ECharts :options="gaugeChartsoption" height="500px" />
+  </el-card>
 </template>
 <script lang="ts" setup>
   import * as echarts from 'echarts'
@@ -55,7 +59,8 @@
     scatterOptions,
     heatmapOption,
     lineOption,
-    combineOption
+    combineOption,
+    gaugeChartsoption
   } from './optionsData.js'
 
   const demo1 = [

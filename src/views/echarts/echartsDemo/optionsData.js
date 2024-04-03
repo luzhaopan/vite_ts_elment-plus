@@ -863,5 +863,369 @@ const combineOption = {
     }
   ]
 }
+import * as echarts from 'echarts'
+var dataArr = 0.15
+const gaugeChartsoption = {
+  backgroundColor: '#fff',
+  tooltip: {
+    formatter: '{a} <br/>{b} : {c}%'
+  },
 
-export { scatterOptions, heatmapOption, lineOption, combineOption }
+  series: [
+    {
+      name: '最外部进度条',
+      type: 'gauge',
+      radius: '54%',
+      startAngle: 210,
+      endAngle: -30,
+      z: 10,
+      splitNumber: 100,
+      axisLine: {
+        lineStyle: {
+          color: [
+            [
+              0.3,
+              new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                {
+                  offset: 0,
+                  color: '#61ffb4'
+                },
+
+                {
+                  offset: 1,
+                  color: '#9af48a'
+                }
+              ])
+            ],
+
+            [
+              0.7,
+              new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                {
+                  offset: 0,
+                  color: '#c8fd99'
+                },
+                {
+                  offset: 1,
+                  color: '#f9d854'
+                }
+              ])
+            ],
+            [
+              1,
+              new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: '#eca649'
+                },
+
+                {
+                  offset: 1,
+                  color: '#ff6b45'
+                }
+              ])
+            ]
+          ],
+          //color: [
+          //  [1, '#33507A']
+          // [0.3, '#67e0e3'],
+          //[0.7, '#37a2da'],
+          // [1, '#fd666d']
+          // ],
+          width: 20,
+          shadowColor: 'rgba(145,207,255,.5)',
+          shadowBlur: 6,
+          shadowOffsetX: 0
+        }
+      },
+      axisLabel: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      },
+      splitLine: {
+        show: false
+      },
+      itemStyle: {
+        show: false
+      },
+      detail: {
+        show: false
+      },
+      title: {
+        //标题
+        show: false
+      },
+      data: [
+        {
+          name: 'title',
+          value: dataArr
+        }
+      ],
+      pointer: {
+        show: false
+      },
+      animationDuration: 4000
+    },
+    {
+      name: '内部进度条',
+      type: 'gauge',
+      //center: ['50%', '50%'],
+      radius: '49%',
+      z: 4,
+      min: 0, //最小刻度
+      max: 1, //最大刻度
+      startAngle: 210,
+      endAngle: -30,
+      splitNumber: 100,
+      axisLine: {
+        lineStyle: {
+          color: [
+            [
+              0.3,
+              new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                {
+                  offset: 0,
+                  color: '#ccc'
+                },
+
+                {
+                  offset: 1,
+                  color: '#7bffb9'
+                }
+              ])
+            ],
+
+            [
+              0.7,
+              new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: '#ccc'
+                },
+                {
+                  offset: 1,
+                  color: '#f9d854'
+                }
+              ])
+            ],
+            [
+              1,
+              new echarts.graphic.LinearGradient(1, 0, 0, 0, [
+                {
+                  offset: 0,
+                  color: '#ccc'
+                },
+
+                {
+                  offset: 1,
+                  color: '#ff6b45'
+                }
+              ])
+            ]
+          ],
+          width: 170
+        }
+      },
+      axisLabel: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      },
+      splitLine: {
+        show: false
+      },
+      itemStyle: {
+        show: false
+      },
+      detail: {
+        formatter: function (value) {
+          if (value !== 0) {
+            var num = Math.round(value)
+            return 0.15 //parseInt(num).toFixed(0) + ''
+          } else {
+            return 0
+          }
+        },
+        offsetCenter: [0, 55],
+        textStyle: {
+          padding: [0, 0, 0, 0],
+          fontSize: 30,
+          fontWeight: '700',
+          color: '#e53443'
+        }
+      },
+      title: {
+        //标题
+        show: false,
+        offsetCenter: [0, 46], // x, y，单位px
+        textStyle: {
+          color: 'rgba(46, 143, 255, 1)',
+          fontSize: 30, //表盘上的标题文字大小
+          fontWeight: 700,
+          fontFamily: 'PingFangSC'
+        }
+      },
+      data: [
+        {
+          name: dataArr,
+          value: dataArr
+        }
+      ],
+      itemStyle: {
+        normal: {
+          color: 'red'
+        }
+      },
+      pointer: {
+        show: true,
+        length: '80%',
+        radius: '20%',
+        width: 5 //指针粗细
+      },
+      animationDuration: 4000
+    },
+    // 内圆
+    {
+      name: '内圆',
+      type: 'pie',
+      hoverAnimation: false,
+      legendHoverLink: false,
+      radius: '5%',
+      z: 4,
+      labelLine: {
+        normal: {
+          show: false
+        }
+      },
+      data: [
+        {
+          value: 0
+        },
+        {
+          value: 10,
+
+          itemStyle: {
+            normal: {
+              color: 'red'
+            },
+            emphasis: {
+              color: 'red'
+            }
+          }
+        }
+      ]
+    },
+    // 圆环
+    {
+      name: '小圆形',
+      type: 'pie',
+      hoverAnimation: false,
+      legendHoverLink: false,
+      radius: ['6%', '3%'],
+      z: 5,
+      labelLine: {
+        normal: {
+          show: false
+        }
+      },
+      data: [
+        {
+          value: 0
+        },
+        {
+          value: 10,
+
+          itemStyle: {
+            normal: {
+              color: '#595959'
+            }
+          }
+        }
+      ]
+    },
+    {
+      name: '外部刻度',
+      type: 'gauge',
+      //  center: ['20%', '50%'],
+      radius: '48%',
+      min: 0, //最小刻度
+      max: 1, //最大刻度
+      z: 10,
+      splitNumber: 10, //刻度数量
+      startAngle: 210,
+      endAngle: -30,
+      axisLine: {
+        show: false,
+        lineStyle: {
+          width: 1,
+          color: [[1, 'rgba(0,0,0,0)']]
+        }
+      }, //仪表盘轴线
+      axisLabel: {
+        show: true,
+        color: 'rgba(255,255,255,1)',
+        distance: 5,
+        formatter: function (v) {
+          switch (v + '') {
+            case '0':
+              return '0'
+            case '0.1':
+              return '0.1'
+            case '0.2':
+              return '0.2'
+            case '0.3':
+              return '0.3'
+            case '0.4':
+              return '0.4'
+            case '0.5':
+              return '0.5'
+            case '0.6':
+              return '0.6'
+            case '0.7':
+              return '0.7'
+            case '0.8':
+              return '0.8'
+            case '0.9':
+              return '0.9'
+            case '1':
+              return '1'
+          }
+        }
+      }, //刻度标签。
+      axisTick: {
+        show: true,
+        splitNumber: 10,
+
+        lineStyle: {
+          color: '#42E5FB', //用颜色渐变函数不起作用
+          width: 2
+        },
+        length: 8
+      }, //刻度样式
+      splitLine: {
+        show: true,
+        length: 15,
+        lineStyle: {
+          color: '#42E5FB' //用颜色渐变函数不起作用
+        }
+      }, //分隔线样式
+      detail: {
+        show: false
+      },
+      pointer: {
+        show: true
+      }
+    }
+  ]
+}
+
+export {
+  scatterOptions,
+  heatmapOption,
+  lineOption,
+  combineOption,
+  gaugeChartsoption
+}
