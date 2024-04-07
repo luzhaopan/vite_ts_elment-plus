@@ -241,6 +241,20 @@ const routes = [
     ]
   },
   {
+    path: '/relationGraph',
+    name: 'Relation',
+    component: Layout,
+    meta: { title: 'Relation', icon: 'Dish' },
+    children: [
+      {
+        path: '/relationGraph/index',
+        name: 'RelationGraph',
+        component: () => import('@/views/relationGraph/index.vue'),
+        meta: { title: 'RelationGraph' }
+      }
+    ]
+  },
+  {
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
