@@ -251,6 +251,12 @@ const routes = [
         name: 'RelationGraph',
         component: () => import('@/views/relationGraph/index.vue'),
         meta: { title: 'RelationGraph' }
+      },
+      {
+        path: '/relationGraph/tableRelation',
+        name: 'TableRelation',
+        component: () => import('@/views/relationGraph/tableRelation.vue'),
+        meta: { title: 'TableRelation' }
       }
     ]
   },

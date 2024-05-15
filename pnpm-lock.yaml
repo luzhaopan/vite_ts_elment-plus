@@ -86,6 +86,9 @@ dependencies:
   relation-graph:
     specifier: ^2.1.29
     version: 2.1.42
+  relation-graph-vue3:
+    specifier: ^2.2.0
+    version: 2.2.0
   resizable-dom:
     specifier: ^1.0.2
     version: 1.0.2
@@ -4516,6 +4519,13 @@ packages:
     resolution: {integrity: sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==}
     engines: {node: '>=8'}
     dev: true
+
+  /relation-graph-vue3@2.2.0:
+    resolution: {integrity: sha512-sWwryfSH48q2dp72AWhbHFUIT26jApsp1tAKqrXKJO0nnaMD0dpRjWxvQuc8FH3Po4cLkK+nCn/0LKewy8YhmA==}
+    dependencies:
+      html2canvas: 1.4.1
+      screenfull: 5.2.0
+    dev: false
 
   /relation-graph@2.1.42:
     resolution: {integrity: sha512-vBCogSXsTXt0Paihixl8gD2NatBqjWtWVS7KzKuAzJbVm8ZYjmn82HJtmgge2O+rY839GvV14329xW3jC4c4CA==}
