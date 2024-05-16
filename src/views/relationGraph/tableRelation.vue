@@ -62,7 +62,7 @@
       <el-button type="primary" @click="loadData">加载血缘</el-button>
     </div>
     <el-divider border-color="#dcdcdc" border-style="dashed" />
-    <div style="height: calc(100vh - 200px)" v-loading="loading">
+    <div style="height: calc(100vh - 260px)" v-loading="loading">
       <RelationGraph
         ref="graphRef"
         :options="graphOptions"
@@ -73,6 +73,21 @@
         <template #node="{ node }">
           <div class="item" v-if="!tableType">
             <div class="title">{{ node.text }}</div>
+            <div class="node-content">
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+            </div>
           </div>
           <div class="item" v-else>
             <div class="title">{{ node.text }}</div>
@@ -135,7 +150,8 @@
     layouts: [
       {
         layoutName: 'tree',
-        from: 'left'
+        from: 'left',
+        min_per_height: 500
       }
     ],
     defaultJunctionPoint: 'lr',
@@ -154,20 +170,22 @@
       refX: 3,
       refY: 3,
       data: 'M 0 0, V 6, L 4 3, Z'
-    }, // 默认的线条箭头样式
+    }, // 线条箭头样式
     // disableLineClickEffect: true, // 是否禁用线条默认的点击效果（选中、闪烁）
     defaultShowLineLabel: false, // 是否默认显示线条上的文字
     checkedLineColor: 'rgb(116,2,173)', // 当线条被选中时的颜色
-    lineUseTextPath: true,
+    lineUseTextPath: false, // 连线文字沿着连线路径走
     useAnimationWhenRefresh: true, // 当图谱刷新后（调用setJsonData或refresh方法都会触发），使用动画让图居中、缩放
-    allowShowMiniToolBar: true,
-    // allowAutoLayoutIfSupport: true
-    placeSingleNode: false // 自动为孤点分配位置（当孤点设置了fixed=true时则不处理）
-    // placeOtherGroup: true
+    allowShowMiniToolBar: true // 是否显示工具栏
+    // allowAutoLayoutIfSupport: true // 是否在工具栏中显示【自动布局】按钮
+    // placeSingleNode: false // 自动为孤点分配位置（当孤点设置了fixed=true时则不处理）
+    // placeOtherGroup: true // 支持展示多个关系网，默认只展示主关系网
+    // hideNodeContentByZoom: true, // 是否根据缩放比例隐藏节点内容
+    // moveToCenterWhenRefresh: true // 当图谱刷新后（调用setJsonData或refresh方法都会触发），让图谱根据节点居中
   }
 
   // 表类型切换
-  const tableTypeSwitch = (val) => {
+  const tableTypeSwitch = async (val) => {
     console.log(val)
     loading.value = true
     // const graphInstance = graphRef.value?.getInstance()
@@ -176,18 +194,19 @@
     // await graphInstance.refresh()
     // graphInstance.zoomToFit()
     graphOptions.defaultShowLineLabel = tableType.value
-
     const graphInstance = graphRef.value!.getInstance()
     graphInstance.setOptions(graphOptions)
-    // await graphInstance.refresh()
+    await graphInstance.refresh()
+    loading.value = false
     // await showGraph()
-    nextTick(() => {
-      graphInstance.refresh()
-      // showGraph()
-      loading.value = false
-      // graphInstance.focusRootNode()
-      // graphInstance.setZoom(54)
-    })
+    // nextTick(() => {
+    //   const graphInstance = graphRef.value!.getInstance()
+    //   graphInstance.setOptions(graphOptions)
+    //   graphInstance.refresh()
+    //   // showGraph()
+    //   // graphInstance.focusRootNode()
+    //   // graphInstance.setZoom(54)
+    // })
   }
 
   // 节点类型切换
@@ -340,12 +359,17 @@
     border-bottom: #efefef solid 1px;
     background-color: #fff;
     color: #333;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
+    max-height: 320px;
+    overflow: auto;
+    div {
+      margin: 8px 0;
+    }
   }
   ::v-deep(.c-rg-line-text) {
-    font-size: 24px;
+    font-size: 20px;
   }
 </style>
