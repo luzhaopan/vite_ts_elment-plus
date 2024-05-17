@@ -86,7 +86,7 @@
             <div
               v-if="isExpandAll"
               :class="{
-                'node-content': true,
+                'table-content': true,
                 'exp-hight': node.data.isExpand,
                 'hide-hight': !node.data.isExpand
               }"
@@ -113,7 +113,7 @@
           </div>
           <div class="item" v-else>
             <div class="title">{{ node.text }}</div>
-            <div class="node-content">
+            <div class="text-content">
               {{ node.data.name }}
             </div>
           </div>
@@ -406,7 +406,7 @@
     text-align: center;
     padding: 10px 0;
   }
-  .node-content {
+  .table-content {
     border-bottom: #efefef solid 1px;
     background-color: #fff;
     color: #333;
@@ -414,7 +414,6 @@
     text-align: center;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
-
     height: 320px;
     box-shadow: 2px 4px 10px #909090;
     div {
@@ -435,6 +434,15 @@
   }
   .exp-hight {
     overflow: auto;
+  }
+  .text-content {
+    border-bottom: #efefef solid 1px;
+    background-color: #fff;
+    color: #333;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
   }
   ::v-deep(.c-rg-line-text) {
     font-size: 20px;
