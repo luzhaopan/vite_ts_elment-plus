@@ -96,20 +96,20 @@
                 'hide-hight': !node.data.isExpand
               }"
             >
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
-              <div>{{ node.data.name }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
+              <div>{{ node.data.tabName }}</div>
               <div class="btn" @click.stop="toggleExpand(node)">
                 <span v-if="!node.data.isExpand">展开</span>
                 <span v-else>收起</span>
@@ -126,7 +126,7 @@
               /></el-icon>
             </div>
             <div class="text-content">
-              {{ node.data.name }}
+              {{ node.data.tabName }}
             </div>
           </div>
         </template>

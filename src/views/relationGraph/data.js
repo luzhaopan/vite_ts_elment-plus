@@ -5,7 +5,13 @@ const nodes = [
     color: '#008080',
     data: {
       isExpand: false,
-      name: 'num1',
+      tabName: 'num1', //  表名
+      schema: 'scheme', // 所属scheme
+      tabType: 0, //表类型 0： 物理表， 1： 临时表， 2： 虚拟表， 3： 文件表
+      dbName: '', // 数据库名称
+      ownSystem: '', // 所属系统
+      fieldName: '', // 字段名称
+      nodeType: 0, // 0基准节点 1 下游 - 1 上游节点
       croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   },
@@ -15,7 +21,13 @@ const nodes = [
     color: '#008080',
     data: {
       isExpand: false,
-      name: 'num2',
+      tabName: 'num2', //  表名
+      schema: 'scheme', // 所属scheme
+      tabType: 0, //表类型 0： 物理表， 1： 临时表， 2： 虚拟表， 3： 文件表
+      dbName: '', // 数据库名称
+      ownSystem: '', // 所属系统
+      fieldName: '', // 字段名称
+      nodeType: 0, // 0基准节点 1 下游 - 1 上游节点
       croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   },
@@ -25,7 +37,13 @@ const nodes = [
     color: '#ff8c00',
     data: {
       isExpand: false,
-      name: 'sales_num',
+      tabName: 'sales_num', //  表名
+      schema: 'scheme', // 所属scheme
+      tabType: 0, //表类型 0： 物理表， 1： 临时表， 2： 虚拟表， 3： 文件表
+      dbName: '', // 数据库名称
+      ownSystem: '', // 所属系统
+      fieldName: '', // 字段名称
+      nodeType: 0, // 0基准节点 1 下游 - 1 上游节点
       croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   },
@@ -35,7 +53,13 @@ const nodes = [
     color: '#ffff80',
     data: {
       isExpand: false,
-      name: 'amount',
+      tabName: 'amount', //  表名
+      schema: 'scheme', // 所属scheme
+      tabType: 0, //表类型 0： 物理表， 1： 临时表， 2： 虚拟表， 3： 文件表
+      dbName: '', // 数据库名称
+      ownSystem: '', // 所属系统
+      fieldName: '', // 字段名称
+      nodeType: 0, // 0基准节点 1 下游 - 1 上游节点
       croppingFlag: 1 // 0 不可裁剪 1 可裁剪
     }
   },
@@ -45,7 +69,13 @@ const nodes = [
     color: '#ffff80',
     data: {
       isExpand: false,
-      name: 'amount',
+      tabName: 'amount', // 表名
+      schema: 'scheme', // 所属scheme
+      tabType: 0, //表类型 0： 物理表， 1： 临时表， 2： 虚拟表， 3： 文件表
+      dbName: '', // 数据库名称
+      ownSystem: '', // 所属系统
+      fieldName: '', // 字段名称
+      nodeType: 0, // 0基准节点 1 下游 - 1 上游节点
       croppingFlag: 1 // 0 不可裁剪 1 可裁剪
     }
   },
@@ -55,7 +85,13 @@ const nodes = [
     color: '#ffff80',
     data: {
       isExpand: false,
-      name: 'amount',
+      tabName: 'amount', //  表名
+      schema: 'scheme', // 所属scheme
+      tabType: 0, //表类型 0： 物理表， 1： 临时表， 2： 虚拟表， 3： 文件表
+      dbName: '', // 数据库名称
+      ownSystem: '', // 所属系统
+      fieldName: '', // 字段名称
+      nodeType: 0, // 0基准节点 1 下游 - 1 上游节点
       croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   },
@@ -64,8 +100,15 @@ const nodes = [
     text: 'dim_trade_info4',
     color: '#ffff80',
     data: {
+      // uuid: '', // 表id, fieldNames:[], //[包含字段的名称],
       isExpand: false,
-      name: 'amount',
+      tabName: 'amount', //  表名
+      schema: 'scheme', // 所属scheme
+      tabType: 0, //表类型 0： 物理表， 1： 临时表， 2： 虚拟表， 3： 文件表
+      dbName: '', // 数据库名称
+      ownSystem: '', // 所属系统
+      fieldName: '', // 字段名称
+      nodeType: 0, // 0基准节点 1 下游 - 1 上游节点
       croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   }
@@ -75,37 +118,61 @@ const lines = [
     from: 'a',
     to: 'c',
     text: 'num1+num2',
-    fontColor: '#333'
+    fontColor: '#333',
+    data: {
+      lieageType: 0, // 0投影, 1 关联, 2 过滤
+      sqlId: 1 // [血缘sql id]
+    }
   },
   {
     from: 'b',
     to: 'c',
     text: 'num1+num2',
-    fontColor: '#333'
+    fontColor: '#333',
+    data: {
+      lieageType: 1, // 0投影, 1 关联, 2 过滤
+      sqlId: 1 // [血缘sql id]
+    }
   },
   {
     from: 'c',
     to: 'd',
     text: 'amount',
-    fontColor: '#333'
+    fontColor: '#333',
+    data: {
+      lieageType: 2, // 0投影, 1 关联, 2 过滤
+      sqlId: 1 // [血缘sql id]
+    }
   },
   {
     from: 'c',
     to: 'e',
     text: 'amount',
-    fontColor: '#333'
+    fontColor: '#333',
+    data: {
+      lieageType: 0, // 0投影, 1 关联, 2 过滤
+      sqlId: 0 // [血缘sql id]
+    }
   },
   {
     from: 'd',
     to: 'f',
     text: 'amount',
-    fontColor: '#333'
+    fontColor: '#333',
+    data: {
+      lieageType: 0, // 0投影, 1 关联, 2 过滤
+      sqlId: 0 // [血缘sql id]
+    }
   },
   {
     from: 'e',
     to: 'g',
     text: 'amount',
-    fontColor: '#333'
+    fontColor: '#333',
+    data: {
+      lieageType: 0, // 0投影, 1 关联, 2 过滤
+      sqlId: 3 // [血缘sql id]
+    }
   }
 ]
 
