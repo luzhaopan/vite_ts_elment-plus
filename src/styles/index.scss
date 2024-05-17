@@ -1,5 +1,5 @@
-@import "./sidebar.scss";
-@import "./variables.scss";
+@import './sidebar.scss';
+@import './variables.scss';
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -37,4 +37,15 @@ body {
   button {
     background-color: #f9f9f9;
   }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track-piece {
+  background: #d9dada;
+}
+::-webkit-scrollbar-thumb {
+  background: #bbbbbb;
+  border-radius: 20px;
 }

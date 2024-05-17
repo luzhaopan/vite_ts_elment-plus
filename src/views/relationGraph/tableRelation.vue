@@ -70,12 +70,21 @@
         :on-line-click="onLineClick"
         :on-canvas-click="onCanvasClick"
       >
+        <template #graph-plug>
+          <div style="position: absolute; z-index: 700; right: 20px; top: 0">
+            <el-button @click.stop="toggleExpandAll()">
+              <span v-if="!isExpandAll">全部展开字段</span>
+              <span v-else>返回</span>
+            </el-button>
+          </div>
+        </template>
         <template #node="{ node }">
           <div class="item" v-if="!tableType">
             <div class="title">
               <span>{{ node.text }}</span>
             </div>
             <div
+              v-if="isExpandAll"
               :class="{
                 'node-content': true,
                 'exp-hight': node.data.isExpand,
@@ -128,6 +137,7 @@
   import { nodes, lines } from './data.js'
 
   const loading = ref(false)
+  const isExpandAll = ref(false)
   const searchText = ref('')
   const tableType = ref(false)
   const nodeType = ref(false)
@@ -340,9 +350,24 @@
     console.log('onLineClick:', lineObject)
   }
 
+  const toggleExpandAll = () => {
+    isExpandAll.value = !isExpandAll.value
+    // const graphInstance = graphRef.value?.getInstance()
+    // if (graphInstance) {
+    //   for (const node of graphInstance.getNodes()) {
+    //     node.data.isExpand = !node.data.isExpand
+    //   }
+    // }
+  }
+
   const toggleExpand = (node) => {
     node.data.isExpand = !node.data.isExpand
-    onCanvasClick(node)
+    // const graphInstance = graphRef.value!.getInstance()
+    nextTick(() => {
+      // graphInstance.doLayout()
+      // graphInstance.clearChecked()
+      // onCanvasClick(node)
+    })
   }
 
   onMounted(() => {
