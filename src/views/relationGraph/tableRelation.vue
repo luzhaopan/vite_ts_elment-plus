@@ -72,8 +72,16 @@
       >
         <template #node="{ node }">
           <div class="item" v-if="!tableType">
-            <div class="title">{{ node.text }}</div>
-            <div class="node-content">
+            <div class="title">
+              <span>{{ node.text }}</span>
+            </div>
+            <div
+              :class="{
+                'node-content': true,
+                'exp-hight': node.data.isExpand,
+                'hide-hight': !node.data.isExpand
+              }"
+            >
               <div>{{ node.data.name }}</div>
               <div>{{ node.data.name }}</div>
               <div>{{ node.data.name }}</div>
@@ -87,6 +95,11 @@
               <div>{{ node.data.name }}</div>
               <div>{{ node.data.name }}</div>
               <div>{{ node.data.name }}</div>
+              <div>{{ node.data.name }}</div>
+              <div class="btn" @click.stop="toggleExpand(node)">
+                <span v-if="!node.data.isExpand">展开</span>
+                <span v-else>收起</span>
+              </div>
             </div>
           </div>
           <div class="item" v-else>
@@ -149,15 +162,19 @@
   const graphOptions: RGOptions = {
     layouts: [
       {
+        label: 'Center',
         layoutName: 'tree',
         from: 'left',
-        min_per_height: 500
+        min_per_height: 500,
+        min_per_width: 500,
+        centerOffset_x: 0,
+        centerOffset_y: 0
       }
     ],
     defaultJunctionPoint: 'lr',
     disableDragNode: true, // 是否禁用图谱中节点的拖动
     defaultNodeShape: 1, // 默认的节点形状，0:圆形；1:矩形
-    defaultNodeWidth: 200,
+    defaultNodeWidth: 300,
     defaultNodeBorderWidth: 0, // 默认的节点边框粗细（像素）
     defaultNodeBorderColor: '#333', // 默认的节点边框颜色
     defaultNodeFontColor: '#333', // 默认的节点文字颜色
@@ -176,12 +193,14 @@
     checkedLineColor: 'rgb(116,2,173)', // 当线条被选中时的颜色
     lineUseTextPath: false, // 连线文字沿着连线路径走
     useAnimationWhenRefresh: true, // 当图谱刷新后（调用setJsonData或refresh方法都会触发），使用动画让图居中、缩放
-    allowShowMiniToolBar: true // 是否显示工具栏
+    allowShowMiniToolBar: true, // 是否显示工具栏
     // allowAutoLayoutIfSupport: true // 是否在工具栏中显示【自动布局】按钮
     // placeSingleNode: false // 自动为孤点分配位置（当孤点设置了fixed=true时则不处理）
     // placeOtherGroup: true // 支持展示多个关系网，默认只展示主关系网
     // hideNodeContentByZoom: true, // 是否根据缩放比例隐藏节点内容
     // moveToCenterWhenRefresh: true // 当图谱刷新后（调用setJsonData或refresh方法都会触发），让图谱根据节点居中
+    defaultLineTextOffset_x: -8,
+    defaultLineTextOffset_y: -1
   }
 
   // 表类型切换
@@ -212,6 +231,7 @@
   // 节点类型切换
   const nodeTypeSwitch = (val) => {
     console.log(val)
+    // graphInstance.dataUpdated();
   }
 
   const loadData = () => {
@@ -320,6 +340,11 @@
     console.log('onLineClick:', lineObject)
   }
 
+  const toggleExpand = (node) => {
+    node.data.isExpand = !node.data.isExpand
+    onCanvasClick(node)
+  }
+
   onMounted(() => {
     showGraph()
   })
@@ -349,6 +374,7 @@
     border: 1px solid #333;
     border-radius: 6px;
     font-size: 24px;
+    position: relative;
   }
   .title {
     color: #333;
@@ -359,15 +385,31 @@
     border-bottom: #efefef solid 1px;
     background-color: #fff;
     color: #333;
-    padding: 10px 0;
+    padding: 10px 0 40px;
     text-align: center;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
-    max-height: 320px;
-    overflow: auto;
+
+    height: 320px;
+    box-shadow: 2px 4px 10px #909090;
     div {
       margin: 8px 0;
     }
+    .btn {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      background-color: #ececec;
+      font-size: 20px;
+    }
+  }
+  .hide-hight {
+    overflow: hidden;
+  }
+  .exp-hight {
+    overflow: auto;
   }
   ::v-deep(.c-rg-line-text) {
     font-size: 20px;

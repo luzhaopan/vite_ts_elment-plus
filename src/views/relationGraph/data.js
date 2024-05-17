@@ -4,6 +4,7 @@ const nodes = [
     text: 'dim_trade_info1',
     color: '#008080',
     data: {
+      isExpand: false,
       name: 'num1'
     }
   },
@@ -12,6 +13,7 @@ const nodes = [
     text: 'dim_trade_info2',
     color: '#008080',
     data: {
+      isExpand: false,
       name: 'num2'
     }
   },
@@ -20,6 +22,7 @@ const nodes = [
     text: 'dim_trade_info1',
     color: '#ff8c00',
     data: {
+      isExpand: false,
       name: 'sales_num'
     }
   },
@@ -28,6 +31,7 @@ const nodes = [
     text: 'dim_trade_info1',
     color: '#ffff80',
     data: {
+      isExpand: false,
       name: 'amount'
     }
   },
@@ -36,6 +40,7 @@ const nodes = [
     text: 'dim_trade_info2',
     color: '#ffff80',
     data: {
+      isExpand: false,
       name: 'amount'
     }
   },
@@ -44,6 +49,7 @@ const nodes = [
     text: 'dim_trade_info3',
     color: '#ffff80',
     data: {
+      isExpand: false,
       name: 'amount'
     }
   },
@@ -52,6 +58,7 @@ const nodes = [
     text: 'dim_trade_info4',
     color: '#ffff80',
     data: {
+      isExpand: false,
       name: 'amount'
     }
   }
