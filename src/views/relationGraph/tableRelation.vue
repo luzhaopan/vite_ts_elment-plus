@@ -82,6 +82,11 @@
           <div class="item" v-if="!tableType">
             <div class="title">
               <span>{{ node.text }}</span>
+              <el-icon
+                v-if="node.data.croppingFlag"
+                @click.stop="toggleCropping(node)"
+                ><Scissor
+              /></el-icon>
             </div>
             <div
               v-if="isExpandAll"
@@ -112,7 +117,14 @@
             </div>
           </div>
           <div class="item" v-else>
-            <div class="title">{{ node.text }}</div>
+            <div class="title">
+              <span>{{ node.text }}</span>
+              <el-icon
+                v-if="node.data.croppingFlag"
+                @click.stop="toggleCropping(node)"
+                ><Scissor
+              /></el-icon>
+            </div>
             <div class="text-content">
               {{ node.data.name }}
             </div>
@@ -323,8 +335,7 @@
     return ids
   }
 
-  const onCanvasClick = ($event: RGUserEvent) => {
-    console.log('onCanvasClick:')
+  const onCanvasClick = ($event?: RGUserEvent) => {
     const graphInstance = graphRef.value?.getInstance()
     if (graphInstance) {
       for (const node of graphInstance.getNodes()) {
@@ -350,8 +361,10 @@
     console.log('onLineClick:', lineObject)
   }
 
+  // 展开所有节点
   const toggleExpandAll = () => {
     isExpandAll.value = !isExpandAll.value
+    onCanvasClick()
     // const graphInstance = graphRef.value?.getInstance()
     // if (graphInstance) {
     //   for (const node of graphInstance.getNodes()) {
@@ -360,14 +373,20 @@
     // }
   }
 
+  // 展开节点
   const toggleExpand = (node) => {
     node.data.isExpand = !node.data.isExpand
     // const graphInstance = graphRef.value!.getInstance()
     nextTick(() => {
       // graphInstance.doLayout()
       // graphInstance.clearChecked()
-      // onCanvasClick(node)
+      // onCanvasClick()
     })
+  }
+
+  // 裁剪
+  const toggleCropping = (node) => {
+    console.log('裁剪', node)
   }
 
   onMounted(() => {
@@ -403,8 +422,13 @@
   }
   .title {
     color: #333;
-    text-align: center;
     padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      margin-right: 10px;
+    }
   }
   .table-content {
     border-bottom: #efefef solid 1px;

@@ -5,7 +5,8 @@ const nodes = [
     color: '#008080',
     data: {
       isExpand: false,
-      name: 'num1'
+      name: 'num1',
+      croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   },
   {
@@ -14,7 +15,8 @@ const nodes = [
     color: '#008080',
     data: {
       isExpand: false,
-      name: 'num2'
+      name: 'num2',
+      croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   },
   {
@@ -23,7 +25,8 @@ const nodes = [
     color: '#ff8c00',
     data: {
       isExpand: false,
-      name: 'sales_num'
+      name: 'sales_num',
+      croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   },
   {
@@ -32,7 +35,8 @@ const nodes = [
     color: '#ffff80',
     data: {
       isExpand: false,
-      name: 'amount'
+      name: 'amount',
+      croppingFlag: 1 // 0 不可裁剪 1 可裁剪
     }
   },
   {
@@ -41,7 +45,8 @@ const nodes = [
     color: '#ffff80',
     data: {
       isExpand: false,
-      name: 'amount'
+      name: 'amount',
+      croppingFlag: 1 // 0 不可裁剪 1 可裁剪
     }
   },
   {
@@ -50,7 +55,8 @@ const nodes = [
     color: '#ffff80',
     data: {
       isExpand: false,
-      name: 'amount'
+      name: 'amount',
+      croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   },
   {
@@ -59,7 +65,8 @@ const nodes = [
     color: '#ffff80',
     data: {
       isExpand: false,
-      name: 'amount'
+      name: 'amount',
+      croppingFlag: 0 // 0 不可裁剪 1 可裁剪
     }
   }
 ]
