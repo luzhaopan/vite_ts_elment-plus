@@ -189,6 +189,20 @@ const routes = [
     ]
   },
   {
+    path: '/sliders',
+    name: 'Slider',
+    component: Layout,
+    meta: { title: 'Slider', icon: 'Unlock' },
+    children: [
+      {
+        path: '/sliders/index',
+        name: 'Slider',
+        component: () => import('@/views/sliders/index.vue'),
+        meta: { title: 'Slider' }
+      }
+    ]
+  },
+  {
     path: '/graph3D',
     name: 'Graph3D',
     component: Layout,
