@@ -5,6 +5,7 @@
       :class="`slider${props.sign}`"
       :max="max"
       :min="min"
+      @input="handleChange"
     />
   </div>
 </template>
@@ -58,6 +59,11 @@
     sliderButton.style.borderColor = props.color
     sliderButton.style.setProperty('--slider-color', props.color)
   }
+
+  const handleChange = (val) => {
+    emit('update:value', val)
+  }
+
   onMounted(() => {
     nextTick(() => {
       computedBarColor()
