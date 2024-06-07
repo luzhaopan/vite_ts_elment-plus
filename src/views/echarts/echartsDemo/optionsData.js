@@ -1229,10 +1229,266 @@ const gaugeChartsoption = {
   ]
 }
 
+const seriesData11 = [
+  {
+    name: '相对强度',
+    sales: 1,
+    services: 6,
+    colors: '#95D0F6'
+  },
+  {
+    name: '总资产增长率',
+    sales: 4,
+    services: 7,
+    colors: '#1F1BC0'
+  },
+  {
+    name: '对数市值',
+    sales: 4,
+    services: 3,
+    colors: '#539B0A'
+  },
+  {
+    name: '销售毛利率',
+    sales: 6,
+    services: 2.4,
+    colors: '#4675A2'
+  },
+  {
+    name: '股本收益率',
+    sales: 3.3,
+    services: -2.5,
+    colors: '#E7878E'
+  },
+  {
+    name: '对数标准差',
+    sales: 2.1,
+    services: 3.7,
+    colors: '#F0AC58'
+  },
+  {
+    name: '预期分红市值比',
+    sales: 4.1,
+    services: -7.4,
+    colors: '#B0A2F7'
+  }
+]
+const series11 = seriesData11.map(function (item, index, array) {
+  return {
+    name: item['name'],
+    value: [item['sales'], item['services']],
+    itemStyle: {
+      color: item['colors']
+    }
+  }
+})
+
+const scatterChartsoption = {
+  tooltip: {
+    trigger: 'item',
+    axisPointer: {
+      show: true,
+      type: 'cross',
+      lineStyle: {
+        type: 'dashed',
+        width: 1
+      }
+    },
+    formatter: function (obj) {
+      if (obj.componentType == 'series') {
+        return (
+          '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">' +
+          obj.name +
+          '</div>' +
+          '<span>' +
+          '111' +
+          '</span>' +
+          ' : ' +
+          obj.data.value[0] +
+          '<br/>' +
+          '<span>' +
+          '222' +
+          '</span>' +
+          ' : ' +
+          obj.data.value[1] +
+          '%'
+        )
+      }
+    }
+  },
+  label: {
+    show: true,
+    position: 'bottom',
+    formatter: function (params) {
+      return params.name
+    },
+    emphasis: {
+      show: true,
+      position: 'bottom'
+    }
+  },
+  xAxis: {
+    name: '因子暴露',
+    type: 'value',
+    scale: true,
+    axisLine: {
+      lineStyle: {
+        color: '#3259B8'
+      }
+    }
+  },
+  yAxis: {
+    name: '因子收益',
+    type: 'value',
+    scale: true,
+    axisLabel: {
+      formatter: '{value} %'
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#3259B8'
+      }
+    }
+  },
+  series: [
+    {
+      type: 'scatter',
+      data: series11,
+
+      symbolSize: 20,
+      // markLine: {
+      //     label: {
+      //         normal: {
+      //             formatter: function (params) {
+      //                 if (params.dataIndex == 0) {
+      //                     return params.value + "元";
+      //                 } else if (params.dataIndex == 1) {
+      //                     return params.value + "%";
+      //                 }
+      //                 return params.value;
+      //             }
+      //         }
+      //     },
+      //     lineStyle: {
+      //         normal: {
+      //             color: "#626c91",
+      //             type: 'solid',
+      //             width: 1,
+      //         },
+      //         emphasis: {
+      //             color: "#d9def7"
+      //         }
+      //     },
+      //     data: [{
+      //         xAxis: avg.salesAvgLine,
+      //         name: '营业额平均线',
+      //         itemStyle: {
+      //             normal: {
+      //                 color: "#b84a58",
+      //             }
+      //         }
+      //     }, {
+      //         yAxis: avg.servicesAvgLine,
+      //         name: '服务能力平均线',
+      //         itemStyle: {
+      //             normal: {
+      //                 color: "#b84a58",
+      //             }
+      //         }
+      //     }]
+      // },
+
+      markArea: {
+        silent: true,
+        data: [
+          [
+            {
+              name: '正收益，正暴露',
+              itemStyle: {
+                color: '#FEF3F4'
+              },
+              label: {
+                show: true,
+                position: 'insideTopRight',
+                fontStyle: 'normal',
+                color: '#ccc',
+                fontSize: 20
+              },
+              coord: [6, 9]
+            },
+            {
+              coord: [0, 0]
+            }
+          ],
+          [
+            {
+              name: '正收益，负暴露',
+              itemStyle: {
+                color: '#F9FEF7'
+              },
+              label: {
+                show: true,
+                position: 'insideTopLeft',
+                fontStyle: 'normal',
+                color: '#ccc',
+                fontSize: 20
+              },
+              coord: [0, 9]
+            },
+            {
+              coord: [3.5, 0]
+            }
+          ],
+          [
+            {
+              name: '负收益，正暴露',
+              itemStyle: {
+                color: '#F9FEF7'
+              },
+              label: {
+                show: true,
+                position: 'insideBottomRight',
+                fontStyle: 'normal',
+                color: '#ccc',
+                fontSize: 20
+              },
+              coord: [6, -9]
+            },
+            {
+              coord: [3.5, 0]
+            }
+          ],
+
+          [
+            {
+              name: '负收益，负暴露',
+              itemStyle: {
+                color: '#FEF3F4'
+              },
+              label: {
+                show: true,
+                position: 'insideBottomLeft',
+                fontStyle: 'normal',
+                color: '#ccc',
+                fontSize: 20
+              },
+              coord: [-9, -9]
+            },
+            {
+              coord: [3.5, 0]
+            }
+          ]
+        ]
+      }
+    }
+  ]
+}
+
 export {
   scatterOptions,
   heatmapOption,
   lineOption,
   combineOption,
-  gaugeChartsoption
+  gaugeChartsoption,
+  scatterChartsoption
 }

@@ -52,6 +52,10 @@
     <h2>指标预测综合分析</h2>
     <ECharts :options="gaugeChartsoption" height="500px" />
   </el-card>
+  <el-card class="box-card">
+    <h2>333333</h2>
+    <ECharts :options="scatterChartsoption" height="500px" />
+  </el-card>
 </template>
 <script lang="ts" setup>
   import * as echarts from 'echarts'
@@ -60,7 +64,8 @@
     heatmapOption,
     lineOption,
     combineOption,
-    gaugeChartsoption
+    gaugeChartsoption,
+    scatterChartsoption
   } from './optionsData.js'
 
   const demo1 = [
