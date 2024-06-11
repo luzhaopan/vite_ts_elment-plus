@@ -37,23 +37,23 @@
     <ECharts :options="scatterOptions" height="300px" />
   </el-card>
   <el-card class="box-card">
-    <h2>相关性分析</h2>
+    <h2>相关性</h2>
     <ECharts :options="heatmapOption" height="500px" />
   </el-card>
   <el-card class="box-card">
-    <h2>组合业绩归因</h2>
+    <h2>组合图</h2>
     <ECharts :options="lineOption" height="500px" />
   </el-card>
   <el-card class="box-card">
-    <h2>环境指标时序看板</h2>
+    <h2>时序看板</h2>
     <ECharts :options="combineOption" height="800px" />
   </el-card>
   <el-card class="box-card">
-    <h2>指标预测综合分析</h2>
+    <h2>综合分析</h2>
     <ECharts :options="gaugeChartsoption" height="500px" />
   </el-card>
   <el-card class="box-card">
-    <h2>333333</h2>
+    <h2>散点图</h2>
     <ECharts :options="scatterChartsoption" height="500px" />
   </el-card>
 </template>
