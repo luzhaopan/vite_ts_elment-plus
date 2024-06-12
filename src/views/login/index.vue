@@ -21,10 +21,6 @@
           autocomplete="off"
         ></el-input>
       </el-form-item>
-      <!-- <el-form-item label="" prop="remember">
-        <el-switch v-model="ruleForm.remember" />
-      </el-form-item> -->
-
       <el-form-item>
         <div
           style="
@@ -49,6 +45,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { ElMessage } from 'element-plus'
   import type { FormInstance, FormRules } from 'element-plus'
   import { setToken } from '@/utils/auth'
   import { useCache } from '@/hooks/web/useCache'
@@ -101,6 +98,8 @@
             setToken('admin')
             // window.location.href = '/'
             router.push('/')
+          } else {
+            ElMessage.error(res.message)
           }
         } finally {
           loading.value = false
