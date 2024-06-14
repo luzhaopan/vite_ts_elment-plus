@@ -14,7 +14,7 @@
         </el-icon>
       </el-tooltip> -->
       <!-- <Breadcrumb class="breadcrumb-container" /> -->
-      <div class="title">短期负荷预测系统</div>
+      <!-- <div class="title">短期负荷预测系统</div> -->
     </div>
     <div class="right">
       <!-- <Screenfull />-->

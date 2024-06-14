@@ -45,9 +45,9 @@
   .sidebar-logo-container {
     position: relative;
     width: 100%;
-    height: 50px;
-    line-height: 50px;
-    background: $base-menu-background;
+    height: 60px;
+    line-height: 60px;
+    background: #376c91;
     text-align: center;
     overflow: hidden;
 
@@ -64,10 +64,10 @@
       & .sidebar-title {
         display: inline-block;
         margin: 0;
-        color: $base-title-color;
+        color: #fff;
         font-weight: 600;
         line-height: 50px;
-        font-size: 14px;
+        font-size: 18px;
         font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
         vertical-align: middle;
         margin-left: 12px;
