@@ -28,7 +28,7 @@
         <div
           style="display: flex; justify-content: center; align-items: center"
         >
-          <el-upload
+          <!-- <el-upload
             class="avatar-uploader"
             action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
             :show-file-list="false"
@@ -36,21 +36,30 @@
             :before-upload="beforeAvatarUpload"
           >
             <div class="btn">文件导入</div>
-          </el-upload>
+          </el-upload> -->
 
-          <div class="btn">数据保存</div>
           <div class="btn select">负荷预测</div>
-          <div class="btn" @click="dialogVisible = true">数据管理</div>
-          <div class="btn">系统帮助</div>
-          <div class="btn">关闭</div>
+          <div class="btn">数据保存</div>
+          <!-- <div class="btn" @click="dialogVisible = true">数据管理</div> -->
+          <!-- <div class="btn">系统帮助</div> -->
+          <!-- <div class="btn">关闭</div> -->
         </div>
       </div>
-      <div class="title">
-        分析类型：
-        <select>
-          <option value="volvo">日负荷分析</option>
-          <option value="saab">周负荷分析</option>
-        </select>
+      <div style="display: flex; align-items: center; background: #fff">
+        <div class="title">
+          分析类型：
+          <select>
+            <option value="volvo">日负荷分析</option>
+            <option value="saab">周负荷分析</option>
+          </select>
+        </div>
+        <div class="title">
+          预测算法：
+          <select>
+            <option value="volvo">BP神经网络</option>
+            <option value="saab">PSO神经网络</option>
+          </select>
+        </div>
       </div>
       <div style="display: flex; justify-content: space-between">
         <div style="flex: 1; margin-bottom: 15px">
@@ -75,7 +84,7 @@
           <button type="button" class="btn1">数据清洗</button>
           <button type="button" class="btn1">网络训练</button>
           <button type="button" class="btn1">测试</button>
-          <button type="button" class="btn1">开始预测</button>
+          <!-- <button type="button" class="btn1">开始预测</button> -->
           <!-- <div class="btn1">数据清洗</div>
           <div class="btn1">网络训练</div>
           <div class="btn1">测试</div>

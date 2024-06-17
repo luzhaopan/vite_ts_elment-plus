@@ -7,28 +7,40 @@ const routes = [
     path: '/',
     component: Layout,
     meta: { title: 'Dashboard', icon: 'Odometer' },
-    redirect: '/dashboard',
+    redirect: '/guide',
     children: [
       {
-        path: '/dashboard',
-        name: '预测管理',
-        component: () => import('@/views/dashboard/index.vue'),
-        meta: { title: 'Dashboard', icon: 'Odometer' }
+        path: '/guide',
+        name: '数据管理',
+        component: () => import('@/views/guide/index.vue'),
+        meta: { title: 'Dashboard', icon: 'ScaleToOriginal' }
       }
     ]
   },
   {
-    path: '/guide',
+    path: '/dashboard',
     component: Layout,
     children: [
       {
-        path: '/guide/index',
-        name: '数据管理',
-        component: () => import('@/views/guide/index.vue'),
-        meta: { title: 'Guide', icon: 'Promotion' }
+        path: '/dashboard/index',
+        name: '预测管理',
+        component: () => import('@/views/dashboard/index.vue'),
+        meta: { title: 'Guide', icon: 'DataLine' }
       }
     ]
   },
+  // {
+  //   path: '/guide',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: '/guide/index',
+  //       name: '数据管理',
+  //       component: () => import('@/views/guide/index.vue'),
+  //       meta: { title: 'Guide', icon: 'Promotion' }
+  //     }
+  //   ]
+  // },
   {
     path: '/editor',
     component: Layout,
@@ -37,7 +49,7 @@ const routes = [
         path: '/editor/index',
         name: '账户管理',
         component: () => import('@/views/editor/index.vue'),
-        meta: { title: 'Editor', icon: 'Edit' }
+        meta: { title: 'Editor', icon: 'User' }
       }
     ]
   },
@@ -49,7 +61,7 @@ const routes = [
         path: '/print/index',
         name: '设置',
         component: () => import('@/views/print/index.vue'),
-        meta: { title: 'Print', icon: 'Printer' }
+        meta: { title: 'Print', icon: 'Setting' }
       }
     ]
   },
