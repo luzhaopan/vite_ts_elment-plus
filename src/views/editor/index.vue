@@ -30,27 +30,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import type { UploadProps } from 'element-plus'
-  import { ElMessage, ElMessageBox } from 'element-plus'
 
-  const imageUrl = ref('')
-  const handleAvatarSuccess: UploadProps['onSuccess'] = (
-    response,
-    uploadFile
-  ) => {
-    imageUrl.value = URL.createObjectURL(uploadFile.raw!)
-  }
-
-  const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-    if (rawFile.type !== 'image/jpeg') {
-      ElMessage.error('Avatar picture must be JPG format!')
-      return false
-    } else if (rawFile.size / 1024 / 1024 > 2) {
-      ElMessage.error('Avatar picture size can not exceed 2MB!')
-      return false
-    }
-    return true
-  }
   const handleClick = () => {
     console.log('click')
   }
@@ -98,8 +78,6 @@
     margin: 0 5px;
   }
   .btn1 {
-    // background: #376c91;
-    // color: #fff;
     padding: 2px 15px;
     margin: 0 5px;
   }
@@ -116,7 +94,6 @@
     content: ' ';
     width: 100%;
     height: 2px;
-    // background-color: #376c91;
     background: linear-gradient(45deg, #376c91, #74b7ec);
     position: absolute;
     top: 44px;
