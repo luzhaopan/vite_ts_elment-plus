@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '@/layout/index.vue'
-import EmptyLayout from '@/layout/components/EmptyLayout.vue'
 
 const routes = [
   {
@@ -60,7 +59,7 @@ const routes = [
       {
         path: '/print/index',
         name: '设置',
-        component: () => import('@/views/print/index.vue'),
+        component: () => import('@/views/echarts/barEcharts/index.vue'),
         meta: { title: 'Print', icon: 'Setting' }
       }
     ]
