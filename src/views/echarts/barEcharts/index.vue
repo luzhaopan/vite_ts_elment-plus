@@ -32,29 +32,6 @@
 <script lang="ts" setup>
   import { dataW1, dataW3 } from '../data'
 
-  const femalex = []
-  const femaley = []
-
-  for (let i = 0; i < 500; i++) {
-    let l = Math.random() * (0.7 - 0.1) + 0.1
-    let r = Math.random() * (0.7 - 0.1) + 0.1
-    // if (l < 0.7) {
-    // female1.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
-    femalex.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
-    // }
-  }
-  // // console.log('female1', female1)
-  // console.log('femalex', femalex)
-
-  for (let i = 0; i < 30; i++) {
-    let l = Math.random() * (0.9 - 0.7) + 0.7
-    let r = Math.random() * (0.9 - 0.7) + 0.7
-    // female2.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
-    femaley.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
-  }
-  // console.log('female2', female2)
-  // console.log('femaley', femaley)
-
   const optionsW1 = {
     tooltip: {
       trigger: 'axis'
@@ -587,10 +564,10 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true // 是否显示网格线
         },
         axisTick: {
-          show: false // 不显示坐标轴刻度线
+          show: true // 不显示坐标轴刻度线
         },
         axisLabel: {
           color: '#000',
@@ -617,7 +594,7 @@
         nameGap: 55,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true // 是否显示网格线
         },
         axisLine: {
           show: true // 不显示坐标轴线
