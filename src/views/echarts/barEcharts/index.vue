@@ -44,7 +44,7 @@
     // }
   }
   // // console.log('female1', female1)
-  console.log('femalex', femalex)
+  // console.log('femalex', femalex)
 
   for (let i = 0; i < 30; i++) {
     let l = Math.random() * (0.9 - 0.7) + 0.7
@@ -67,7 +67,7 @@
         nameTextStyle: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 18
+          fontSize: 26
         },
         nameGap: 40,
         axisLine: {
@@ -97,11 +97,11 @@
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 18
+          fontSize: 26
         },
         max: 0.1,
         min: 0,
-        nameGap: 45,
+        nameGap: 55,
         position: 'left',
         splitLine: {
           show: true // 是否显示网格线
@@ -572,24 +572,15 @@
     tooltip: {
       trigger: 'axis'
     },
-    legend: {
-      top: '60',
-      icon: 'rect',
-      itemHeight: 4,
-      textStyle: {
-        fontSize: 18
-      },
-      data: ['真实样本', '合成样本']
-    },
-    color: ['blue', 'orange'],
+    // color: ['blue', 'orange'],
     xAxis: [
       {
-        name: '采样时间点',
+        name: 'time(h)',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#000',
           fontWeight: '600',
-          fontSize: 18
+          fontSize: 26
         },
         nameGap: 40,
         axisLine: {
@@ -607,37 +598,23 @@
           fontSize: 18,
           interval: 29
         },
-        data: dataW3.map(function (item) {
+        data: dataW1.map(function (item) {
           return item[0]
         })
-      },
-      {
-        type: 'category',
-        data: new Array(dataW3.length).fill(''),
-        axisTick: {
-          show: false,
-          alignWithLabel: true
-        },
-        axisLine: {
-          onZero: false,
-          lineStyle: {
-            color: '#000'
-          }
-        }
       }
     ],
     yAxis: [
       {
-        name: '归一化用电量',
+        name: 'relative error',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
-          fontSize: 18
+          fontSize: 26
         },
-        max: 1,
+        max: 0.05,
         min: 0,
-        nameGap: 45,
+        nameGap: 55,
         position: 'left',
         splitLine: {
           show: false // 是否显示网格线
@@ -650,38 +627,18 @@
           fontWeight: '600',
           fontSize: 18
         }
-      },
-      {
-        position: 'right',
-        splitLine: {
-          show: false // 是否显示网格线
-        },
-        axisLine: {
-          show: true // 不显示坐标轴线
-        }
       }
     ],
     series: [
       {
-        name: '真实样本',
+        name: '',
         type: 'line',
-        // lineStyle: {
-        //   color: 'blue'
-        // },
+        lineStyle: {
+          color: '#ff5a5a'
+        },
         symbol: 'none',
-        data: dataW3.map(function (item) {
-          return item[1]
-        })
-      },
-      {
-        name: '合成样本',
-        type: 'line',
-        // lineStyle: {
-        //   color: 'orange'
-        // },
-        symbol: 'none',
-        data: dataW3.map(function (item, index) {
-          return item[1] * (Math.floor(Math.random() * 1.1) + 0.9)
+        data: dataW1.map(function (item) {
+          return item[1] * (Math.random() * (0.6 - 0.2) + 0.2)
         })
       }
     ]
