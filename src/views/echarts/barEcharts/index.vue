@@ -53,25 +53,16 @@
     femaley.push([Number(l.toFixed(2)), Number(r.toFixed(2))])
   }
   // console.log('female2', female2)
-  console.log('femaley', femaley)
+  // console.log('femaley', femaley)
 
   const optionsW1 = {
     tooltip: {
       trigger: 'axis'
     },
-    legend: {
-      top: '60',
-      icon: 'rect',
-      itemHeight: 4,
-      textStyle: {
-        fontSize: 18
-      },
-      data: ['真实样本', '合成样本']
-    },
-    color: ['blue', 'orange'],
+    // color: ['blue', 'orange'],
     xAxis: [
       {
-        name: '采样时间点',
+        name: 'time(h)',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#000',
@@ -83,10 +74,10 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true // 是否显示网格线
         },
         axisTick: {
-          show: false // 不显示坐标轴刻度线
+          show: true // 不显示坐标轴刻度线
         },
         axisLabel: {
           color: '#000',
@@ -97,37 +88,23 @@
         data: dataW1.map(function (item) {
           return item[0]
         })
-      },
-      {
-        type: 'category',
-        data: new Array(dataW1.length).fill(''),
-        axisTick: {
-          show: false,
-          alignWithLabel: true
-        },
-        axisLine: {
-          onZero: false,
-          lineStyle: {
-            color: '#000'
-          }
-        }
       }
     ],
     yAxis: [
       {
-        name: '归一化用电量',
+        name: 'relative error',
         nameLocation: 'middle',
         nameTextStyle: {
           color: '#333',
           fontWeight: '600',
           fontSize: 18
         },
-        max: 1,
+        max: 0.1,
         min: 0,
         nameGap: 45,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true // 是否显示网格线
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -137,42 +114,18 @@
           fontWeight: '600',
           fontSize: 18
         }
-      },
-      {
-        position: 'right',
-        splitLine: {
-          show: false // 是否显示网格线
-        },
-        axisLine: {
-          show: true // 不显示坐标轴线
-        }
       }
     ],
     series: [
       {
-        name: '真实样本',
+        name: '',
         type: 'line',
         symbol: 'none',
+        lineStyle: {
+          color: '#ff5a5a'
+        },
         data: dataW1.map(function (item, index) {
           return item[1]
-        })
-      },
-      {
-        name: '合成样本',
-        type: 'line',
-        symbol: 'none',
-        data: dataW1.map(function (item, index) {
-          if (index === 45 || index === 100) {
-            return item[1] * 2
-          } else if (index > 55 && index < 65) {
-            return item[1] * 3
-          } else if (index > 80 && index < 90) {
-            return item[1] * 0.3
-          } else if (index > 200 && index < 250) {
-            return item[1] * (Math.floor(Math.random() * 2) + 1)
-          } else {
-            return item[1] * (Math.floor(Math.random() * 1.5) + 0.8)
-          }
         })
       }
     ]
