@@ -56,8 +56,8 @@
         <div class="title">
           预测算法：
           <select>
-            <option value="volvo">BP神经网络</option>
-            <option value="saab">PSO神经网络</option>
+            <option value="volvo">LSTM算法模型</option>
+            <option value="saab">改进LSTM算法模型</option>
           </select>
         </div>
       </div>
@@ -92,7 +92,7 @@
         </div>
       </div>
       <div class="title">预测结果</div>
-      <el-row :gutter="20">
+      <el-row :gutter="20" style="background-color: #fff; margin: 0 1px">
         <el-col :span="24" class="result">
           <div>最大相对误差：<input class="input1" :value="obj.value1" /></div>
           <div style="margin-left: 10px">
@@ -108,15 +108,17 @@
         <el-col :span="12">
           <div style="text-align: center; margin: 10px">负荷预测值</div>
           <div class="table1">
-            <el-table :data="tableData" height="320" style="width: 100%">
-              <el-table-column prop="date" label="整点时刻" />
-              <el-table-column prop="name" label="预测值(kw)" />
+            <el-table :data="tableData1" height="400" style="width: 100%">
+              <el-table-column prop="date" label="预测日时刻" />
+              <el-table-column prop="name" label="真实值(MWh)" />
+              <el-table-column prop="name1" label="预测值(MWh)" />
             </el-table>
           </div>
         </el-col>
         <el-col :span="12">
           <div style="text-align: center; margin: 10px">日负荷曲线</div>
-          <LineEcharts />
+          <!-- <LineEcharts /> -->
+          <LineEcharts1 />
         </el-col>
       </el-row>
     </el-col>
@@ -148,7 +150,8 @@
     Location,
     Setting
   } from '@element-plus/icons-vue'
-  import LineEcharts from './lineEcharts/index.vue'
+  // import LineEcharts from './lineEcharts/index.vue'
+  import LineEcharts1 from './lineEcharts/index1.vue'
   import { ref } from 'vue'
   import { ElMessage, ElMessageBox } from 'element-plus'
   import { Plus } from '@element-plus/icons-vue'
@@ -233,6 +236,55 @@
       name: ''
     }
   ]
+
+  const oo4 = [
+    13610.33, 17450.15, 21000.53, 22900.94, 13300.65, 15800.84, 20400.67,
+    16200.52, 12500.39, 21530.47, 14121.13, 12802.09, 21950.14, 13450.66,
+    22200.36, 13253.29, 23086.3, 14680, 12537.27, 19895.31
+  ]
+
+  const oo41 = [
+    13226.65, 18026.89, 20758.34, 23129.07, 12948.3, 15072.9, 19673.97,
+    15874.19, 13021.34, 22407.65, 13424.75, 12285.12, 21090.58, 14103.72,
+    23208.56, 13471.77, 23397.04, 13958.65, 12540.72, 19325.48
+  ]
+
+  const tableData1 = []
+
+  const dic = [
+    '00：00',
+    '01：00',
+    '02：00',
+    '03：00',
+    '04：00',
+    '05：00',
+    '06：00',
+    '07：00',
+    '08：00',
+    '09：00',
+    '10：00',
+    '11：00',
+    '12：00',
+    '13：00',
+    '14：00',
+    '15：00',
+    '16：00',
+    '17：00',
+    '18：00',
+    '19：00',
+    '20：00',
+    '21：00',
+    '22：00',
+    '23：00'
+  ]
+
+  oo4.forEach((item, index) => {
+    tableData1.push({
+      date: dic[index],
+      name: item,
+      name1: oo41[index]
+    })
+  })
 </script>
 
 <style scoped lang="scss">
@@ -301,7 +353,7 @@
   }
   .table1 {
     background-color: #eee;
-    padding: 40px;
+    padding: 10px;
   }
   .input1 {
     width: 80px;

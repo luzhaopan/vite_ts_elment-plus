@@ -30,7 +30,7 @@
       data: ['0', '1', '2', '3', '4', '5', '6']
     },
     yAxis: {
-      name: '预测值（kw）',
+      name: '预测值（MWh）',
       type: 'value',
       axisLine: {
         show: true

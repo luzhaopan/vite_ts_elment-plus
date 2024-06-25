@@ -25,88 +25,19 @@
       <ECharts :options="optionsW1" height="500px" />
     </el-col>
     <el-col :span="12">
+      <ECharts :options="optionsW2" height="500px" />
+    </el-col>
+
+    <el-col :span="12">
       <ECharts :options="optionsW3" height="500px" />
+    </el-col>
+    <el-col :span="12">
+      <ECharts :options="optionsW4" height="500px" />
     </el-col>
   </el-row>
 </template>
 <script lang="ts" setup>
   import { dataW1, dataW3 } from '../data'
-
-  const optionsW1 = {
-    tooltip: {
-      trigger: 'axis'
-    },
-    // color: ['blue', 'orange'],
-    xAxis: [
-      {
-        name: 'time(h)',
-        nameLocation: 'middle',
-        nameTextStyle: {
-          color: '#000',
-          fontWeight: '600',
-          fontSize: 26
-        },
-        nameGap: 40,
-        axisLine: {
-          show: true
-        },
-        splitLine: {
-          show: true // 是否显示网格线
-        },
-        axisTick: {
-          show: true // 不显示坐标轴刻度线
-        },
-        axisLabel: {
-          color: '#000',
-          fontWeight: '600',
-          fontSize: 18,
-          interval: 29
-        },
-        data: dataW1.map(function (item) {
-          return item[0]
-        })
-      }
-    ],
-    yAxis: [
-      {
-        name: 'relative error',
-        nameLocation: 'middle',
-        nameTextStyle: {
-          color: '#333',
-          fontWeight: '600',
-          fontSize: 26
-        },
-        max: 0.1,
-        min: 0,
-        nameGap: 55,
-        position: 'left',
-        splitLine: {
-          show: true // 是否显示网格线
-        },
-        axisLine: {
-          show: true // 不显示坐标轴线
-        },
-        axisLabel: {
-          color: '#000',
-          fontWeight: '600',
-          fontSize: 18
-        }
-      }
-    ],
-    series: [
-      {
-        name: '',
-        type: 'line',
-        symbol: 'none',
-        lineStyle: {
-          color: '#ff5a5a'
-        },
-        data: dataW1.map(function (item, index) {
-          return item[1]
-        })
-      }
-    ]
-  }
 
   const xd = []
   for (let i = 0; i < 100; i++) {
@@ -545,7 +476,7 @@
     ]
   }
 
-  const optionsW3 = {
+  const optionsW1 = {
     tooltip: {
       trigger: 'axis'
     },
@@ -573,7 +504,83 @@
           color: '#000',
           fontWeight: '600',
           fontSize: 18,
-          interval: 29
+          interval: 9
+        },
+        data: dataW1.map(function (item) {
+          return item[0]
+        })
+      }
+    ],
+    yAxis: [
+      {
+        name: 'relative error',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        max: 0.1,
+        min: 0,
+        nameGap: 55,
+        position: 'left',
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18
+        }
+      }
+    ],
+    series: [
+      {
+        name: '',
+        type: 'line',
+        symbol: 'none',
+        lineStyle: {
+          color: '#ff5a5a'
+        },
+        data: dataW1.map(function (item, index) {
+          return item[1]
+        })
+      }
+    ]
+  }
+
+  const optionsW2 = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    // color: ['blue', 'orange'],
+    xAxis: [
+      {
+        name: 'time(h)',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisTick: {
+          show: true // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 9
         },
         data: dataW1.map(function (item) {
           return item[0]
@@ -616,6 +623,157 @@
         symbol: 'none',
         data: dataW1.map(function (item) {
           return item[1] * (Math.random() * (0.6 - 0.2) + 0.2)
+        })
+      }
+    ]
+  }
+
+  const optionsW3 = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    xAxis: [
+      {
+        name: 'time(h)',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisTick: {
+          show: true // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 9
+        },
+        data: dataW3.map(function (item) {
+          return item[0]
+        })
+      }
+    ],
+    yAxis: [
+      {
+        name: 'absolute error',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        // max: 0.05,
+        // min: 0,
+        nameGap: 55,
+        position: 'left',
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18
+        }
+      }
+    ],
+    series: [
+      {
+        name: '',
+        type: 'line',
+        lineStyle: {
+          color: '#ff5a5a'
+        },
+        symbol: 'none',
+        data: dataW3.map(function (item) {
+          return item[1]
+        })
+      }
+    ]
+  }
+
+  const optionsW4 = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    // color: ['blue', 'orange'],
+    xAxis: [
+      {
+        name: 'time(h)',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisTick: {
+          show: true // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 9
+        },
+        data: dataW3.map(function (item) {
+          return item[0]
+        })
+      }
+    ],
+    yAxis: [
+      {
+        name: 'absolute error',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        // max: 0.05,
+        // min: 0,
+        nameGap: 55,
+        position: 'left',
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18
+        }
+      }
+    ],
+    series: [
+      {
+        name: '',
+        type: 'line',
+        lineStyle: {
+          color: '#ff5a5a'
+        },
+        symbol: 'none',
+        data: dataW3.map(function (item) {
+          return item[1] * (Math.random() * (0.57 - 0.1) + 0.1)
         })
       }
     ]
