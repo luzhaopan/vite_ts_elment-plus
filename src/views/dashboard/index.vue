@@ -93,7 +93,7 @@
       </div>
       <div class="title">预测结果</div>
       <el-row :gutter="20" style="background-color: #fff; margin: 0 1px">
-        <el-col :span="24" class="result">
+        <!-- <el-col :span="24" class="result">
           <div>最大相对误差：<input class="input1" :value="obj.value1" /></div>
           <div style="margin-left: 10px">
             最小相对误差：<input class="input1" :value="obj.value2" />
@@ -104,11 +104,16 @@
           <div style="margin-left: 10px">
             均方根误差：<input class="input1" :value="obj.value4" />
           </div>
-        </el-col>
+        </el-col> -->
         <el-col :span="12">
           <div style="text-align: center; margin: 10px">负荷预测值</div>
           <div class="table1">
-            <el-table :data="tableData1" height="400" style="width: 100%">
+            <el-table
+              empty-text="暂无数据"
+              :data="tableData"
+              height="400"
+              style="width: 100%"
+            >
               <el-table-column prop="date" label="预测日时刻" />
               <el-table-column prop="name" label="真实值(MWh)" />
               <el-table-column prop="name1" label="预测值(MWh)" />
@@ -117,8 +122,23 @@
         </el-col>
         <el-col :span="12">
           <div style="text-align: center; margin: 10px">日负荷曲线</div>
-          <!-- <LineEcharts /> -->
-          <LineEcharts1 />
+          <LineEcharts />
+          <!-- <LineEcharts1 /> -->
+        </el-col>
+      </el-row>
+      <div class="title">误差分析</div>
+      <el-row :gutter="20" style="background-color: #fff; margin: 0 1px">
+        <el-col :span="24" class="result">
+          <div>相对误差：<span>0 ~ 0.05</span></div>
+          <div style="margin-left: 30px">绝对误差：<span>-600 ~ 800</span></div>
+          <!-- <div>相对误差：--</div>
+          <div style="margin-left: 30px">绝对误差：--</div> -->
+        </el-col>
+        <el-col :span="12">
+          <ECharts :options="optionsW2" height="500px" />
+        </el-col>
+        <el-col :span="12">
+          <ECharts :options="optionsW4" height="500px" />
         </el-col>
       </el-row>
     </el-col>
@@ -144,18 +164,11 @@
 </template>
 
 <script setup lang="ts">
-  import {
-    Document,
-    Menu as IconMenu,
-    Location,
-    Setting
-  } from '@element-plus/icons-vue'
-  // import LineEcharts from './lineEcharts/index.vue'
-  import LineEcharts1 from './lineEcharts/index1.vue'
   import { ref } from 'vue'
+  import LineEcharts from './lineEcharts/index.vue'
+  import LineEcharts1 from './lineEcharts/index1.vue'
   import { ElMessage, ElMessageBox } from 'element-plus'
-  import { Plus } from '@element-plus/icons-vue'
-
+  import { dataW1, dataW3 } from './data'
   const dialogVisible = ref(false)
 
   const handleClose1 = (done: () => void) => {
@@ -202,40 +215,7 @@
   const handleClose = (key: string, keyPath: string[]) => {
     console.log(key, keyPath)
   }
-  const tableData = [
-    {
-      date: '00：00',
-      name: ''
-    },
-    {
-      date: '01：00',
-      name: ''
-    },
-    {
-      date: '02：00',
-      name: ''
-    },
-    {
-      date: '03：00',
-      name: ''
-    },
-    {
-      date: '04：00',
-      name: ''
-    },
-    {
-      date: '05：00',
-      name: ''
-    },
-    {
-      date: '06：00',
-      name: ''
-    },
-    {
-      date: '07：00',
-      name: ''
-    }
-  ]
+  const tableData = []
 
   const oo4 = [
     13610.33, 17450.15, 21000.53, 22900.94, 13300.65, 15800.84, 20400.67,
@@ -285,6 +265,157 @@
       name1: oo41[index]
     })
   })
+
+  const optionsW2 = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    // color: ['blue', 'orange'],
+    xAxis: [
+      {
+        name: 'time(h)',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisTick: {
+          show: true // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 9
+        },
+        data: dataW1.map(function (item) {
+          return item[0]
+        })
+      }
+    ],
+    yAxis: [
+      {
+        name: 'relative error',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        max: 0.05,
+        min: 0,
+        nameGap: 55,
+        position: 'left',
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18
+        }
+      }
+    ],
+    series: [
+      {
+        name: '',
+        type: 'line',
+        lineStyle: {
+          color: '#ff5a5a'
+        },
+        symbol: 'none',
+        data: dataW1.map(function (item) {
+          return item[1] * (Math.random() * (0.6 - 0.2) + 0.2)
+        })
+      }
+    ]
+  }
+  const optionsW4 = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    // color: ['blue', 'orange'],
+    xAxis: [
+      {
+        name: 'time(h)',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        nameGap: 40,
+        axisLine: {
+          show: true
+        },
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisTick: {
+          show: true // 不显示坐标轴刻度线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18,
+          interval: 9
+        },
+        data: dataW3.map(function (item) {
+          return item[0]
+        })
+      }
+    ],
+    yAxis: [
+      {
+        name: 'absolute error',
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: '600',
+          fontSize: 26
+        },
+        max: 800,
+        // min: 0,
+        nameGap: 55,
+        position: 'left',
+        splitLine: {
+          show: true // 是否显示网格线
+        },
+        axisLine: {
+          show: true // 不显示坐标轴线
+        },
+        axisLabel: {
+          color: '#000',
+          fontWeight: '600',
+          fontSize: 18
+        }
+      }
+    ],
+    series: [
+      {
+        name: '',
+        type: 'line',
+        lineStyle: {
+          color: '#ff5a5a'
+        },
+        symbol: 'none',
+        data: dataW3.map(function (item) {
+          return item[1] * (Math.random() * (0.58 - 0.1) + 0.1)
+        })
+      }
+    ]
+  }
 </script>
 
 <style scoped lang="scss">
