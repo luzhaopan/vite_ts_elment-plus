@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="height: calc(100vh - 60px)">
+    <div style="height: calc(100vh - 60px)" class="my-graph">
       <RelationGraph
         ref="graphRef"
         :options="graphOptions"
@@ -297,5 +297,15 @@
     background: #1da9f5;
     padding: 5px 0;
     border: 1px solid #fff;
+  }
+  ::v-deep(.relation-graph) {
+    .rel-map {
+      background: none !important;
+    }
+  }
+
+  .my-graph {
+    background: url(@//assets/graph-bg.svg) no-repeat;
+    background-size: 1000% 1000%;
   }
 </style>
