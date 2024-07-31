@@ -1,311 +1,434 @@
 <template>
-  <div>
-    <div style="height: calc(100vh - 60px)" class="my-graph">
-      <RelationGraph
-        ref="graphRef"
-        :options="graphOptions"
-        :on-node-click="onNodeClick"
-        :on-line-click="onLineClick"
-      >
-        <template #canvas-plug>
-          <!--- You can put some elements that are not allowed to be dragged here --->
-        </template>
-        <template #node="{ node }">
-          <div
-            v-if="node.id === 'a'"
-            style="width: 100px; background-color: #bbbbbb"
-          >
-            <!---------------- if node a ---------------->
-            <div class="c-table-title">{{ node.text }}</div>
-            <div class="list">
-              <div class="item" id="a-r1-c1">a-r2-c2</div>
-              <div class="item" id="a-r3-c2">a-r3-c2</div>
-              <div class="item" id="a-r4-c21">a-r4-c21</div>
-              <div class="item" id="a-r4-c22">a-r4-c22</div>
-              <div class="item" id="a-r4-c23">a-r4-c23</div>
-              <div class="item" id="a-r2-c2">a-r2-c2</div>
-              <div class="item" id="a-r4-c24">a-r4-c24</div>
-            </div>
-          </div>
-          <div
-            v-else-if="node.id === 'b'"
-            style="background-color: #bbbbbb; width: 400px"
-          >
-            <!---------------- if node b ---------------->
-            <div class="c-table-title">{{ node.text }}</div>
-            <table class="c-data-table">
-              <tr>
-                <th><div id="b-r1-c1">b-r1-c1</div></th>
-                <th><div id="b-r1-c2">b-r1-c2</div></th>
-                <th><div id="b-r1-c3">b-r1-c3</div></th>
-              </tr>
-              <tr>
-                <td><div id="b-r2-c1">b-r2-c1</div></td>
-                <td>xxxx</td>
-                <td>xxxx</td>
-              </tr>
-              <tr>
-                <td><div id="b-r3-c1">b-r3-c1</div></td>
-                <td><div id="b-r3-c2">b-r3-c2</div></td>
-                <td>xxxx</td>
-              </tr>
-              <tr>
-                <td>xxxx</td>
-                <td>xxxx</td>
-                <td><div id="b-r4-c3">b-r4-c3</div></td>
-              </tr>
-            </table>
-          </div>
-          <div
-            v-else-if="node.id === 'c'"
-            style="background-color: #bbbbbb; width: 400px"
-          >
-            <!---------------- if node c ---------------->
-            <div class="c-table-title">{{ node.text }}</div>
-            <table class="c-data-table">
-              <tr>
-                <th><div id="c-r1-c1">c-r1-c1</div></th>
-                <th><div id="c-r1-c2">c-r1-c2</div></th>
-              </tr>
-              <tr>
-                <th><div id="c-r2-c1">c-r2-c1</div></th>
-                <td>xxxx</td>
-              </tr>
-              <tr>
-                <td>xxxx</td>
-                <td>xxxx</td>
-              </tr>
-              <tr>
-                <td><div id="c-r4-c1">c-r4-c1</div></td>
-                <td><div id="c-r4-c2">c-r4-c2</div></td>
-              </tr>
-            </table>
-          </div>
-          <div
-            v-else-if="node.id === 'd'"
-            style="background-color: #bbbbbb; width: 300px"
-          >
-            <!---------------- if node d ---------------->
-            <div class="c-table-title">{{ node.text }}</div>
-            <table class="c-data-table">
-              <tr>
-                <th><div id="d-r1-c1">d-r1-c1</div></th>
-                <th>Column 2</th>
-              </tr>
-              <tr>
-                <td><div id="d-r2-c1">d-r2-c1</div></td>
-                <td>xxxx</td>
-              </tr>
-              <tr>
-                <td>xxxx</td>
-                <td>xxxx</td>
-              </tr>
-              <tr>
-                <td>xxxx</td>
-                <td><div id="d-r4-c2">d-r4-c2</div></td>
-              </tr>
-            </table>
-          </div>
-          <div v-else class="rg-center-items" style="height: 100%">
-            <!---------------- if other nodes ---------------->
-            <div style="width: 100%">{{ node.text }}</div>
-          </div>
-        </template>
-      </RelationGraph>
+  <div class="bg-white">
+    <!-- <n-spin :show="loading"> -->
+    <div style="height: calc(100vh - 175px)">
+      <BloodRelationGraph v-model:loading="loading" :relationData="graphData" />
     </div>
+    <!-- </n-spin> -->
   </div>
 </template>
 
 <script lang="ts" setup>
-  import RelationGraph from 'relation-graph-vue3'
-  import type {
-    RGOptions,
-    RGJsonData,
-    RGNode,
-    RGLine,
-    RGLink,
-    RGUserEvent,
-    RelationGraphComponent
-  } from 'relation-graph-vue3'
-  import { onMounted, ref } from 'vue'
-  const graphRef = ref<RelationGraphComponent>()
-  const graphOptions = {
-    debug: false,
-    allowSwitchLineShape: true,
-    allowSwitchJunctionPoint: true,
-    allowShowDownloadButton: true,
-    defaultJunctionPoint: 'border',
-    placeOtherNodes: false,
-    placeSingleNode: false,
-    graphOffset_x: -200,
-    graphOffset_y: 100,
-    defaultLineMarker: {
-      markerWidth: 20,
-      markerHeight: 20,
-      refX: 3,
-      refY: 3,
-      data: 'M 0 0, V 6, L 4 3, Z'
-    },
-    layout: {
-      layoutName: 'fixed'
-    }
-    // You can refer to the parameters in "Graph" for setting here
-  }
-  const showGraph = async () => {
-    const __graph_json_data: RGJsonData = {
-      rootId: 'a',
+  import { ref, onMounted } from 'vue'
+  import BloodRelationGraph from './components/BloodRelationGraph.vue'
+
+  const loading = ref(false)
+
+  const graphData = ref<any>(null)
+
+  const fetchTableNodes = () => {
+    loading.value = true
+
+    graphData.value = {
+      rootId: '9ccd3b1c-b81d-37e1-ac91-506887380ba9',
       nodes: [
-        { id: 'a', text: 'A区内配矿', nodeShape: 1, x: -500, y: -200 },
-        { id: 'b', text: 'B区内洗选贸易企业', nodeShape: 1, x: 0, y: -400 },
-        { id: 'c', text: 'C区内电场焦化企业', nodeShape: 1, x: 500, y: -200 },
-        { id: 'd', text: 'D区外企业', nodeShape: 1, x: 0, y: 0 }
-      ],
-      lines: [],
-      elementLines: [
         {
-          from: 'a-r1-c1',
-          to: 'b-r1-c1',
-          text: '',
-          lineShape: 6,
-          color: 'rgba(29,169,245,0.76)',
-          lineWidth: 3
+          id: 'a4502adb-411f-3140-a963-f9635cedcc17',
+          uuid: 'a4502adb-411f-3140-a963-f9635cedcc17',
+          tabName: 't03_agt_rela_h',
+          schema: 'pdm_view',
+          tabType: '0',
+          dbName: 'T3RDM',
+          ownSystem: 'HX',
+          fieldNames: [
+            'agt_modf',
+            'agt_num',
+            'assoc_agt_modf',
+            'assoc_agt_num',
+            'agt_rela_type_cd',
+            'end_dt',
+            'st_dt'
+          ],
+          nodeType: '-1',
+          croppingFlag: '0'
         },
         {
-          from: 'a-r2-c2',
-          to: 'b-r2-c1',
-          text: '',
-          lineShape: 6,
-          color: 'rgba(29,169,245,0.76)',
-          lineWidth: 3
+          id: '843af1a3-242c-361c-95c6-449a07279826',
+          uuid: '843af1a3-242c-361c-95c6-449a07279826',
+          tabName: 'default_constant_table',
+          schema: 'T3RDM_RDM_ACCT_H_Z',
+          tabType: '0',
+          dbName: 'T3RDM',
+          ownSystem: 'HX',
+          fieldNames: [
+            'NULL',
+            'vf_2',
+            'vf_26',
+            'vf_28',
+            'vf_3',
+            'vf_37',
+            'vf_64',
+            'vf_65',
+            'vf_66',
+            'vf_67',
+            'vf_68'
+          ],
+          nodeType: '-1',
+          croppingFlag: '0'
         },
         {
-          from: 'a-r3-c2',
-          to: 'b-r3-c1',
-          text: '',
-          lineShape: 6,
-          color: 'rgba(159,23,227,0.65)',
-          lineWidth: 3
+          id: '9ccd3b1c-b81d-37e1-ac91-506887380ba9',
+          uuid: '9ccd3b1c-b81d-37e1-ac91-506887380ba9',
+          tabName: 't12',
+          schema: 'T3RDM_RDM_ACCT_H_Z',
+          tabType: '0',
+          dbName: 'T3RDM',
+          ownSystem: 'HX',
+          fieldNames: ['assoc_agt_num', 'num', 'agt_num'],
+          nodeType: '0',
+          croppingFlag: '0'
         },
         {
-          from: 'a-r3-c2',
-          to: 'd-r2-c1',
-          text: '',
-          lineShape: 6,
-          color: 'rgba(159,23,227,0.65)',
-          lineWidth: 3
+          id: '424ba130-f83f-36d2-845d-2105e76ed1d8',
+          uuid: '424ba130-f83f-36d2-845d-2105e76ed1d8',
+          tabName: 'vt_temp_table',
+          schema: 'T3RDM_RDM_ACCT_H_Z',
+          tabType: '2',
+          dbName: 'T3RDM',
+          ownSystem: 'HX',
+          fieldNames: ['agt_num', 'num', 'assoc_agt_num', 'vf_2'],
+          nodeType: '-1',
+          croppingFlag: '0'
         },
         {
-          from: 'a-r3-c2',
-          to: 'c-r4-c1',
-          text: '',
-          lineShape: 5,
-          color: 'rgba(159,23,227,0.65)',
-          lineWidth: 3
+          id: '4f200b42-7de4-3e01-bd7c-d3795e62394b',
+          uuid: '4f200b42-7de4-3e01-bd7c-d3795e62394b',
+          tabName: 'rdm_acct_h_td',
+          schema: 'rdm_data',
+          tabType: '0',
+          dbName: 'T3RDM',
+          ownSystem: 'HX',
+          fieldNames: [
+            'accting_coa_id',
+            'agt_modf',
+            'appl_dt',
+            'bcs_agt_status_cd',
+            'bcs_cust_id',
+            'bcs_cust_mgr_id',
+            'bcs_prd_id',
+            'blng_bcs_inter_org_id',
+            'blng_cms_inter_org_id',
+            'categ14_cd',
+            'ccy_cd',
+            'ccy_convert_rate',
+            'cms_agt_status_cd',
+            'cms_contract_num',
+            'cms_cust_id',
+            'cms_cust_mgr_id',
+            'cms_dbill_acct_num',
+            'cms_dbill_sub_acct_num',
+            'cms_prd_id',
+            'cms_sub_module_cust_id',
+            'crdt_ctr_id',
+            'crdt_ctr_modf',
+            'ctr_rate',
+            'cust_crdt_appl_ctr_id',
+            'data_std_prd_id',
+            'deval_loan_flg',
+            'deval_prepare_ratio',
+            'deval_provn_amt',
+            'deval_provn_ccy_cd',
+            'due_dt',
+            'exec_rate',
+            'int_mode_cd',
+            'int_setl_day',
+            'issue_amt',
+            'issue_inter_acct_flg',
+            'lacct_id',
+            'loan_bal',
+            'loan_ctr_id',
+            'loan_dir_indu_cd',
+            'loan_issue_dt',
+            'margin_amt',
+            'margin_ccy_cd',
+            'margin_ratio',
+            'np_loan_status_cd',
+            'open_dt',
+            'orgi_due_dt',
+            'orgi_term',
+            'orgi_term_typ_cd',
+            'ovdue_flg',
+            'posting_acct_id',
+            'posting_acct_modf',
+            'prev_repay_dt',
+            'rating_dt',
+            'refin_assoc_lacct',
+            'refin_assoc_lacct_agt_modf',
+            'refin_cnt',
+            'refin_dt',
+            'refin_flg',
+            'repay_mode_cd',
+            'repay_tm_period_cd',
+            'retail_cnsm_loan_flg',
+            'retail_oper_loan_flg',
+            'retail_small_loan_flg',
+            'rollover_cnt',
+            'rollover_dt',
+            'rollover_flg',
+            'setl_dt',
+            'setl_flg',
+            'term',
+            'term_typ_cd',
+            'write_off_int',
+            'write_off_princp',
+            'change_cd',
+            'etl_date',
+            'etl_task_id',
+            'ins_dt'
+          ],
+          nodeType: '1',
+          croppingFlag: '1'
         },
         {
-          from: 'b-r1-c3',
-          to: 'c-r1-c1',
-          text: '',
-          lineShape: 6,
-          color: 'rgba(159,23,227,0.65)',
-          lineWidth: 3
-        },
-        {
-          from: 'd-r4-c2',
-          to: 'c-r4-c2',
-          text: '',
-          lineShape: 6,
-          color: 'rgba(159,23,227,0.65)',
-          lineWidth: 3
-        },
-        {
-          from: 'd-r2-c1',
-          to: 'c-r4-c2',
-          text: '',
-          lineShape: 6,
-          color: 'rgba(159,23,227,0.65)',
-          lineWidth: 3
-        },
-        {
-          from: 'd-r2-c1',
-          to: 'b-r4-c3',
-          text: '',
-          lineShape: 6,
-          color: 'rgba(159,23,227,0.65)',
-          lineWidth: 3
-        },
-        {
-          from: 'b-r3-c2',
-          to: 'c-r2-c1',
-          text: '',
-          lineShape: 6,
-          color: 'rgba(159,23,227,0.65)',
-          lineWidth: 3
+          id: '5e32a126-b85f-3f6a-b2c4-565b576f891c',
+          uuid: '5e32a126-b85f-3f6a-b2c4-565b576f891c',
+          tabName: 'rdm_acct_h',
+          schema: 'rdm_data',
+          tabType: '0',
+          dbName: 'T3RDM',
+          ownSystem: 'HX',
+          fieldNames: [
+            'accting_coa_id',
+            'agt_modf',
+            'appl_dt',
+            'bcs_agt_status_cd',
+            'bcs_cust_id',
+            'bcs_cust_mgr_id',
+            'bcs_prd_id',
+            'blng_bcs_inter_org_id',
+            'blng_cms_inter_org_id',
+            'categ14_cd',
+            'ccy_cd',
+            'ccy_convert_rate',
+            'change_cd',
+            'cms_agt_status_cd',
+            'cms_contract_num',
+            'cms_cust_id',
+            'cms_cust_mgr_id',
+            'cms_dbill_acct_num',
+            'cms_dbill_sub_acct_num',
+            'cms_prd_id',
+            'cms_sub_module_cust_id',
+            'crdt_ctr_id',
+            'crdt_ctr_modf',
+            'ctr_rate',
+            'cust_crdt_appl_ctr_id',
+            'data_std_prd_id',
+            'deval_loan_flg',
+            'deval_prepare_ratio',
+            'deval_provn_amt',
+            'deval_provn_ccy_cd',
+            'due_dt',
+            'etl_date',
+            'etl_task_id',
+            'exec_rate',
+            'ins_dt',
+            'int_mode_cd',
+            'int_setl_day',
+            'issue_amt',
+            'issue_inter_acct_flg',
+            'lacct_id',
+            'loan_bal',
+            'loan_ctr_id',
+            'loan_dir_indu_cd',
+            'loan_issue_dt',
+            'margin_amt',
+            'margin_ccy_cd',
+            'margin_ratio',
+            'np_loan_status_cd',
+            'open_dt',
+            'orgi_due_dt',
+            'orgi_term',
+            'orgi_term_typ_cd',
+            'ovdue_flg',
+            'posting_acct_id',
+            'posting_acct_modf',
+            'prev_repay_dt',
+            'rating_dt',
+            'refin_assoc_lacct',
+            'refin_assoc_lacct_agt_modf',
+            'refin_cnt',
+            'refin_dt',
+            'refin_flg',
+            'repay_mode_cd',
+            'repay_tm_period_cd',
+            'retail_cnsm_loan_flg',
+            'retail_oper_loan_flg',
+            'retail_small_loan_flg',
+            'rollover_cnt',
+            'rollover_dt',
+            'rollover_flg',
+            'setl_dt',
+            'setl_flg',
+            'term',
+            'term_typ_cd',
+            'vf_1',
+            'vf_10',
+            'vf_11',
+            'vf_12',
+            'vf_13',
+            'vf_14',
+            'vf_15',
+            'vf_16',
+            'vf_17',
+            'vf_18',
+            'vf_19',
+            'vf_2',
+            'vf_20',
+            'vf_21',
+            'vf_22',
+            'vf_23',
+            'vf_24',
+            'vf_25',
+            'vf_26',
+            'vf_27',
+            'vf_28',
+            'vf_29',
+            'vf_3',
+            'vf_30',
+            'vf_31',
+            'vf_32',
+            'vf_33',
+            'vf_34',
+            'vf_35',
+            'vf_36',
+            'vf_37',
+            'vf_38',
+            'vf_39',
+            'vf_4',
+            'vf_40',
+            'vf_41',
+            'vf_42',
+            'vf_43',
+            'vf_44',
+            'vf_45',
+            'vf_46',
+            'vf_47',
+            'vf_48',
+            'vf_49',
+            'vf_5',
+            'vf_50',
+            'vf_51',
+            'vf_52',
+            'vf_53',
+            'vf_54',
+            'vf_55',
+            'vf_56',
+            'vf_57',
+            'vf_58',
+            'vf_59',
+            'vf_6',
+            'vf_60',
+            'vf_61',
+            'vf_62',
+            'vf_63',
+            'vf_64',
+            'vf_65',
+            'vf_66',
+            'vf_67',
+            'vf_68',
+            'vf_69',
+            'vf_7',
+            'vf_70',
+            'vf_71',
+            'vf_72',
+            'vf_73',
+            'vf_74',
+            'vf_75',
+            'vf_8',
+            'vf_9',
+            'write_off_int',
+            'write_off_princp'
+          ],
+          nodeType: '1',
+          croppingFlag: '0'
         }
-        // { from: 'el-1', to: 'el-2', text: 'Line Text', lineShape: 6, color: 'red', lineWidth: 4, showEndArrow: false },
-        // { from: 'el-1', to: 'd-1', text: 'Line Text', lineShape: 6, color: 'red', lineWidth: 4, showEndArrow: false },
+      ],
+      lines: [
+        {
+          from: '4f200b42-7de4-3e01-bd7c-d3795e62394b',
+          to: '5e32a126-b85f-3f6a-b2c4-565b576f891c',
+          text: '投影: fcea:; c7de:;',
+          lineageType: 0,
+          sqlIds: [
+            {
+              sqlId:
+                'HX:t3rdm_rdm_acct_h_z.pl:b15ef755cf044edc76320230ed57fcea',
+              text: []
+            },
+            {
+              sqlId:
+                'HX:t3rdm_rdm_acct_h_z.pl:40f4ea87ca9f9b0b9a7a9ccb584ec7de',
+              text: []
+            }
+          ]
+        },
+        {
+          from: '9ccd3b1c-b81d-37e1-ac91-506887380ba9',
+          to: '4f200b42-7de4-3e01-bd7c-d3795e62394b',
+          text: '投影: 8c5b:;',
+          lineageType: 0,
+          sqlIds: [
+            {
+              sqlId:
+                'HX:t3rdm_rdm_acct_h_z.pl:7becb5cf0a5984fe6846935625b18c5b',
+              text: []
+            }
+          ]
+        },
+        {
+          from: 'a4502adb-411f-3140-a963-f9635cedcc17',
+          to: '9ccd3b1c-b81d-37e1-ac91-506887380ba9',
+          text: "投影: 5d69:pdm_view.t03_agt_rela_h.agt_rela_type_cd = '1026';pdm_view.t03_agt_rela_h.assoc_agt_num <> '0000000000000000';pdm_view.t03_agt_rela_h.st_dt <= 20231231;pdm_view.t03_agt_rela_h.end_dt > 20231231;",
+          lineageType: 0,
+          sqlIds: [
+            {
+              sqlId:
+                'HX:t3rdm_rdm_acct_h_z.pl:88246a026e55b99e06984d8d21b75d69',
+              text: [
+                "pdm_view.t03_agt_rela_h.agt_rela_type_cd = '1026'",
+                "pdm_view.t03_agt_rela_h.assoc_agt_num <> '0000000000000000'",
+                'pdm_view.t03_agt_rela_h.st_dt <= 20231231',
+                'pdm_view.t03_agt_rela_h.end_dt > 20231231'
+              ]
+            }
+          ]
+        },
+        {
+          from: '424ba130-f83f-36d2-845d-2105e76ed1d8',
+          to: '9ccd3b1c-b81d-37e1-ac91-506887380ba9',
+          text: '投影: 5d69:row_number() OVER (PARTITION BY vt_temp_table.agt_num ORDER BY vt_temp_table.num DESC) = 1;',
+          lineageType: 0,
+          sqlIds: [
+            {
+              sqlId:
+                'HX:t3rdm_rdm_acct_h_z.pl:88246a026e55b99e06984d8d21b75d69',
+              text: [
+                'row_number() OVER (PARTITION BY vt_temp_table.agt_num ORDER BY vt_temp_table.num DESC) = 1'
+              ]
+            }
+          ]
+        },
+        {
+          from: '843af1a3-242c-361c-95c6-449a07279826',
+          to: '9ccd3b1c-b81d-37e1-ac91-506887380ba9',
+          text: '投影: 5d69:;',
+          lineageType: 0,
+          sqlIds: [
+            {
+              sqlId:
+                'HX:t3rdm_rdm_acct_h_z.pl:88246a026e55b99e06984d8d21b75d69',
+              text: []
+            }
+          ]
+        }
       ]
-    }
-    const graphInstance = graphRef.value!.getInstance()
-    await graphInstance.setJsonData(__graph_json_data)
-    await graphInstance.moveToCenter()
-    await graphInstance.zoomToFit()
-  }
-  const onNodeClick = (nodeObject: RGNode, $event: RGUserEvent) => {
-    console.log('onNodeClick:', nodeObject)
-  }
-  const onLineClick = (
-    lineObject: RGLine,
-    linkObject: RGLink,
-    $event: RGUserEvent
-  ) => {
-    console.log('onLineClick:', lineObject)
-  }
-  onMounted(() => {
-    showGraph()
-  })
-</script>
-<style lang="scss" scoped>
-  ::v-deep(.relation-graph) {
-    .rel-node-shape-1 {
-      overflow: hidden;
-    }
-  }
-  .c-data-table {
-    background-color: #ffffff;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  .c-table-title {
-    color: #333333;
-  }
-  .c-data-table td,
-  .c-data-table th {
-    border: 1px solid #bbbbbb;
-    color: #333333;
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .c-data-table td div,
-  .c-data-table th div {
-    background-color: #1da9f5;
-    color: #ffffff;
-    border-radius: 5px;
-  }
-  .item {
-    background: #1da9f5;
-    padding: 5px 0;
-    border: 1px solid #fff;
-  }
-  ::v-deep(.relation-graph) {
-    .rel-map {
-      background: none !important;
     }
   }
 
-  .my-graph {
-    background: url(@//assets/graph-bg.svg) no-repeat;
-    background-size: 1000% 1000%;
-  }
-</style>
+  onMounted(() => {
+    fetchTableNodes()
+  })
+</script>
+
+<style lang="scss" scoped></style>

@@ -37,7 +37,7 @@
     "pinia": "^2.0.27",
     "print-js": "^1.6.0",
     "qs": "^6.11.0",
-    "relation-graph": "^2.1.29",
+    "relation-graph": "^2.1.31",
     "relation-graph-vue3": "^2.2.0",
     "resizable-dom": "^1.0.2",
     "three": "^0.147.0",
