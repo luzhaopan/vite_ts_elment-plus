@@ -141,6 +141,7 @@
   </el-row>
 </template>
 <script lang="ts" setup>
+  import { type } from 'os'
   import { dataW1, dataW3 } from '../data'
   import { female1, arr2, arr3, arr4, arr5, arr6 } from './data1'
   import { female21, arr22 } from './data2'
@@ -252,6 +253,19 @@
   // console.log('arr6', arr6)
 
   const optionsRoc = {
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '75%',
+      bottom: '15%',
+      textStyle: {
+        fontSize: 20
+      },
+      data: ['曲线1', '曲线2', '曲线3', '曲线4']
+    },
     xAxis: [
       {
         type: 'category',
@@ -296,7 +310,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 1
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -363,7 +381,10 @@
         nameGap: 45,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -389,15 +410,15 @@
       }
     ],
     grid: {
-      left: '10%',
+      left: '6%',
       right: '2%',
-      bottom: '12%',
-      top: '0%'
+      bottom: '10%',
+      top: '5%'
     },
     color: ['orange', 'red', 'green', 'blue', 'purple', '#333'],
     series: [
       {
-        name: 'Raw data AUC = 0.5795',
+        name: '曲线1',
         data: [
           0,
           '',
@@ -431,7 +452,7 @@
         connectNulls: true
       },
       {
-        name: 'RUS AUC = 0.7058',
+        name: '曲线2',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -466,7 +487,7 @@
         connectNulls: true
       },
       {
-        name: 'ROS AUC = 0.8156',
+        name: '曲线3',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -501,7 +522,7 @@
         connectNulls: true
       },
       {
-        name: 'ADASYN AUC = 0.9358',
+        name: '曲线4',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -570,7 +591,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 1
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -610,7 +635,10 @@
         nameGap: 55,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -639,10 +667,10 @@
       }
     ],
     grid: {
-      left: '10%',
+      left: '6%',
       right: '2%',
-      bottom: '12%',
-      top: '0%'
+      bottom: '10%',
+      top: '5%'
     },
     legend: {
       icon: 'rect',
@@ -757,17 +785,27 @@
   }
 
   const optionsC1 = {
+    legend: {
+      left: 'center',
+      textStyle: {
+        fontSize: 16
+      },
+      data: ['正常样本', '窃电样本']
+    },
     grid: {
       left: '8%',
       right: '3%',
       bottom: '8%',
-      top: '4%'
+      top: '7%'
     },
     xAxis: [
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -794,7 +832,10 @@
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -823,6 +864,7 @@
     },
     series: [
       {
+        name: '窃电样本',
         type: 'scatter',
         id: 'female1',
         dataGroupId: 'female1',
@@ -832,6 +874,7 @@
         data: female1 // 中间红色
       },
       {
+        name: '正常样本',
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
@@ -880,17 +923,27 @@
   }
 
   const optionsC2 = {
+    legend: {
+      left: 'center',
+      textStyle: {
+        fontSize: 16
+      },
+      data: ['正常样本', '窃电样本']
+    },
     grid: {
       left: '8%',
       right: '3%',
       bottom: '8%',
-      top: '4%'
+      top: '7%'
     },
     xAxis: [
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -917,7 +970,10 @@
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -946,6 +1002,7 @@
     },
     series: [
       {
+        name: '窃电样本',
         type: 'scatter',
         id: 'female1',
         dataGroupId: 'female1',
@@ -955,6 +1012,7 @@
         data: female21
       },
       {
+        name: '正常样本',
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
@@ -967,17 +1025,27 @@
   }
 
   const optionsC3 = {
+    legend: {
+      left: 'center',
+      textStyle: {
+        fontSize: 16
+      },
+      data: ['正常样本', '窃电样本']
+    },
     grid: {
       left: '8%',
       right: '3%',
       bottom: '8%',
-      top: '4%'
+      top: '7%'
     },
     xAxis: [
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1004,7 +1072,10 @@
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1033,6 +1104,7 @@
     },
     series: [
       {
+        name: '窃电样本',
         type: 'scatter',
         id: 'female1',
         dataGroupId: 'female1',
@@ -1042,6 +1114,7 @@
         data: female31
       },
       {
+        name: '正常样本',
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
@@ -1054,17 +1127,27 @@
   }
 
   const optionsC4 = {
+    legend: {
+      left: 'center',
+      textStyle: {
+        fontSize: 16
+      },
+      data: ['正常样本', '窃电样本']
+    },
     grid: {
       left: '8%',
       right: '3%',
       bottom: '8%',
-      top: '4%'
+      top: '7%'
     },
     xAxis: [
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1091,7 +1174,10 @@
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1120,6 +1206,7 @@
     },
     series: [
       {
+        name: '窃电样本',
         type: 'scatter',
         id: 'female1',
         dataGroupId: 'female1',
@@ -1129,6 +1216,7 @@
         data: female41
       },
       {
+        name: '正常样本',
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
@@ -1264,17 +1352,27 @@
   }
 
   const optionsC5 = {
+    legend: {
+      left: 'center',
+      textStyle: {
+        fontSize: 16
+      },
+      data: ['正常样本', '窃电样本', '噪声点']
+    },
     grid: {
       left: '8%',
       right: '3%',
       bottom: '8%',
-      top: '4%'
+      top: '7%'
     },
     xAxis: [
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1301,7 +1399,10 @@
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1330,6 +1431,7 @@
     },
     series: [
       {
+        name: '窃电样本',
         type: 'scatter',
         id: 'female1',
         dataGroupId: 'female1',
@@ -1348,6 +1450,7 @@
         data: female52 // 右上红色
       },
       {
+        name: '正常样本',
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
@@ -1357,6 +1460,7 @@
         data: arr52 // 蓝
       },
       {
+        name: '噪声点',
         type: 'scatter',
         id: 'male3',
         dataGroupId: 'male3',
@@ -1369,17 +1473,27 @@
   }
 
   const optionsC6 = {
+    legend: {
+      left: 'center',
+      textStyle: {
+        fontSize: 16
+      },
+      data: ['正常样本', '窃电样本', '噪声点']
+    },
     grid: {
       left: '8%',
       right: '3%',
       bottom: '8%',
-      top: '4%'
+      top: '7%'
     },
     xAxis: [
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1406,7 +1520,10 @@
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1444,6 +1561,7 @@
         data: female61 // 中间红色
       },
       {
+        name: '窃电样本',
         type: 'scatter',
         id: 'female2',
         dataGroupId: 'female2',
@@ -1453,6 +1571,7 @@
         data: female62 // 右上红色
       },
       {
+        name: '正常样本',
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
@@ -1462,6 +1581,7 @@
         data: arr62 // 蓝
       },
       {
+        name: '噪声点',
         type: 'scatter',
         id: 'male3',
         dataGroupId: 'male3',
@@ -1474,17 +1594,27 @@
   }
 
   const optionsC7 = {
+    legend: {
+      left: 'center',
+      textStyle: {
+        fontSize: 16
+      },
+      data: ['正常样本', '窃电样本', '噪声点']
+    },
     grid: {
       left: '8%',
       right: '3%',
       bottom: '8%',
-      top: '4%'
+      top: '7%'
     },
     xAxis: [
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1511,7 +1641,10 @@
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1549,6 +1682,7 @@
         data: female71 // 中间红色
       },
       {
+        name: '窃电样本',
         type: 'scatter',
         id: 'female2',
         dataGroupId: 'female2',
@@ -1558,6 +1692,7 @@
         data: female72 // 右上红色
       },
       {
+        name: '正常样本',
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
@@ -1567,6 +1702,7 @@
         data: arr72 // 蓝
       },
       {
+        name: '噪声点',
         type: 'scatter',
         id: 'male3',
         dataGroupId: 'male3',
@@ -1579,17 +1715,27 @@
   }
 
   const optionsC8 = {
+    legend: {
+      left: 'center',
+      textStyle: {
+        fontSize: 16
+      },
+      data: ['正常样本', '窃电样本', '噪声点']
+    },
     grid: {
       left: '8%',
       right: '3%',
       bottom: '8%',
-      top: '4%'
+      top: '7%'
     },
     xAxis: [
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1616,7 +1762,10 @@
       {
         scale: true,
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLabel: {
           color: '#333',
@@ -1654,6 +1803,7 @@
         data: female81 // 中间红色
       },
       {
+        name: '窃电样本',
         type: 'scatter',
         id: 'female2',
         dataGroupId: 'female2',
@@ -1663,6 +1813,7 @@
         data: female82 // 右上红色
       },
       {
+        name: '正常样本',
         type: 'scatter',
         id: 'male2',
         dataGroupId: 'male2',
@@ -1672,6 +1823,7 @@
         data: arr82 // 蓝
       },
       {
+        name: '噪声点',
         type: 'scatter',
         id: 'male3',
         dataGroupId: 'male3',
@@ -1684,6 +1836,22 @@
   }
 
   const optionsCl1 = {
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '70%',
+      bottom: '20%',
+      textStyle: {
+        fontSize: 20
+      },
+      itemStyle: {
+        color: '#ff5a5a'
+      },
+      data: ['AUC曲线']
+    },
     xAxis: [
       {
         type: 'category',
@@ -1728,7 +1896,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 2
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -1795,7 +1967,11 @@
         nameGap: 40,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 2
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -1821,14 +1997,14 @@
       }
     ],
     grid: {
-      left: '15%',
-      right: '3%',
-      bottom: '14%',
-      top: '3%'
+      left: '16%',
+      right: '4%',
+      bottom: '15%',
+      top: '4%'
     },
     series: [
       {
-        name: '',
+        name: 'AUC曲线',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -1869,6 +2045,22 @@
   }
 
   const optionsCl2 = {
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '70%',
+      bottom: '20%',
+      textStyle: {
+        fontSize: 20
+      },
+      itemStyle: {
+        color: '#20db5f'
+      },
+      data: ['AUC曲线']
+    },
     xAxis: [
       {
         type: 'category',
@@ -1913,7 +2105,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 2
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -1980,7 +2176,10 @@
         nameGap: 40,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -2006,14 +2205,14 @@
       }
     ],
     grid: {
-      left: '15%',
-      right: '3%',
-      bottom: '14%',
-      top: '3%'
+      left: '16%',
+      right: '4%',
+      bottom: '15%',
+      top: '4%'
     },
     series: [
       {
-        name: '',
+        name: 'AUC曲线',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -2054,6 +2253,22 @@
   }
 
   const optionsCl3 = {
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '70%',
+      bottom: '20%',
+      textStyle: {
+        fontSize: 20
+      },
+      itemStyle: {
+        color: 'blue'
+      },
+      data: ['AUC曲线']
+    },
     xAxis: [
       {
         type: 'category',
@@ -2098,7 +2313,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          interval: 2, // x轴刻度线间隔
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -2165,7 +2384,10 @@
         nameGap: 40,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -2191,14 +2413,14 @@
       }
     ],
     grid: {
-      left: '15%',
-      right: '3%',
-      bottom: '14%',
-      top: '3%'
+      left: '16%',
+      right: '4%',
+      bottom: '15%',
+      top: '4%'
     },
     series: [
       {
-        name: '',
+        name: 'AUC曲线',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -2239,6 +2461,22 @@
   }
 
   const optionsCl4 = {
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '70%',
+      bottom: '20%',
+      textStyle: {
+        fontSize: 20
+      },
+      itemStyle: {
+        color: '#848484'
+      },
+      data: ['AUC曲线']
+    },
     xAxis: [
       {
         type: 'category',
@@ -2283,7 +2521,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 2
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -2350,7 +2592,10 @@
         nameGap: 40,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -2376,14 +2621,14 @@
       }
     ],
     grid: {
-      left: '15%',
-      right: '3%',
-      bottom: '14%',
-      top: '3%'
+      left: '16%',
+      right: '4%',
+      bottom: '15%',
+      top: '4%'
     },
     series: [
       {
-        name: '',
+        name: 'AUC曲线',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -2424,6 +2669,22 @@
   }
 
   const optionsCl5 = {
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '70%',
+      bottom: '20%',
+      textStyle: {
+        fontSize: 20
+      },
+      itemStyle: {
+        color: '#fd6e97'
+      },
+      data: ['AUC曲线']
+    },
     xAxis: [
       {
         type: 'category',
@@ -2468,7 +2729,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 2
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -2535,7 +2800,10 @@
         nameGap: 40,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -2561,14 +2829,14 @@
       }
     ],
     grid: {
-      left: '15%',
-      right: '3%',
-      bottom: '14%',
-      top: '3%'
+      left: '16%',
+      right: '4%',
+      bottom: '15%',
+      top: '4%'
     },
     series: [
       {
-        name: '',
+        name: 'AUC曲线',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -2609,6 +2877,22 @@
   }
 
   const optionsCl6 = {
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '70%',
+      bottom: '20%',
+      textStyle: {
+        fontSize: 20
+      },
+      itemStyle: {
+        color: 'orange'
+      },
+      data: ['AUC曲线']
+    },
     xAxis: [
       {
         type: 'category',
@@ -2653,7 +2937,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 2
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -2720,7 +3008,10 @@
         nameGap: 40,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -2746,14 +3037,14 @@
       }
     ],
     grid: {
-      left: '15%',
-      right: '3%',
-      bottom: '14%',
-      top: '3%'
+      left: '16%',
+      right: '4%',
+      bottom: '15%',
+      top: '4%'
     },
     series: [
       {
-        name: '',
+        name: 'AUC曲线',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -2794,6 +3085,22 @@
   }
 
   const optionsCl7 = {
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '70%',
+      bottom: '20%',
+      textStyle: {
+        fontSize: 20
+      },
+      itemStyle: {
+        color: '#0099ff'
+      },
+      data: ['AUC曲线']
+    },
     xAxis: [
       {
         type: 'category',
@@ -2838,7 +3145,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 2
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -2905,7 +3216,10 @@
         nameGap: 40,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -2923,7 +3237,10 @@
         type: 'value',
         position: 'right',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -2931,14 +3248,14 @@
       }
     ],
     grid: {
-      left: '15%',
-      right: '3%',
-      bottom: '14%',
-      top: '3%'
+      left: '16%',
+      right: '4%',
+      bottom: '15%',
+      top: '4%'
     },
     series: [
       {
-        name: '',
+        name: 'AUC曲线',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -2979,6 +3296,22 @@
   }
 
   const optionsCl8 = {
+    legend: {
+      icon: 'rect',
+      itemWidth: 20,
+      itemHeight: 4,
+      itemGap: 15,
+      width: 50,
+      left: '70%',
+      bottom: '20%',
+      textStyle: {
+        fontSize: 20
+      },
+      itemStyle: {
+        color: '#ff7e51'
+      },
+      data: ['AUC曲线']
+    },
     xAxis: [
       {
         type: 'category',
@@ -3023,7 +3356,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 2
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -3090,7 +3427,10 @@
         nameGap: 40,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -3116,14 +3456,14 @@
       }
     ],
     grid: {
-      left: '15%',
-      right: '3%',
-      bottom: '14%',
-      top: '3%'
+      left: '16%',
+      right: '4%',
+      bottom: '15%',
+      top: '4%'
     },
     series: [
       {
-        name: '',
+        name: 'AUC曲线',
         smooth: true, // 开启平滑效果
         data: [
           0,
@@ -3446,7 +3786,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 1
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -3513,7 +3857,10 @@
         nameGap: 45,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -3558,12 +3905,12 @@
         '混合 AUC = 0.9469'
       ]
     },
-    grid: {
-      left: '0%',
-      right: 0,
-      bottom: '10%',
-      top: '0%'
-    },
+    // grid: {
+    //   left: '6%',
+    //   right: '2%',
+    //   bottom: '10%',
+    //   top: '5%'
+    // },
     color: ['orange', 'red', 'green', 'blue', 'purple', '#333'],
     series: [
       {
@@ -3817,7 +4164,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 1
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -3884,7 +4235,10 @@
         nameGap: 45,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -3929,12 +4283,12 @@
         '混合AUC = 0.9684'
       ]
     },
-    grid: {
-      left: '0%',
-      right: '0%',
-      bottom: '10%',
-      top: '0%'
-    },
+    // grid: {
+    //   left: '6%',
+    //   right: '2%',
+    //   bottom: '10%',
+    //   top: '5%'
+    // },
     color: ['orange', 'red', 'green', 'blue', 'purple', '#333'],
     series: [
       {
@@ -4188,7 +4542,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 1
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -4255,7 +4613,11 @@
         nameGap: 45,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 1
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -4588,7 +4950,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 1
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -4655,7 +5021,10 @@
         nameGap: 45,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -4989,7 +5358,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 1
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -5056,7 +5429,10 @@
         nameGap: 45,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
@@ -5284,7 +5660,11 @@
           show: true
         },
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          },
+          interval: 1
         },
         axisTick: {
           show: false // 不显示坐标轴刻度线
@@ -5351,7 +5731,10 @@
         nameGap: 45,
         position: 'left',
         splitLine: {
-          show: false // 是否显示网格线
+          show: true, // 是否显示网格线
+          lineStyle: {
+            type: 'dashed'
+          }
         },
         axisLine: {
           show: true // 不显示坐标轴线
